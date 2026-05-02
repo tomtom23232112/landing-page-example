@@ -33,8 +33,59 @@
     <meta name="robots" content="max-image-preview:large"><link rel="canonical" href="https://monk69ozu.github.io/barbeqube/gallery"><meta property="og:url" content="https://monk69ozu.github.io/barbeqube/gallery"><!-- Start of headEnd -->
     
     <!-- End of headEnd -->
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style id="custom-nav-styles">
+  :root { --black:#0a0b0a; --dark:#151515; --gold:#dac5a7; --gold-light:#ede0cc; --white:#ffffff; --ease:cubic-bezier(0.4,0,0.2,1); }
+  /* Hide Framer built-in nav */
+  .framer-5dsdT { display: none !important; }
+  /* Custom Nav */
+  #customNav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 4vw; height: 72px; background: transparent;
+    transition: background 0.5s var(--ease), backdrop-filter 0.5s;
+    font-family: 'Inter', sans-serif;
+  }
+  #customNav.scrolled { background: rgba(10,11,10,0.93); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(218,197,167,0.1); }
+  .cn-logo { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.15em; color: #ffffff; text-decoration: none; text-transform: uppercase; }
+  .cn-logo span { color: var(--gold); }
+  .cn-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; margin: 0; padding: 0; }
+  .cn-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; }
+  .cn-links a:hover { color: var(--gold); }
+  .cn-cta { background: var(--gold) !important; color: var(--black) !important; padding: 0.55rem 1.4rem !important; border-radius: 2px; font-weight: 600 !important; }
+  .cn-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); color: var(--black) !important; }
+  .cn-burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; background: none; border: none; }
+  .cn-burger span { width: 26px; height: 2px; background: #ffffff; display: block; transition: 0.3s; }
+  .cn-mobile { display: none; position: fixed; inset: 0; background: var(--black); z-index: 9998; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+  .cn-mobile.open { display: flex; }
+  .cn-mobile a { font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 500; color: #ffffff; text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; }
+  .cn-mobile a:hover { color: var(--gold); }
+  @media (max-width: 768px) { .cn-links { display: none; } .cn-burger { display: flex; } }
+</style>
 </head>
 <shadow-host></shadow-host><body>
+<nav id="customNav">
+  <a href="./" class="cn-logo">Barbe<span>Qube</span></a>
+  <ul class="cn-links">
+    <li><a href="./">Home</a></li>
+    <li><a href="./menu">Speisekarte</a></li>
+    <li><a href="./gallery">Galerie</a></li>
+    <li><a href="./contact">Kontakt</a></li>
+    <li><a href="./reservation" class="cn-cta">Reservieren</a></li>
+  </ul>
+  <button class="cn-burger" id="cnBurger" onclick="cnToggle()" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="cn-mobile" id="cnMobile">
+  <a href="./" onclick="cnToggle()">Home</a>
+  <a href="./menu" onclick="cnToggle()">Speisekarte</a>
+  <a href="./gallery" onclick="cnToggle()">Galerie</a>
+  <a href="./contact" onclick="cnToggle()">Kontakt</a>
+  <a href="./reservation" onclick="cnToggle()">Reservieren</a>
+</div>
+
     
     <!-- Start of bodyStart -->
     
