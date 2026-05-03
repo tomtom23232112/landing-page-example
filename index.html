@@ -33,14 +33,22 @@
     ::-webkit-scrollbar-track { background: var(--black); }
     ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
+    /* Page fade-in transition */
+    @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    body { animation: pageFadeIn 0.45s ease forwards; }
+
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 4vw; height: 72px; background: transparent;
-      transition: background 0.5s var(--ease), backdrop-filter 0.5s;
+      padding: 0 4vw; height: 72px;
+      background: transparent;
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+      transition: background 0.5s var(--ease), backdrop-filter 0.5s, border-color 0.5s;
+      border-bottom: 1px solid transparent;
     }
-    nav.scrolled { background: rgba(10,11,10,0.93); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(218,197,167,0.1); }
+    nav.scrolled { background: rgba(10,11,10,0.93); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-color: rgba(218,197,167,0.1); }
     .nav-logo { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.15em; color: var(--white); text-decoration: none; text-transform: uppercase; }
     .nav-logo span { color: var(--gold); }
     .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
@@ -613,6 +621,18 @@
       item.style.transform = `perspective(600px) rotateY(${x * 5}deg) rotateX(${-y * 4}deg)`;
     });
     item.addEventListener('mouseleave', () => { item.style.transform = ''; });
+  });
+
+  // Page transition: fade-out on link click
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http')) return;
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.body.style.transition = 'opacity 0.3s ease';
+      document.body.style.opacity = '0';
+      setTimeout(() => { window.location.href = href; }, 300);
+    });
   });
 </script>
 </body>
