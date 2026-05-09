@@ -68,6 +68,11 @@
   html, body, #main { background-color: #0a0b0a !important; color: #ffffff; }
   /* Remove any Framer badge */
   #__framer-badge-container { display: none !important; }
+
+  /* Force dark background on ALL Framer containers */
+  [class*="framer-"], .framer-body { background-color: #0a0b0a !important; }
+  /* Remove Framer nav container wrapper too */
+  [class*="framer-5dsdT"] { display: none !important; }
 </style>
 </head>
 <shadow-host></shadow-host><body>
@@ -104,6 +109,32 @@
 <!-- Start of bodyEnd -->
 <!-- End of bodyEnd -->
 
+<script>
+// Remove Framer's built-in nav after React hydration re-adds it
+(function() {
+  function removeFramerNav() {
+    document.querySelectorAll('.framer-5dsdT').forEach(function(el) {
+      el.style.cssText = 'display:none!important;visibility:hidden!important;pointer-events:none!important;';
+      var parent = el.parentElement;
+      if (parent && /framer.*container/i.test(parent.className || '')) {
+        parent.style.cssText = 'display:none!important;';
+      }
+      try { el.remove(); } catch(e) {}
+    });
+    var badge = document.getElementById('__framer-badge-container');
+    if (badge) badge.remove();
+  }
+  removeFramerNav();
+  var obs = new MutationObserver(function(mutations) {
+    var needsCheck = false;
+    for (var i = 0; i < mutations.length; i++) {
+      if (mutations[i].addedNodes.length) { needsCheck = true; break; }
+    }
+    if (needsCheck) removeFramerNav();
+  });
+  obs.observe(document.documentElement, { childList: true, subtree: true });
+})();
+</script>
 <script>
 // Page transition: fade-out on link click
 document.querySelectorAll('a[href]').forEach(function(link) {
