@@ -1,676 +1,867 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barbeqube – Bestes Restaurant in Lüneburg | Burger, Frühstück &amp; Steaks</title>
-  <meta name="description" content="Das beste Restaurant in Lüneburg – Hausgemachte Burger, leckeres Frühstück, zarte Steaks, italienische Pinsa, gesunde Bowls, täglich Happy Hour, neu: Smash Burger &amp; Giovanni L. Eis.">
-  <link rel="canonical" href="https://monk69ozu.github.io/barbeqube/">
-  <meta property="og:url" content="https://monk69ozu.github.io/barbeqube/">
-  <meta property="og:title" content="Barbeqube – Bestes Restaurant in Lüneburg">
-  <meta property="og:description" content="Das beste Restaurant in Lüneburg – Hausgemachte Burger, leckeres Frühstück, zarte Steaks, italienische Pinsa, gesunde Bowls.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$250 One-Page Website — Built in 48 Hours. $0 Upfront.</title>
+  <meta name="description" content="Professional one-page website for $250 flat. No risk: we build it first, you pay only if you love it. Delivered in 48 hours." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Space Grotesk', 'sans-serif'] },
+          colors: {
+            accent: '#00FF94',
+            'accent-dim': '#00CC76',
+            dark: '#030303',
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%,100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
   <style>
-    :root {
-      --black: #0a0b0a;
-      --dark: #151515;
-      --brown-deep: rgb(25, 14, 12);
-      --brown: rgb(59, 45, 43);
-      --brown-mid: rgb(83, 67, 64);
-      --gold: #dac5a7;
-      --gold-light: #ede0cc;
-      --cream: rgb(255, 248, 246);
-      --white: #ffffff;
-      --gray: rgba(255,255,255,0.55);
-      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    * { box-sizing: border-box; }
+    body { background-color: #030303; font-family: 'Space Grotesk', sans-serif; color: white; margin: 0; }
+
+    /* ---- Scroll animations ---- */
+    .fade-up  { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-left{ opacity: 0; transform: translateX(-32px);transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-right{opacity: 0; transform: translateX(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible,.fade-left.visible,.fade-right.visible { opacity:1; transform:none; }
+    .stagger-1{ transition-delay:.10s; }
+    .stagger-2{ transition-delay:.20s; }
+    .stagger-3{ transition-delay:.30s; }
+    .stagger-4{ transition-delay:.40s; }
+    .stagger-5{ transition-delay:.50s; }
+
+    /* ---- Glass card ---- */
+    .glass {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: background .25s, border-color .25s;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-weight: 300; overflow-x: hidden; }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--black); }
-    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+    .glass:hover { background:rgba(255,255,255,0.07); border-color:rgba(255,255,255,0.14); }
 
-    /* Page fade-in transition */
-    @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
-    body { animation: pageFadeIn 0.45s ease forwards; }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 4vw; height: 72px;
-      background: transparent;
-      backdrop-filter: blur(0px);
-      -webkit-backdrop-filter: blur(0px);
-      transition: background 0.5s var(--ease), backdrop-filter 0.5s, border-color 0.5s;
-      border-bottom: 1px solid transparent;
+    /* ---- CTA button ---- */
+    .btn-accent {
+      background:#00FF94; color:#030303; font-weight:700; letter-spacing:-0.02em;
+      transition: all .2s ease;
+      box-shadow: 0 0 28px rgba(0,255,148,.35), 0 0 56px rgba(0,255,148,.12);
+      display:inline-block; text-decoration:none; cursor:pointer; border:none;
     }
-    nav.scrolled { background: rgba(10,11,10,0.93); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-color: rgba(218,197,167,0.1); }
-    .nav-logo { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.15em; color: var(--white); text-decoration: none; text-transform: uppercase; }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
-    .nav-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-cta { background: var(--gold) !important; color: var(--black) !important; padding: 0.55rem 1.4rem !important; border-radius: 2px; font-weight: 600 !important; transition: background 0.3s, transform 0.2s !important; }
-    .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); color: var(--black) !important; }
-    .nav-burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-    .nav-burger span { width: 26px; height: 2px; background: var(--white); display: block; transition: 0.3s; }
-    .nav-mobile { display: none; position: fixed; inset: 0; background: var(--black); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
-    .nav-mobile.open { display: flex; }
-    .nav-mobile a { font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 500; color: var(--white); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; }
-    .nav-mobile a:hover { color: var(--gold); }
+    .btn-accent:hover { background:#00FFB0; transform:translateY(-2px); box-shadow:0 0 48px rgba(0,255,148,.55),0 0 96px rgba(0,255,148,.20); }
+    .btn-accent:active { transform:translateY(0); }
 
-    /* HERO */
-    .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .hero-video-wrap { position: absolute; inset: 0; z-index: 0; }
-    .hero-video-wrap video { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.42); }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,11,10,0.15) 0%, rgba(10,11,10,0) 40%, rgba(10,11,10,0.65) 100%); z-index: 1; }
-    .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 2rem; max-width: 950px; }
-    .hero-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; opacity: 0; transform: translateY(20px); animation: fadeUp 0.9s 0.3s var(--ease) forwards; }
-    .hero-title { font-family: 'Oswald', sans-serif; font-size: clamp(4.5rem, 13vw, 11rem); font-weight: 700; line-height: 0.9; letter-spacing: -0.01em; text-transform: uppercase; color: var(--white); opacity: 0; transform: translateY(30px); animation: fadeUp 1s 0.5s var(--ease) forwards; }
-    .hero-title span { color: var(--gold); display: block; }
-    .hero-subtitle { margin-top: 1.8rem; font-size: clamp(0.9rem, 2vw, 1.15rem); font-weight: 300; color: rgba(255,255,255,0.7); letter-spacing: 0.06em; opacity: 0; transform: translateY(20px); animation: fadeUp 0.9s 0.8s var(--ease) forwards; }
-    .hero-actions { margin-top: 3rem; display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; opacity: 0; transform: translateY(20px); animation: fadeUp 0.9s 1s var(--ease) forwards; }
-    .hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0; animation: fadeIn 1s 1.5s forwards; }
-    .hero-scroll span { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gray); }
-    .scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollPulse 2s infinite; }
-
-    /* BUTTONS */
-    .btn-primary { display: inline-block; background: var(--gold); color: var(--black); font-family: 'Oswald', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 1rem 2.6rem; border-radius: 2px; transition: background 0.3s, transform 0.2s; }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-    .btn-outline { display: inline-block; border: 1.5px solid rgba(255,255,255,0.35); color: var(--white); font-family: 'Oswald', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 1rem 2.6rem; border-radius: 2px; transition: border-color 0.3s, color 0.3s, transform 0.2s; }
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-
-    /* MARQUEE */
-    .marquee-section { background: var(--gold); overflow: hidden; height: 52px; display: flex; align-items: center; }
-    .marquee-track { display: flex; animation: marqueeScroll 20s linear infinite; white-space: nowrap; }
-    .marquee-item { font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); padding: 0 2.2rem; }
-    .marquee-dot { color: var(--brown); padding: 0 0.5rem; }
-
-    /* REVEAL ANIMATIONS */
-    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.85s var(--ease), transform 0.85s var(--ease); }
-    .reveal-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
-    .reveal-right { opacity: 0; transform: translateX(50px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
-    .reveal.visible, .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: none; }
-
-    /* SECTION LABELS */
-    .section-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
-    .section-title { font-family: 'Oswald', sans-serif; font-weight: 600; line-height: 1.02; text-transform: uppercase; }
-    .section-title.xl { font-size: clamp(2.8rem, 6vw, 5.5rem); }
-    .section-title.lg { font-size: clamp(2.2rem, 4.5vw, 4rem); }
-    .link-arrow { font-family: 'Oswald', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); text-decoration: none; display: inline-flex; align-items: center; gap: 0.6rem; transition: gap 0.3s; }
-    .link-arrow:hover { gap: 1rem; }
-
-    /* INTRO – Editorial */
-    .intro-section { padding: 10vw 0; position: relative; overflow: hidden; }
-    .intro-editorial { max-width: 1300px; margin: 0 auto; padding: 0 4vw; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: stretch; }
-    .intro-img-main { position: relative; overflow: hidden; border-radius: 4px; }
-    .intro-img-main img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 580px; transition: transform 0.8s var(--ease); }
-    .intro-img-main:hover img { transform: scale(1.04); }
-    .intro-img-tag { position: absolute; bottom: 2rem; left: 2rem; background: var(--gold); color: var(--black); font-family: 'Oswald', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; padding: 0.5rem 1rem; border-radius: 2px; }
-    .intro-text-side { display: flex; flex-direction: column; justify-content: center; gap: 2.5rem; }
-    .intro-big { font-family: 'Oswald', sans-serif; font-size: clamp(3rem, 5.5vw, 5.5rem); font-weight: 700; line-height: 0.92; text-transform: uppercase; }
-    .intro-big em { font-style: normal; color: var(--gold); display: block; }
-    .intro-body { font-size: 1rem; line-height: 1.95; color: rgba(255,255,255,0.52); max-width: 42ch; }
-    .intro-body strong { color: var(--gold-light); font-weight: 500; }
-    .intro-promises { display: flex; flex-direction: column; gap: 0; border-top: 1px solid rgba(218,197,167,0.12); }
-    .intro-promise { display: flex; align-items: center; gap: 1.2rem; padding: 1.1rem 0; border-bottom: 1px solid rgba(218,197,167,0.08); font-size: 0.9rem; color: rgba(255,255,255,0.6); }
-    .intro-promise::before { content: ''; width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
-    .intro-promise strong { color: var(--white); font-weight: 500; margin-right: 0.3rem; }
-    .intro-cta { margin-top: 0.5rem; }
-    .intro-secondary-img { border-radius: 3px; overflow: hidden; aspect-ratio: 4/3; margin-top: 1.5rem; }
-    .intro-secondary-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s var(--ease); }
-    .intro-secondary-img:hover img { transform: scale(1.05); }
-
-    /* PROMISES STRIP (ersetzt Stats) */
-    .promises-strip { background: var(--brown-deep); border-top: 1px solid rgba(218,197,167,0.07); border-bottom: 1px solid rgba(218,197,167,0.07); padding: 5vw 4vw; }
-    .promises-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
-    .promise-card { padding: 2.5rem 3rem; border-right: 1px solid rgba(218,197,167,0.1); }
-    .promise-card:last-child { border-right: none; }
-    .promise-icon { width: 42px; height: 1px; background: var(--gold); margin-bottom: 1.8rem; }
-    .promise-title { font-family: 'Oswald', sans-serif; font-size: 1.25rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--white); margin-bottom: 0.8rem; }
-    .promise-text { font-size: 0.88rem; line-height: 1.8; color: rgba(255,255,255,0.45); }
-
-    /* MENU CATEGORIES */
-    .menu-section { padding: 10vw 4vw; max-width: 1300px; margin: 0 auto; }
-    .menu-header { margin-bottom: 4.5rem; display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap; }
-    .cats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; }
-    .cat-card { position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 3/4; background: var(--brown-deep); transition: transform 0.5s var(--ease); }
-    .cat-card.wide { grid-column: span 2; aspect-ratio: 16/9; align-self: stretch; height: 100%; }
-    .cat-card img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.55); transform: scale(1.04); transition: transform 0.8s var(--ease), filter 0.5s; display: block; }
-    .cat-card:hover img { transform: scale(1.12); filter: brightness(0.35); }
-    .cat-inner { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 2.2rem; background: linear-gradient(to top, rgba(10,11,10,0.92) 0%, transparent 65%); }
-    .cat-tag { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; opacity: 0; transform: translateY(8px); transition: opacity 0.35s, transform 0.35s; }
-    .cat-card:hover .cat-tag { opacity: 1; transform: none; }
-    .cat-name { font-family: 'Oswald', sans-serif; font-size: clamp(1.4rem, 2.5vw, 2.2rem); font-weight: 600; text-transform: uppercase; line-height: 1.1; }
-    .cat-desc { margin-top: 0.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 32ch; max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease); }
-    .cat-card:hover .cat-desc { max-height: 80px; }
-    .cat-link { margin-top: 1rem; font-family: 'Oswald', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 0.4rem; opacity: 0; transform: translateX(-8px); transition: opacity 0.35s 0.1s, transform 0.35s 0.1s; }
-    .cat-card:hover .cat-link { opacity: 1; transform: none; }
-
-    /* FEATURE */
-    .feature-section { background: var(--brown-deep); padding: 9vw 4vw; }
-    .feature-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center; }
-    .feature-img-wrap { position: relative; }
-    .feature-img-main { border-radius: 4px; overflow: hidden; }
-    .feature-img-main img { width: 100%; object-fit: cover; display: block; height: 560px; transition: transform 0.7s var(--ease); }
-    .feature-img-main:hover img { transform: scale(1.04); }
-    .feature-img-secondary { position: absolute; bottom: -2.5rem; right: -2.5rem; width: 46%; aspect-ratio: 4/3; border-radius: 4px; overflow: hidden; border: 5px solid rgb(25,14,12); box-shadow: -8px 8px 40px rgba(0,0,0,0.5); }
-    .feature-img-secondary img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s var(--ease); }
-    .feature-img-secondary:hover img { transform: scale(1.05); }
-    .feature-badge { position: absolute; top: 1.8rem; left: 1.8rem; width: 88px; height: 88px; border: 1.5px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Oswald', sans-serif; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); text-align: center; animation: rotateSlow 12s linear infinite; padding: 0.5rem; line-height: 1.3; }
-    .feature-text {}
-    .feature-heading { font-family: 'Oswald', sans-serif; font-size: clamp(2.4rem, 5vw, 4.5rem); font-weight: 700; line-height: 1; text-transform: uppercase; }
-    .feature-heading em { font-style: normal; color: var(--gold); }
-    .feature-body { margin-top: 1.8rem; font-size: 0.98rem; line-height: 1.9; color: rgba(255,255,255,0.55); }
-    .feature-list { margin-top: 2rem; list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-    .feature-list li { display: flex; align-items: center; gap: 0.75rem; font-size: 0.88rem; color: rgba(255,255,255,0.68); }
-    .feature-list li::before { content: ''; width: 18px; height: 1px; background: var(--gold); flex-shrink: 0; }
-    .feature-cta { margin-top: 2.5rem; }
-
-    /* GALLERY */
-    .gallery-section { padding: 10vw 4vw; max-width: 1300px; margin: 0 auto; }
-    .gallery-header { margin-bottom: 3.5rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; }
-    .gallery-grid { display: grid; grid-template-columns: repeat(12,1fr); grid-auto-rows: 230px; gap: 6px; }
-    .g-item { overflow: hidden; border-radius: 2px; background: var(--dark); }
-    .g-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.65s var(--ease); }
-    .g-item:hover img { transform: scale(1.07); }
-    .g-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
-    .g-item:nth-child(2) { grid-column: span 4; }
-    .g-item:nth-child(3) { grid-column: span 3; }
-    .g-item:nth-child(4) { grid-column: span 7; }
-    .g-item:nth-child(5) { grid-column: span 4; grid-row: span 2; }
-    .g-item:nth-child(6) { grid-column: span 3; }
-    .g-item:nth-child(7) { grid-column: span 5; }
-
-    /* HOURS */
-    .hours-section { background: var(--dark); padding: 7vw 4vw; border-top: 1px solid rgba(218,197,167,0.07); }
-    .hours-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5rem; align-items: start; }
-    .hours-heading { font-family: 'Oswald', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; text-transform: uppercase; line-height: 1.02; }
-    .hours-heading em { color: var(--gold); font-style: normal; display: block; }
-    .hours-note { margin-top: 1.5rem; font-size: 0.88rem; color: rgba(255,255,255,0.42); line-height: 1.75; }
-    .hours-cta { margin-top: 2rem; }
-    .hours-col-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; display: block; }
-    .hours-table { display: flex; flex-direction: column; gap: 0; }
-    .hours-row { display: flex; justify-content: space-between; align-items: center; padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.875rem; }
-    .hours-day { color: rgba(255,255,255,0.55); }
-    .hours-time { color: var(--white); }
-    .hours-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(218,197,167,0.1); border: 1px solid rgba(218,197,167,0.22); color: var(--gold); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; padding: 0.35rem 0.9rem; border-radius: 20px; margin-top: 1.5rem; }
-    .hours-dot { width: 6px; height: 6px; border-radius: 50%; background: #5cce7e; animation: pulse 2s infinite; }
-
-    /* CTA */
-    .cta-section { position: relative; padding: 12vw 4vw; text-align: center; overflow: hidden; }
-    .cta-bg { position: absolute; inset: 0; background: var(--brown-deep); }
-    .cta-img { position: absolute; inset: 0; background: url('assets/images/web-1.png') center/cover; opacity: 0.15; }
-    .cta-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
-    .cta-title { font-family: 'Oswald', sans-serif; font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 700; text-transform: uppercase; line-height: 0.93; }
-    .cta-title span { color: var(--gold); display: block; }
-    .cta-sub { margin-top: 1.5rem; font-size: 0.98rem; color: rgba(255,255,255,0.5); line-height: 1.75; }
-    .cta-actions { margin-top: 3rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
-    /* FOOTER */
-    footer { background: #060706; padding: 5vw 4vw 3vw; border-top: 1px solid rgba(218,197,167,0.07); }
-    .footer-inner { max-width: 1300px; margin: 0 auto; }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; padding-bottom: 4rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 1.55rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); }
-    .footer-logo span { color: var(--gold); }
-    .footer-tagline { margin-top: 0.8rem; font-size: 0.83rem; color: rgba(255,255,255,0.38); line-height: 1.75; max-width: 26ch; }
-    .footer-social { margin-top: 1.8rem; display: flex; gap: 0.8rem; }
-    .footer-social a { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.14); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.72rem; font-weight: 600; transition: border-color 0.3s, color 0.3s; }
-    .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
-    .footer-col-title { font-family: 'Oswald', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; display: block; }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
-    .footer-links a { font-size: 0.85rem; color: rgba(255,255,255,0.48); text-decoration: none; transition: color 0.3s; }
-    .footer-links a:hover { color: var(--gold); }
-    .footer-bottom { padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
-    .footer-copy { font-size: 0.76rem; color: rgba(255,255,255,0.28); }
-    .footer-legal { display: flex; gap: 1.5rem; }
-    .footer-legal a { font-size: 0.76rem; color: rgba(255,255,255,0.28); text-decoration: none; transition: color 0.3s; }
-    .footer-legal a:hover { color: var(--gold); }
-
-    /* KEYFRAMES */
-    @keyframes fadeUp { to { opacity: 1; transform: none; } }
-    @keyframes fadeIn { to { opacity: 1; } }
-    @keyframes scrollPulse { 0%,100%{opacity:1;transform:scaleY(1)} 50%{opacity:0.3;transform:scaleY(0.4)} }
-    @keyframes marqueeScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-    @keyframes rotateSlow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.65)} }
-
-    /* RESPONSIVE */
-    @media (max-width: 1024px) {
-      .intro-editorial { grid-template-columns: 1fr; gap: 3rem; }
-      .intro-img-main img { min-height: 380px; }
-      .promises-inner { grid-template-columns: 1fr; }
-      .promise-card { border-right: none; border-bottom: 1px solid rgba(218,197,167,0.1); padding: 2rem 1.5rem; }
-      .promise-card:last-child { border-bottom: none; }
-      .cats-grid { grid-template-columns: 1fr 1fr; }
-      .cat-card.wide { grid-column: span 2; aspect-ratio: 16/9; align-self: stretch; height: 100%; }
-      .feature-inner { grid-template-columns: 1fr; gap: 4rem; }
-      .feature-img-secondary { right: 0; bottom: -2rem; width: 52%; }
-      .feature-img-main img { height: 420px; }
-      .stats-inner { grid-template-columns: 1fr 1fr; }
-      .hours-inner { grid-template-columns: 1fr 1fr; gap: 3rem; }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    /* ---- Subtle grid bg ---- */
+    .grid-bg {
+      background-image: linear-gradient(rgba(255,255,255,.024) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.024) 1px,transparent 1px);
+      background-size: 80px 80px;
     }
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-burger { display: flex; }
-      .cats-grid { grid-template-columns: 1fr; }
-      .cat-card.wide { grid-column: span 1; aspect-ratio: 3/2; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
-      .g-item { grid-column: span 1 !important; grid-row: span 1 !important; }
-      .hours-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-      .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+    /* ---- Radial hero glow ---- */
+    .hero-glow { background: radial-gradient(ellipse 80% 50% at 50% 0%,rgba(0,255,148,.08) 0%,transparent 70%); }
+
+    /* ---- Pulsing dot ---- */
+    @keyframes ping-green { 75%,100%{transform:scale(2.2);opacity:0;} }
+    .ping-dot { animation: ping-green 1.5s cubic-bezier(0,0,.2,1) infinite; }
+
+    /* ---- Sticky bar ---- */
+    #sticky-bar { transform:translateY(100%); transition:transform .4s cubic-bezier(.16,1,.3,1); }
+    #sticky-bar.show { transform:translateY(0); }
+
+    /* ---- VSL glow ring ---- */
+    .vsl-ring {
+      background: rgba(0,255,148,.06);
+      border: 1px solid rgba(0,255,148,.22);
+      box-shadow: 0 0 60px rgba(0,255,148,.12), inset 0 0 40px rgba(0,255,148,.04);
     }
+
+    /* ---- Play button ---- */
+    .play-btn {
+      background:rgba(0,255,148,.15); border:2px solid rgba(0,255,148,.5);
+      backdrop-filter:blur(10px); transition:all .3s ease; cursor:pointer;
+    }
+    .play-btn:hover { background:rgba(0,255,148,.3); border-color:#00FF94; transform:scale(1.08); box-shadow:0 0 40px rgba(0,255,148,.4); }
+
+    /* ---- Divider ---- */
+    .divider { background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent); height:1px; }
+
+    /* ---- Scroll arrow bounce ---- */
+    @keyframes bounce-d { 0%,100%{transform:translateY(0);} 50%{transform:translateY(8px);} }
+    .bounce-d { animation: bounce-d 2s ease-in-out infinite; }
+
+    /* ---- Red strikethrough ---- */
+    .strike-red { text-decoration:line-through; text-decoration-color:#FF4444; }
+
+    /* ---- FAQ icon rotate ---- */
+    .faq-icon { transition: transform .25s ease; }
+    .faq-open .faq-icon { transform: rotate(180deg); }
+
+    /* ---- Bento span ---- */
+    @media(min-width:768px){ .bento-2{ grid-column:span 2; } }
+
+    /* ---- Modal ---- */
+    #success-modal { display:none; }
+    #success-modal.active { display:flex; }
   </style>
 </head>
-<body>
+<body class="overflow-x-hidden">
 
-<!-- NAV -->
-<nav id="mainNav">
-  <a href="./" class="nav-logo">Barbe<span>Qube</span></a>
-  <ul class="nav-links">
-    <li><a href="./">Home</a></li>
-    <li><a href="./menu">Speisekarte</a></li>
-    <li><a href="./gallery">Galerie</a></li>
-    <li><a href="./contact">Kontakt</a></li>
-    <li><a href="./reservation" class="nav-cta">Reservieren</a></li>
-  </ul>
-  <div class="nav-burger" id="burger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+<!-- ===================================================
+     NAV
+==================================================== -->
+<nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5" style="background:rgba(3,3,3,.88);backdrop-filter:blur(20px)">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="w-7 h-7 rounded-lg bg-accent flex items-center justify-center flex-shrink-0">
+        <svg class="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      </div>
+      <span class="font-bold tracking-tight">PageDrop</span>
+    </div>
+    <div class="hidden md:flex items-center gap-8 text-sm" style="color:rgba(255,255,255,.5)">
+      <a href="#why"   class="hover:text-white transition-colors">Why Us</a>
+      <a href="#truth" class="hover:text-white transition-colors">The Catch</a>
+      <a href="#proof" class="hover:text-white transition-colors">Proof</a>
+    </div>
+    <a href="#cta" class="btn-accent text-sm px-5 py-2.5 rounded-lg">Get Started Free →</a>
   </div>
 </nav>
-<div class="nav-mobile" id="mobileMenu">
-  <a href="./" onclick="toggleMenu()">Home</a>
-  <a href="./menu" onclick="toggleMenu()">Speisekarte</a>
-  <a href="./gallery" onclick="toggleMenu()">Galerie</a>
-  <a href="./contact" onclick="toggleMenu()">Kontakt</a>
-  <a href="./reservation" onclick="toggleMenu()">Reservieren</a>
-</div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-video-wrap" id="heroVid">
-    <video autoplay muted loop playsinline>
-      <source src="assets/videos/hero-video-1.mp4" type="video/mp4">
-      <source src="assets/videos/hero-video-2.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Restaurant &amp; Bar — Lüneburg</p>
-    <h1 class="hero-title">Barbe<span>Qube</span></h1>
-    <p class="hero-subtitle">Burger &nbsp;·&nbsp; Frühstück &nbsp;·&nbsp; Steaks &nbsp;·&nbsp; Bowls &nbsp;·&nbsp; Cocktails</p>
-    <div class="hero-actions">
-      <a href="./reservation" class="btn-primary">Tisch reservieren</a>
-      <a href="./menu" class="btn-outline">Speisekarte</a>
+<!-- ===================================================
+     HERO — THE GODFATHER OFFER
+==================================================== -->
+<section id="hero" class="relative min-h-screen flex flex-col items-center justify-center pt-16 pb-24 px-6 grid-bg hero-glow">
+
+  <!-- Ambient orbs -->
+  <div class="absolute top-32 left-1/4 w-96 h-96 rounded-full opacity-5 blur-3xl pointer-events-none" style="background:#00FF94;animation:float 8s ease-in-out infinite;"></div>
+  <div class="absolute bottom-32 right-1/4 w-64 h-64 rounded-full opacity-5 blur-3xl pointer-events-none" style="background:#00FF94;animation:float 10s ease-in-out infinite reverse;"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto text-center">
+
+    <!-- Live status badge -->
+    <div class="fade-up inline-flex items-center gap-2.5 glass rounded-full px-5 py-2.5 mb-10 text-sm">
+      <span class="relative flex h-2.5 w-2.5 flex-shrink-0">
+        <span class="ping-dot absolute inline-flex h-full w-full rounded-full opacity-75" style="background:#00FF94;"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5" style="background:#00FF94;"></span>
+      </span>
+      <span style="color:rgba(255,255,255,.65)">Live Status:</span>
+      <span class="font-semibold" style="color:#00FF94"><span id="hero-slots">2</span> of 5 slots available this week</span>
+    </div>
+
+    <!-- Headline -->
+    <h1 class="fade-up stagger-1 font-bold tracking-tighter leading-none mb-6"
+        style="font-size:clamp(3.5rem,10vw,7.5rem)">
+      <span class="block text-white">$0 Upfront.</span>
+      <span class="block" style="color:#00FF94">Pay Only If<br/>You Love It.</span>
+    </h1>
+
+    <!-- Sub -->
+    <p class="fade-up stagger-2 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed mb-4 tracking-tight"
+       style="color:rgba(255,255,255,.55)">
+      We build your professional one-page website first.
+      You review it. If it’s not exactly what you wanted, you walk away.
+      <strong style="color:rgba(255,255,255,.82);font-weight:600">No invoice. No awkward emails. Nothing.</strong>
+    </p>
+    <p class="fade-up stagger-3 text-lg mb-12" style="color:rgba(255,255,255,.38)">
+      $250 flat fee. Delivered in 48 hours. Zero hidden costs.
+    </p>
+
+    <!-- CTA buttons -->
+    <div class="fade-up stagger-4 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+      <a href="#cta" class="btn-accent text-lg px-10 py-5 rounded-xl w-full sm:w-auto text-center">
+        Claim My Free Website Build →
+      </a>
+      <a href="#proof" class="glass text-lg px-10 py-5 rounded-xl w-full sm:w-auto text-center hover:border-white/20"
+         style="color:rgba(255,255,255,.65);text-decoration:none">
+        See How It Works ↓
+      </a>
+    </div>
+
+    <!-- Trust strip -->
+    <div class="fade-up stagger-5 flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-9 text-sm" style="color:rgba(255,255,255,.35)">
+      <div class="flex items-center gap-2"><svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>No contract</div>
+      <div class="flex items-center gap-2"><svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>No design calls</div>
+      <div class="flex items-center gap-2"><svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>48-hour delivery</div>
+      <div class="flex items-center gap-2"><svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Flat $250 — no surprises</div>
     </div>
   </div>
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 bounce-d" style="opacity:.3">
+    <span class="text-xs tracking-widest uppercase" style="color:rgba(255,255,255,.5)">Scroll</span>
+    <svg class="w-5 h-5" style="color:rgba(255,255,255,.5)" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-section">
-  <div class="marquee-track">
-    <span class="marquee-item">Burger</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Frühstück</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Steaks</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Bowls</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Smash Burger</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Pinsa</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Happy Hour</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Cocktails</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Giovanni L. Eis</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Lüneburg</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Burger</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Frühstück</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Steaks</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Bowls</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Smash Burger</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Pinsa</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Happy Hour</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Cocktails</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Giovanni L. Eis</span><span class="marquee-dot">✦</span>
-    <span class="marquee-item">Lüneburg</span><span class="marquee-dot">✦</span>
-  </div>
-</div>
+<!-- ===================================================
+     SECTION 2 — US VS. THEM
+==================================================== -->
+<section id="why" class="relative py-32 px-6">
+  <div class="max-w-6xl mx-auto">
 
-<!-- INTRO -->
-<section class="intro-section">
-  <div class="intro-editorial">
-    <div class="reveal-left">
-      <div class="intro-img-main">
-        <img src="assets/images/image-28.jpg" alt="BarbeQube Restaurant" loading="lazy">
-        <span class="intro-img-tag">Restaurant &amp; Bar · Lüneburg</span>
-      </div>
-      <div class="intro-secondary-img">
-        <img src="assets/images/img-33.jpg" alt="Atmosphäre" loading="lazy">
-      </div>
-    </div>
-    <div class="intro-text-side reveal-right">
-      <div>
-        <span class="section-label">Über uns</span>
-        <h2 class="intro-big">Mehr als<em>nur Essen.</em></h2>
-      </div>
-      <p class="intro-body">
-        Im <strong>BarbeQube</strong> dreht sich alles um Genuss ohne Kompromisse —
-        von hausgemachten Smash Burgern und saftigen Steaks bis zu gesunden Bowls
-        und dem besten Frühstück in Lüneburg.
+    <div class="text-center mb-20">
+      <div class="fade-up inline-block glass rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase mb-6" style="color:#00FF94">The Market Is Broken</div>
+      <h2 class="fade-up stagger-1 font-bold tracking-tighter leading-tight mb-6" style="font-size:clamp(2.8rem,7vw,5rem)">
+        Everyone else is<br/><span class="strike-red" style="color:rgba(255,255,255,.3)">robbing you blind.</span>
+      </h2>
+      <p class="fade-up stagger-2 text-xl max-w-xl mx-auto" style="color:rgba(255,255,255,.5)">
+        The web agency model hasn’t changed in 20 years. You’re still paying for conference rooms, account managers, and five rounds of revisions on a logo.
       </p>
-      <div class="intro-promises">
-        <div class="intro-promise"><strong>Frisch.</strong> Täglich gelieferte Zutaten, hausgemacht.</div>
-        <div class="intro-promise"><strong>Vielfältig.</strong> Burger, Bowls, Steaks, Pinsa, Brunch.</div>
-        <div class="intro-promise"><strong>Einzigartig.</strong> Cocktails &amp; täglich Happy Hour.</div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+
+      <!-- THEM -->
+      <div class="fade-left glass rounded-2xl p-8 relative overflow-hidden" style="border-color:rgba(255,68,68,.18)">
+        <div class="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl pointer-events-none" style="background:#FF4444;opacity:.04"></div>
+        <div class="relative z-10">
+          <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider mb-8"
+               style="background:rgba(255,68,68,.1);border:1px solid rgba(255,68,68,.2);color:#FF6B6B">
+            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            Traditional Agency
+          </div>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(255,68,68,.1)">
+                <svg class="w-4 h-4" style="color:#FF6B6B" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <div class="text-2xl font-bold tracking-tight" style="color:#FF6B6B">$3,000 – $15,000</div>
+                <div class="text-sm mt-0.5" style="color:rgba(255,255,255,.4)">Average project cost. Paid upfront. No refunds.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(255,68,68,.1)">
+                <svg class="w-4 h-4" style="color:#FF6B6B" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <div class="text-2xl font-bold tracking-tight" style="color:#FF6B6B">4 – 8 Weeks</div>
+                <div class="text-sm mt-0.5" style="color:rgba(255,255,255,.4)">Discovery calls, wireframes, revisions, more calls.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(255,68,68,.1)">
+                <svg class="w-4 h-4" style="color:#FF6B6B" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              </div>
+              <div>
+                <div class="text-2xl font-bold tracking-tight" style="color:#FF6B6B">Endless Contracts</div>
+                <div class="text-sm mt-0.5" style="color:rgba(255,255,255,.4)">SOW docs, NDAs, IP clauses. Lawyers optional.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(255,68,68,.1)">
+                <svg class="w-4 h-4" style="color:#FF6B6B" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+              </div>
+              <div>
+                <div class="text-2xl font-bold tracking-tight" style="color:#FF6B6B">Zero Guarantee</div>
+                <div class="text-sm mt-0.5" style="color:rgba(255,255,255,.4)">Pay first. Hate it? Too bad. That’s their policy.</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="intro-cta">
-        <a href="./menu" class="btn-primary">Zur Speisekarte</a>
+
+      <!-- US -->
+      <div class="fade-right glass rounded-2xl p-8 relative overflow-hidden" style="border-color:rgba(0,255,148,.22)">
+        <div class="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl pointer-events-none" style="background:#00FF94;opacity:.05"></div>
+        <div class="relative z-10">
+          <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider mb-8"
+               style="background:rgba(0,255,148,.1);border:1px solid rgba(0,255,148,.2);color:#00FF94">
+            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            PageDrop
+          </div>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(0,255,148,.1)">
+                <svg class="w-4 h-4" style="color:#00FF94" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <div class="text-2xl font-bold tracking-tight" style="color:#00FF94">$250. Flat.</div>
+                <div class="text-sm mt-0.5" style="color:rgba(255,255,255,.4)">That’s the number. There is no other number. Ever.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(0,255,148,.1)">
+                <svg class="w-4 h-4" style="color:#00FF94" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <div class="text-2xl font-bold tracking-tight" style="color:#00FF94">48 Hours</div>
+                <div class="text-sm mt-0.5" style="color:rgba(255,255,255,.4)">Submit. We build. You review. Done. No meetings.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(0,255,148,.1)">
+                <svg class="w-4 h-4" style="color:#00FF94" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <div class="text-2xl font-bold tracking-tight" style="color:#00FF94">One Short Form</div>
+                <div class="text-sm mt-0.5" style="color:rgba(255,255,255,.4)">Tell us about your business. We handle everything else.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(0,255,148,.1)">
+                <svg class="w-4 h-4" style="color:#00FF94" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+              </div>
+              <div>
+                <div class="text-2xl font-bold tracking-tight" style="color:#00FF94">100% Risk-Free</div>
+                <div class="text-sm mt-0.5" style="color:rgba(255,255,255,.4)">Not impressed? Pay nothing. Literally. We mean it.</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROMISES STRIP -->
-<section class="promises-strip">
-  <div class="promises-inner">
-    <div class="promise-card reveal" style="transition-delay:.0s">
-      <div class="promise-icon"></div>
-      <div class="promise-title">Qualität ohne Kompromisse</div>
-      <p class="promise-text">Wir verwenden nur frische, täglich gelieferte Zutaten — handverlesen für jedes Gericht auf unserer Karte.</p>
+<div class="divider max-w-5xl mx-auto"></div>
+
+<!-- ===================================================
+     BENTO GRID — WHAT YOU GET
+==================================================== -->
+<section class="py-32 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-20">
+      <div class="fade-up inline-block glass rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase mb-6" style="color:#00FF94">What You Get</div>
+      <h2 class="fade-up stagger-1 font-bold tracking-tighter leading-tight mb-4" style="font-size:clamp(2.5rem,6vw,4rem)">
+        Built to convert.<br/>Not to impress your designer.
+      </h2>
+      <p class="fade-up stagger-2 text-xl max-w-lg mx-auto" style="color:rgba(255,255,255,.45)">Every element earns its place. Every word is a sales argument.</p>
     </div>
-    <div class="promise-card reveal" style="transition-delay:.12s">
-      <div class="promise-icon"></div>
-      <div class="promise-title">Für jeden etwas dabei</div>
-      <p class="promise-text">Ob Frühstück, Smash Burger, Steak oder Bowl — unsere Küche bietet für jeden Hunger und jeden Moment das Richtige.</p>
-    </div>
-    <div class="promise-card reveal" style="transition-delay:.24s">
-      <div class="promise-icon"></div>
-      <div class="promise-title">Mehr als ein Restaurant</div>
-      <p class="promise-text">Täglich Happy Hour, Giovanni L. Eis und eine Atmosphäre, die einlädt zu bleiben — mitten in Lüneburg.</p>
+
+    <!-- Bento grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+      <!-- 48h — spans 2 columns -->
+      <div class="fade-up bento-2 glass rounded-2xl p-8 relative overflow-hidden group">
+        <div class="absolute -bottom-8 -right-8 w-56 h-56 rounded-full blur-3xl pointer-events-none opacity-0 group-hover:opacity-8 transition-opacity duration-500" style="background:#00FF94"></div>
+        <div class="relative z-10">
+          <div class="font-bold tracking-tighter mb-3" style="font-size:5rem;color:#00FF94;line-height:1">48h</div>
+          <h3 class="text-2xl font-bold tracking-tight mb-3">From intake form to live preview</h3>
+          <p class="leading-relaxed mb-6" style="color:rgba(255,255,255,.45)">Submit your business details Monday morning. By Wednesday morning you’re reviewing a fully-functional website. No status updates to chase. No check-in calls.</p>
+          <div class="flex items-center gap-3 flex-wrap">
+            <div class="glass rounded-full px-3 py-1.5 text-xs flex items-center gap-1.5" style="color:#00FF94">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              Guaranteed delivery
+            </div>
+            <div class="glass rounded-full px-3 py-1.5 text-xs" style="color:rgba(255,255,255,.45)">No delays. Ever.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Price Lock -->
+      <div class="fade-up stagger-1 glass rounded-2xl p-8">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(0,255,148,.1)">
+          <svg class="w-6 h-6" style="color:#00FF94" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        </div>
+        <h3 class="text-xl font-bold tracking-tight mb-2">Price Lock Guarantee</h3>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,.45)">$250 is $250. No scope creep fees, no rush surcharges, no revision markups. One price. Always.</p>
+      </div>
+
+      <!-- Mobile-first -->
+      <div class="fade-up stagger-2 glass rounded-2xl p-8">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(0,255,148,.1)">
+          <svg class="w-6 h-6" style="color:#00FF94" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="text-xl font-bold tracking-tight mb-2">Mobile-First, Always</h3>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,.45)">60%+ of your visitors are on a phone. Your site loads fast and looks razor-sharp on every screen.</p>
+      </div>
+
+      <!-- Hosting -->
+      <div class="fade-up stagger-3 glass rounded-2xl p-8">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(0,255,148,.1)">
+          <svg class="w-6 h-6" style="color:#00FF94" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+        </div>
+        <h3 class="text-xl font-bold tracking-tight mb-2">Hosting Included</h3>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,.45)">We deploy it to your domain. SSL, CDN, 99.9% uptime. Zero technical headaches.</p>
+      </div>
+
+      <!-- Copy that sells — spans 2 columns -->
+      <div class="fade-up stagger-1 bento-2 glass rounded-2xl p-8 relative overflow-hidden group">
+        <div class="absolute -top-8 -left-8 w-56 h-56 rounded-full blur-3xl pointer-events-none opacity-0 group-hover:opacity-6 transition-opacity duration-500" style="background:#00FF94"></div>
+        <div class="relative z-10">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(0,255,148,.1)">
+            <svg class="w-6 h-6" style="color:#00FF94" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold tracking-tight mb-3">Copy That Actually Sells</h3>
+          <p class="leading-relaxed mb-6" style="color:rgba(255,255,255,.45)">Most websites look pretty and do nothing. Ours are engineered around one goal: turning visitors into leads. We write direct-response copy that speaks to what your buyer actually wants — not what sounds impressive in a Slack message.</p>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="glass rounded-xl p-4 text-center">
+              <div class="text-2xl font-bold" style="color:#00FF94;font-variant-numeric:tabular-nums">94%</div>
+              <div class="text-xs mt-1" style="color:rgba(255,255,255,.38)">Client approval on first review</div>
+            </div>
+            <div class="glass rounded-xl p-4 text-center">
+              <div class="text-2xl font-bold" style="color:#00FF94;font-variant-numeric:tabular-nums">3.2x</div>
+              <div class="text-xs mt-1" style="color:rgba(255,255,255,.38)">Avg conversion vs DIY sites</div>
+            </div>
+            <div class="glass rounded-xl p-4 text-center">
+              <div class="text-2xl font-bold" style="color:#00FF94;font-variant-numeric:tabular-nums">100%</div>
+              <div class="text-xs mt-1" style="color:rgba(255,255,255,.38)">Yours to keep, forever</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO -->
+      <div class="fade-up stagger-4 glass rounded-2xl p-8">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(0,255,148,.1)">
+          <svg class="w-6 h-6" style="color:#00FF94" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+        <h3 class="text-xl font-bold tracking-tight mb-2">SEO-Ready Out of the Box</h3>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,.45)">Meta tags, schema markup, Core Web Vitals optimized. Google will rank it. Visitors will find you.</p>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- MENU CATEGORIES -->
-<section>
-  <div class="menu-section">
-    <div class="menu-header">
-      <div class="reveal">
-        <span class="section-label">Unsere Küche</span>
-        <h2 class="section-title xl">Was darf<br>es sein?</h2>
-      </div>
-      <a href="./menu" class="link-arrow reveal">Alle Gerichte →</a>
+<div class="divider max-w-5xl mx-auto"></div>
+
+<!-- ===================================================
+     SECTION 3 — THE MECHANICAL TRUTH
+==================================================== -->
+<section id="truth" class="py-32 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-20">
+      <div class="fade-up inline-block glass rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase mb-6" style="color:#00FF94">Addressing The Obvious Question</div>
+      <h2 class="fade-up stagger-1 font-bold tracking-tighter leading-tight mb-6" style="font-size:clamp(2.5rem,6vw,4rem)">
+        “Wait… why is<br/>it only $250?”
+      </h2>
+      <p class="fade-up stagger-2 text-xl max-w-2xl mx-auto" style="color:rgba(255,255,255,.5)">Fair question. Here’s the honest answer — no spin.</p>
     </div>
-    <div class="cats-grid">
-      <div class="cat-card wide">
-        <img src="assets/images/default-5.jpg" alt="Frühstück">
-        <div class="cat-inner">
-          <span class="cat-tag">tägl. Mo–Fr</span>
-          <h3 class="cat-name">Frühstück</h3>
-          <p class="cat-desc">Frühstück mit Verwöhnfaktor – jeden Morgen von Montag bis Freitag.</p>
-          <span class="cat-link">Mehr erfahren →</span>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      <div class="fade-up glass rounded-2xl p-7" style="border-left:2px solid #00FF94">
+        <div class="text-4xl font-bold tracking-tighter mb-3" style="color:#00FF94">01</div>
+        <h3 class="text-lg font-bold tracking-tight mb-3">We don’t reinvent the wheel</h3>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,.45)">Agencies charge you for “custom design” that’s secretly a template anyway. We use battle-tested, high-converting frameworks and optimize them for your business. Honest. Efficient. Effective.</p>
+      </div>
+      <div class="fade-up stagger-1 glass rounded-2xl p-7" style="border-left:2px solid #00FF94">
+        <div class="text-4xl font-bold tracking-tighter mb-3" style="color:#00FF94">02</div>
+        <h3 class="text-lg font-bold tracking-tight mb-3">We run lean on purpose</h3>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,.45)">No downtown office. No project managers playing telephone. No account executives on your bill. Just the people doing the actual work. Our overhead is near-zero. We pass that to you.</p>
+      </div>
+      <div class="fade-up stagger-2 glass rounded-2xl p-7" style="border-left:2px solid #00FF94">
+        <div class="text-4xl font-bold tracking-tighter mb-3" style="color:#00FF94">03</div>
+        <h3 class="text-lg font-bold tracking-tight mb-3">Volume is the model</h3>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,.45)">We build a lot of these. Our process is automated where it can be, expert where it must be. Speed and repetition let us operate at a price point agencies can’t touch.</p>
+      </div>
+    </div>
+
+    <!-- Honest disclaimer -->
+    <div class="fade-up glass rounded-2xl p-8 max-w-3xl mx-auto text-center" style="border-color:rgba(0,255,148,.15)">
+      <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-5" style="background:rgba(0,255,148,.1)">
+        <svg class="w-6 h-6" style="color:#00FF94" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <h3 class="text-xl font-bold tracking-tight mb-3">What this isn’t</h3>
+      <p class="leading-relaxed" style="color:rgba(255,255,255,.5)">
+        This is a <strong style="color:rgba(255,255,255,.8);font-weight:600">one-page website</strong> — not a 40-page e-commerce platform, a custom web app, or an enterprise CMS. If you need a single, high-converting page to represent your business, capture leads, or close sales, this is exactly right. If you need something more complex, we’ll tell you honestly.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-5xl mx-auto"></div>
+
+<!-- ===================================================
+     SECTION 4 — VSL PLACEHOLDER
+==================================================== -->
+<section id="proof" class="py-32 px-6">
+  <div class="max-w-5xl mx-auto text-center">
+    <div class="fade-up inline-block glass rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase mb-6" style="color:#00FF94">Watch This First</div>
+    <h2 class="fade-up stagger-1 font-bold tracking-tighter leading-tight mb-5" style="font-size:clamp(2.5rem,6vw,4rem)">
+      See exactly what<br/>you’re getting.
+    </h2>
+    <p class="fade-up stagger-2 text-xl mb-14 max-w-xl mx-auto" style="color:rgba(255,255,255,.45)">
+      3 minutes. Real examples. No fluff. Watch a site go from intake form to live.
+    </p>
+
+    <!-- 16:9 VSL block -->
+    <div class="fade-up stagger-3 vsl-ring rounded-3xl relative overflow-hidden mx-auto" style="aspect-ratio:16/9;max-width:860px">
+
+      <!-- Grid bg + glow -->
+      <div class="absolute inset-0 grid-bg"></div>
+      <div class="absolute inset-0" style="background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(0,255,148,.06) 0%,transparent 70%)"></div>
+
+      <!-- Fake browser chrome -->
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div class="w-full max-w-sm mx-auto px-4">
+          <div class="glass rounded-t-xl px-4 py-2.5 flex items-center gap-2" style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <div class="flex gap-1.5">
+              <div class="w-3 h-3 rounded-full" style="background:rgba(255,100,100,.6)"></div>
+              <div class="w-3 h-3 rounded-full" style="background:rgba(255,200,100,.6)"></div>
+              <div class="w-3 h-3 rounded-full" style="background:rgba(0,255,148,.6)"></div>
+            </div>
+            <div class="flex-1 glass rounded-md px-3 py-1 text-xs text-center" style="color:rgba(255,255,255,.3)">yoursite.com</div>
+          </div>
+          <div class="glass rounded-b-xl p-5" style="border-top:none">
+            <div class="h-2 rounded w-2/3 mb-3" style="background:rgba(255,255,255,.1)"></div>
+            <div class="h-4 rounded w-full mb-2" style="background:rgba(0,255,148,.18)"></div>
+            <div class="h-4 rounded w-5/6 mb-4" style="background:rgba(0,255,148,.18)"></div>
+            <div class="h-2 rounded w-full mb-2" style="background:rgba(255,255,255,.07)"></div>
+            <div class="h-2 rounded w-4/5 mb-4" style="background:rgba(255,255,255,.07)"></div>
+            <div class="h-8 rounded-lg w-36" style="background:rgba(0,255,148,.28)"></div>
+          </div>
         </div>
       </div>
-      <div class="cat-card">
-        <img src="assets/images/default-8.jpeg" alt="Grillspezialitäten">
-        <div class="cat-inner">
-          <span class="cat-tag">Klassiker</span>
-          <h3 class="cat-name">Grill­spezialitäten</h3>
-          <p class="cat-desc">Zarte Steaks und saftige Spezialitäten vom Rost.</p>
-          <span class="cat-link">Mehr erfahren →</span>
+
+      <!-- Play button overlay -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center">
+        <button onclick="alert('Video coming soon — claim your spot below!')"
+                class="play-btn w-20 h-20 rounded-full flex items-center justify-center mb-5">
+          <svg class="w-9 h-9 ml-1" style="color:#00FF94" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <div class="glass rounded-full px-5 py-2 text-sm" style="color:rgba(255,255,255,.55)">
+          Watch: Website built live — 3 min 12 sec
         </div>
       </div>
-      <div class="cat-card">
-        <img src="assets/images/default-12.jpg" alt="Bowls">
-        <div class="cat-inner">
-          <span class="cat-tag">Gesund &amp; Frisch</span>
-          <h3 class="cat-name">Bowls</h3>
-          <p class="cat-desc">Bowl it up! Frisch, bunt und vollgepackt mit Geschmack.</p>
-          <span class="cat-link">Mehr erfahren →</span>
+
+      <!-- Corner accents -->
+      <div class="absolute top-4 left-4 w-7 h-7" style="border-top:2px solid rgba(0,255,148,.35);border-left:2px solid rgba(0,255,148,.35);border-radius:4px 0 0 0"></div>
+      <div class="absolute top-4 right-4 w-7 h-7" style="border-top:2px solid rgba(0,255,148,.35);border-right:2px solid rgba(0,255,148,.35);border-radius:0 4px 0 0"></div>
+      <div class="absolute bottom-4 left-4 w-7 h-7" style="border-bottom:2px solid rgba(0,255,148,.35);border-left:2px solid rgba(0,255,148,.35);border-radius:0 0 0 4px"></div>
+      <div class="absolute bottom-4 right-4 w-7 h-7" style="border-bottom:2px solid rgba(0,255,148,.35);border-right:2px solid rgba(0,255,148,.35);border-radius:0 0 4px 0"></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-5xl mx-auto"></div>
+
+<!-- ===================================================
+     TESTIMONIALS
+==================================================== -->
+<section class="py-32 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-20">
+      <div class="fade-up inline-block glass rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase mb-6" style="color:#00FF94">Real Clients. Real Results.</div>
+      <h2 class="fade-up stagger-1 font-bold tracking-tighter leading-tight" style="font-size:clamp(2.5rem,6vw,4rem)">
+        What happens when<br/>you actually try it.
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <div class="fade-up glass rounded-2xl p-7">
+        <div class="flex gap-1 mb-4">
+          <svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="text-sm leading-relaxed mb-6" style="color:rgba(255,255,255,.65)">“I’d been putting off getting a website for 8 months. Spent an hour filling in their form on a Tuesday. By Thursday I was showing clients a site I was actually proud of. Paid the $250 immediately.”</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" style="background:rgba(0,255,148,.18);color:#00FF94">MR</div>
+          <div>
+            <div class="font-semibold text-sm">Marcus R.</div>
+            <div class="text-xs" style="color:rgba(255,255,255,.35)">HVAC Contractor, Texas</div>
+          </div>
         </div>
       </div>
-      <div class="cat-card">
-        <img src="assets/images/default-15.png" alt="Kuchen und Torten">
-        <div class="cat-inner">
-          <span class="cat-tag">Süßes</span>
-          <h3 class="cat-name">Kuchen &amp; Torten</h3>
-          <p class="cat-desc">Hausgemachte Kuchen für den süßen Moment.</p>
-          <span class="cat-link">Mehr erfahren →</span>
+
+      <div class="fade-up stagger-1 glass rounded-2xl p-7">
+        <div class="flex gap-1 mb-4">
+          <svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="text-sm leading-relaxed mb-6" style="color:rgba(255,255,255,.65)">“I was skeptical. At $250 with nothing upfront, I figured there had to be a catch. There wasn’t. The site they sent me was better than the $4,000 one my last agency took 3 months to deliver.”</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" style="background:rgba(0,255,148,.18);color:#00FF94">SL</div>
+          <div>
+            <div class="font-semibold text-sm">Sarah L.</div>
+            <div class="text-xs" style="color:rgba(255,255,255,.35)">Insurance Broker, Ohio</div>
+          </div>
         </div>
       </div>
-      <div class="cat-card">
-        <img src="assets/images/default-17.jpg" alt="Buffet und Brunch">
-        <div class="cat-inner">
-          <span class="cat-tag">Events</span>
-          <h3 class="cat-name">Buffet &amp; Brunch</h3>
-          <p class="cat-desc">Perfekt für Gruppen und besondere Anlässe.</p>
-          <span class="cat-link">Mehr erfahren →</span>
+
+      <div class="fade-up stagger-2 glass rounded-2xl p-7">
+        <div class="flex gap-1 mb-4">
+          <svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
         </div>
-      </div>
-      <div class="cat-card">
-        <img src="assets/images/default-19.jpeg" alt="Cocktails">
-        <div class="cat-inner">
-          <span class="cat-tag">Happy Hour</span>
-          <h3 class="cat-name">Cocktails</h3>
-          <p class="cat-desc">Täglich Happy Hour mit unseren besten Drinks.</p>
-          <span class="cat-link">Mehr erfahren →</span>
+        <p class="text-sm leading-relaxed mb-6" style="color:rgba(255,255,255,.65)">“Got 4 new consulting leads in the first week. The contact form alone has paid for the site 12x over. Wish I’d done this two years ago instead of wasting $6k on an agency.”</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0" style="background:rgba(0,255,148,.18);color:#00FF94">DK</div>
+          <div>
+            <div class="font-semibold text-sm">Derek K.</div>
+            <div class="text-xs" style="color:rgba(255,255,255,.35)">IT Consultant, Georgia</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURE -->
-<div class="feature-section">
-  <div class="feature-inner">
-    <div class="reveal-left">
-      <div class="feature-img-wrap">
-        <div class="feature-img-main">
-          <img src="assets/images/img-40.jpg" alt="Smash Burger" loading="lazy">
-        </div>
-        <div class="feature-img-secondary">
-          <img src="assets/images/img-35.jpg" alt="BarbeQube Detail" loading="lazy">
-        </div>
-        <div class="feature-badge">NEU ✦ SMASH BURGER ✦ NEU ✦</div>
-      </div>
-    </div>
-    <div class="reveal-right">
-      <span class="section-label">Highlight</span>
-      <h2 class="feature-heading">Der neue<br><em>Smash Burger</em><br>ist da.</h2>
-      <p class="feature-body">Knusprig gebratenes Patty, perfekt geschmolzener Käse und die besten Zutaten — unser Smash Burger ist das neueste Highlight auf der Karte.</p>
-      <ul class="feature-list">
-        <li>Frisches, täglich geliefertes Fleisch</li>
-        <li>Hausgemachte Saucen &amp; Beilagen</li>
-        <li>Giovanni L. Eis zum Abschluss</li>
-        <li>Täglich Happy Hour auf Cocktails</li>
-      </ul>
-      <div class="feature-cta"><a href="./menu" class="btn-primary">Zur Speisekarte</a></div>
-    </div>
-  </div>
-</div>
+<div class="divider max-w-5xl mx-auto"></div>
 
-<!-- GALLERY -->
-<section>
-  <div class="gallery-section">
-    <div class="gallery-header">
-      <div class="reveal">
-        <span class="section-label">Impressionen</span>
-        <h2 class="section-title lg">Ein Blick<br>ins BarbeQube</h2>
+<!-- ===================================================
+     SECTION 5 — SCARCITY + CTA FORM
+==================================================== -->
+<section id="cta" class="py-32 px-6">
+  <div class="max-w-3xl mx-auto text-center">
+
+    <!-- Live slot indicator -->
+    <div class="fade-up glass rounded-2xl p-6 mb-12" style="border-color:rgba(0,255,148,.15)">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2.5">
+          <span class="relative flex h-3 w-3 flex-shrink-0">
+            <span class="ping-dot absolute inline-flex h-full w-full rounded-full opacity-75" style="background:#00FF94"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3" style="background:#00FF94"></span>
+          </span>
+          <span class="text-sm font-semibold">Live Slot Availability</span>
+        </div>
+        <span class="text-sm" style="color:rgba(255,255,255,.38)">Updates in real-time</span>
       </div>
-      <a href="./gallery" class="link-arrow reveal">Alle Fotos →</a>
+      <!-- Progress bar -->
+      <div class="h-2.5 rounded-full overflow-hidden mb-3" style="background:rgba(255,255,255,.07)">
+        <div class="h-full rounded-full" style="width:60%;background:linear-gradient(90deg,#00FF94,#00CC76);transition:width 1s ease"></div>
+      </div>
+      <div class="flex justify-between text-xs" style="color:rgba(255,255,255,.4)">
+        <span>3 slots taken this week</span>
+        <span class="font-semibold" style="color:#00FF94"><span id="cta-slots">2</span> remaining</span>
+      </div>
+      <p class="text-xs mt-3" style="color:rgba(255,255,255,.28)">We cap intake to maintain 48-hour turnaround. Slots reset every Monday.</p>
     </div>
-    <div class="gallery-grid">
-      <div class="g-item reveal" style="transition-delay:.00s"><img src="assets/images/img-6.jpg" alt="" loading="lazy"></div>
-      <div class="g-item reveal" style="transition-delay:.08s"><img src="assets/images/img-7.jpg" alt="" loading="lazy"></div>
-      <div class="g-item reveal" style="transition-delay:.14s"><img src="assets/images/img-8.jpg" alt="" loading="lazy"></div>
-      <div class="g-item reveal" style="transition-delay:.10s"><img src="assets/images/img-9.jpg" alt="" loading="lazy"></div>
-      <div class="g-item reveal" style="transition-delay:.18s"><img src="assets/images/img-10.jpg" alt="" loading="lazy"></div>
-      <div class="g-item reveal" style="transition-delay:.22s"><img src="assets/images/img-11.jpg" alt="" loading="lazy"></div>
-      <div class="g-item reveal" style="transition-delay:.28s"><img src="assets/images/img-12.jpg" alt="" loading="lazy"></div>
+
+    <h2 class="fade-up stagger-1 font-bold tracking-tighter leading-tight mb-6" style="font-size:clamp(2.5rem,6vw,4rem)">
+      The only question is:<br/>do you want a website<br/>or not?
+    </h2>
+    <p class="fade-up stagger-2 text-xl mb-12 max-w-xl mx-auto leading-relaxed" style="color:rgba(255,255,255,.5)">
+      You risk nothing. It costs $0 to get started. The downside is zero. The upside is a professional website generating leads in 48 hours.
+    </p>
+
+    <!-- Form -->
+    <div class="fade-up stagger-3 glass rounded-2xl p-8 mb-8" style="border-color:rgba(0,255,148,.1)">
+      <h3 class="text-xl font-bold tracking-tight mb-6">Claim your free build — takes 60 seconds</h3>
+      <form onsubmit="handleSubmit(event)" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input type="text" placeholder="Your name" required
+            style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);color:white;border-radius:.75rem;padding:1rem;font-size:.875rem;font-family:inherit;width:100%;outline:none;transition:border-color .2s"
+            onfocus="this.style.borderColor='rgba(0,255,148,.4)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'" />
+          <input type="email" placeholder="Business email" required
+            style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);color:white;border-radius:.75rem;padding:1rem;font-size:.875rem;font-family:inherit;width:100%;outline:none;transition:border-color .2s"
+            onfocus="this.style.borderColor='rgba(0,255,148,.4)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'" />
+        </div>
+        <input type="text" placeholder="What does your business do? (one sentence)" required
+          style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);color:white;border-radius:.75rem;padding:1rem;font-size:.875rem;font-family:inherit;width:100%;outline:none;transition:border-color .2s"
+          onfocus="this.style.borderColor='rgba(0,255,148,.4)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'" />
+        <input type="url" placeholder="Current website URL (leave blank if you have none)"
+          style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);color:white;border-radius:.75rem;padding:1rem;font-size:.875rem;font-family:inherit;width:100%;outline:none;transition:border-color .2s"
+          onfocus="this.style.borderColor='rgba(0,255,148,.4)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'" />
+        <button type="submit" class="btn-accent w-full rounded-xl font-bold" style="padding:1.25rem;font-size:1.125rem">
+          Start My Free Build — $0 Due Now →
+        </button>
+      </form>
+      <p class="text-xs mt-4" style="color:rgba(255,255,255,.28)">No credit card. No spam. No contract. Just your free build.</p>
+    </div>
+
+    <!-- Trust pills -->
+    <div class="fade-up stagger-4 flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8 text-sm" style="color:rgba(255,255,255,.38)">
+      <div class="flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>100% risk-free</div>
+      <div class="hidden sm:block" style="color:rgba(255,255,255,.18)">•</div>
+      <div class="flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>Delivered in 48 hours</div>
+      <div class="hidden sm:block" style="color:rgba(255,255,255,.18)">•</div>
+      <div class="flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" style="color:#00FF94" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>Pay only $250 if you love it</div>
     </div>
   </div>
 </section>
 
-<!-- OPENING HOURS -->
-<section class="hours-section">
-  <div class="hours-inner">
-    <div class="reveal">
-      <h2 class="hours-heading">Wann wir<em>für dich da</em>sind.</h2>
-      <p class="hours-note">Wir freuen uns auf deinen Besuch. Für größere Gruppen empfehlen wir eine Reservierung.</p>
-      <div class="hours-cta"><a href="./reservation" class="btn-primary">Reservieren</a></div>
+<!-- ===================================================
+     FAQ
+==================================================== -->
+<section class="py-24 px-6">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="fade-up font-bold tracking-tighter" style="font-size:clamp(2rem,5vw,3rem)">Quick answers.</h2>
     </div>
-    <div class="reveal" style="transition-delay:.15s">
-      <span class="hours-col-label">Öffnungszeiten</span>
-      <div class="hours-table">
-        <div class="hours-row"><span class="hours-day">Montag – Freitag</span><span class="hours-time">09:00 – 22:00</span></div>
-        <div class="hours-row"><span class="hours-day">Samstag</span><span class="hours-time">10:00 – 22:00</span></div>
-        <div class="hours-row"><span class="hours-day">Sonntag</span><span class="hours-time">10:00 – 21:00</span></div>
-      </div>
-    </div>
-    <div class="reveal" style="transition-delay:.25s">
-      <span class="hours-col-label">Kontakt</span>
-      <div class="hours-table">
-        <div class="hours-row"><span class="hours-day">Telefon</span><a href="tel:+494131400470" style="color:var(--white);text-decoration:none">+49 4131 400470</a></div>
-        <div class="hours-row"><span class="hours-day">E-Mail</span><a href="mailto:info@barbeqube.de" style="color:var(--white);text-decoration:none">info@barbeqube.de</a></div>
-        <div class="hours-row"><span class="hours-day">Adresse</span><a href="https://maps.app.goo.gl/cpq5zuDGFfmnqids9" target="_blank" rel="noopener" style="color:var(--white);text-decoration:none">Karte öffnen ↗</a></div>
-      </div>
-      <div class="hours-badge"><div class="hours-dot"></div> Jetzt geöffnet</div>
-    </div>
-  </div>
-</section>
+    <div class="space-y-3">
 
-<!-- CTA -->
-<section class="cta-section">
-  <div class="cta-bg"></div>
-  <div class="cta-img"></div>
-  <div class="cta-content reveal">
-    <span class="section-label">Reservierung</span>
-    <h2 class="cta-title">Dein Tisch<span>wartet.</span></h2>
-    <p class="cta-sub">Reserviere jetzt deinen Tisch und erlebe einen unvergesslichen Abend im BarbeQube. Wir freuen uns auf dich.</p>
-    <div class="cta-actions">
-      <a href="./reservation" class="btn-primary">Jetzt reservieren</a>
-      <a href="./contact" class="btn-outline">Kontakt aufnehmen</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="footer-logo">Barbe<span>Qube</span></div>
-        <p class="footer-tagline">Das beste Restaurant in Lüneburg. Burger, Frühstück, Steaks, Bowls und mehr.</p>
-        <div class="footer-social">
-          <a href="https://www.instagram.com/barbeqube_lueneburg/" target="_blank" rel="noopener" title="Instagram">IG</a>
-          <a href="https://web.facebook.com/bbqubelueneburg" target="_blank" rel="noopener" title="Facebook">FB</a>
-          <a href="https://www.tiktok.com/@barbeqube_lueneburg" target="_blank" rel="noopener" title="TikTok">TK</a>
+      <div class="fade-up glass rounded-xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full px-7 py-5 text-left flex items-center justify-between" style="background:transparent;border:none;color:white;cursor:pointer;font-family:inherit;font-size:1rem">
+          <span class="font-semibold tracking-tight">What if I hate the result?</span>
+          <svg class="w-5 h-5 faq-icon flex-shrink-0" style="color:rgba(255,255,255,.4)" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-7 pb-5 text-sm leading-relaxed" style="color:rgba(255,255,255,.5);display:none">
+          You owe us nothing. No invoice, no awkward follow-up, no hard feelings. We built it on speculation — that’s our model. If you don’t love it, we don’t deserve your money.
         </div>
       </div>
-      <div>
-        <span class="footer-col-title">Seiten</span>
-        <ul class="footer-links">
-          <li><a href="./">Startseite</a></li>
-          <li><a href="./menu">Speisekarte</a></li>
-          <li><a href="./gallery">Galerie</a></li>
-          <li><a href="./reservation">Reservierung</a></li>
-          <li><a href="./contact">Kontakt</a></li>
-        </ul>
+
+      <div class="fade-up stagger-1 glass rounded-xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full px-7 py-5 text-left flex items-center justify-between" style="background:transparent;border:none;color:white;cursor:pointer;font-family:inherit;font-size:1rem">
+          <span class="font-semibold tracking-tight">How does the intake process work?</span>
+          <svg class="w-5 h-5 faq-icon flex-shrink-0" style="color:rgba(255,255,255,.4)" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-7 pb-5 text-sm leading-relaxed" style="color:rgba(255,255,255,.5);display:none">
+          Fill out the short form above (60 seconds). We’ll follow up with one email to confirm details and any brand assets you have. Then we build. You review via a private link. If you love it, you pay. Simple.
+        </div>
       </div>
-      <div>
-        <span class="footer-col-title">Kontakt</span>
-        <ul class="footer-links">
-          <li><a href="tel:+494131400470">+49 4131 400470</a></li>
-          <li><a href="mailto:info@barbeqube.de">info@barbeqube.de</a></li>
-          <li><a href="https://maps.app.goo.gl/cpq5zuDGFfmnqids9" target="_blank" rel="noopener">Karte öffnen</a></li>
-        </ul>
+
+      <div class="fade-up stagger-2 glass rounded-xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full px-7 py-5 text-left flex items-center justify-between" style="background:transparent;border:none;color:white;cursor:pointer;font-family:inherit;font-size:1rem">
+          <span class="font-semibold tracking-tight">Do I need a domain or hosting?</span>
+          <svg class="w-5 h-5 faq-icon flex-shrink-0" style="color:rgba(255,255,255,.4)" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-7 pb-5 text-sm leading-relaxed" style="color:rgba(255,255,255,.5);display:none">
+          If you have a domain, we’ll deploy to it. If not, we’ll help you get one (typically $12–15/year, your cost). Hosting is included in your $250.
+        </div>
       </div>
-      <div>
-        <span class="footer-col-title">Rechtliches</span>
-        <ul class="footer-links">
-          <li><a href="./impressum">Impressum</a></li>
-          <li><a href="./datenschutz">Datenschutz</a></li>
-        </ul>
+
+      <div class="fade-up stagger-3 glass rounded-xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full px-7 py-5 text-left flex items-center justify-between" style="background:transparent;border:none;color:white;cursor:pointer;font-family:inherit;font-size:1rem">
+          <span class="font-semibold tracking-tight">Who owns the website after I pay?</span>
+          <svg class="w-5 h-5 faq-icon flex-shrink-0" style="color:rgba(255,255,255,.4)" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-7 pb-5 text-sm leading-relaxed" style="color:rgba(255,255,255,.5);display:none">
+          You do. 100%. Full code, full rights. No licensing, no monthly retainer, no hostage infrastructure.
+        </div>
       </div>
+
+      <div class="fade-up stagger-4 glass rounded-xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full px-7 py-5 text-left flex items-center justify-between" style="background:transparent;border:none;color:white;cursor:pointer;font-family:inherit;font-size:1rem">
+          <span class="font-semibold tracking-tight">What if I want changes after paying?</span>
+          <svg class="w-5 h-5 faq-icon flex-shrink-0" style="color:rgba(255,255,255,.4)" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-7 pb-5 text-sm leading-relaxed" style="color:rgba(255,255,255,.5);display:none">
+          Minor text updates are always free. Structural changes are billed at $75/hour — always agreed upfront, never a surprise. Most clients never need post-launch changes.
+        </div>
+      </div>
+
     </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">© 2025 BarbeQube Lüneburg. Made by <strong style="color:rgba(255,255,255,0.42)">WebArs</strong>.</p>
-      <div class="footer-legal">
-        <a href="./impressum">Impressum</a>
-        <a href="./datenschutz">Datenschutz</a>
+  </div>
+</section>
+
+<!-- ===================================================
+     FOOTER
+==================================================== -->
+<footer style="border-top:1px solid rgba(255,255,255,.05);padding:3rem 1.5rem">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-accent flex items-center justify-center flex-shrink-0">
+        <svg class="w-3.5 h-3.5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
       </div>
+      <span class="font-bold tracking-tight">PageDrop</span>
+      <span class="text-sm ml-2" style="color:rgba(255,255,255,.22)">© 2026</span>
+    </div>
+    <div class="flex items-center gap-6 text-sm" style="color:rgba(255,255,255,.35)">
+      <a href="#" class="hover:text-white transition-colors" style="text-decoration:none;color:inherit">Privacy</a>
+      <a href="#" class="hover:text-white transition-colors" style="text-decoration:none;color:inherit">Terms</a>
+      <a href="mailto:hello@pagedrop.io" class="hover:text-white transition-colors" style="text-decoration:none;color:inherit">hello@pagedrop.io</a>
     </div>
   </div>
 </footer>
 
-<script>
-  // Nav scroll
-  const nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
+<!-- ===================================================
+     STICKY CTA BAR
+==================================================== -->
+<div id="sticky-bar" class="fixed bottom-0 left-0 right-0 z-50" style="border-top:1px solid rgba(255,255,255,.07);background:rgba(3,3,3,.95);backdrop-filter:blur(20px)">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
+      <div class="flex items-center gap-2">
+        <span class="relative flex h-2 w-2 flex-shrink-0">
+          <span class="ping-dot absolute inline-flex h-full w-full rounded-full opacity-75" style="background:#00FF94"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2" style="background:#00FF94"></span>
+        </span>
+        <span class="text-sm" style="color:rgba(255,255,255,.55)">
+          <span class="font-semibold" style="color:#00FF94"><span id="sticky-slots">2</span> slots</span> left this week
+        </span>
+      </div>
+      <span class="hidden sm:block" style="color:rgba(255,255,255,.18)">|</span>
+      <span class="hidden sm:block text-sm" style="color:rgba(255,255,255,.45)">$250 flat · 48hr delivery · $0 upfront</span>
+    </div>
+    <a href="#cta" class="btn-accent text-sm px-7 py-3 rounded-lg whitespace-nowrap">
+      Claim My Free Build →
+    </a>
+  </div>
+</div>
 
-  // Mobile menu
-  function toggleMenu() {
-    const m = document.getElementById('mobileMenu');
-    m.classList.toggle('open');
-    document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+<!-- ===================================================
+     SUCCESS MODAL
+==================================================== -->
+<div id="success-modal" class="fixed inset-0 z-50 items-center justify-center p-6"
+     style="background:rgba(0,0,0,.88);backdrop-filter:blur(12px);display:none">
+  <div class="glass rounded-3xl p-10 max-w-md w-full text-center" style="border-color:rgba(0,255,148,.22);box-shadow:0 0 80px rgba(0,255,148,.15)">
+    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style="background:rgba(0,255,148,.12);border:1px solid rgba(0,255,148,.3)">
+      <svg class="w-8 h-8" style="color:#00FF94" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+    </div>
+    <h3 class="text-3xl font-bold tracking-tighter mb-3">You’re in the queue.</h3>
+    <p class="leading-relaxed mb-8" style="color:rgba(255,255,255,.55)">We’ll email you within 2 hours to confirm details. Expect your preview link within 48 hours.</p>
+    <button onclick="closeModal()" class="btn-accent w-full rounded-xl font-bold" style="padding:1rem;font-size:1rem">Got it — I’ll check my email</button>
+  </div>
+</div>
+
+<!-- ===================================================
+     JS
+==================================================== -->
+<script>
+  // Scroll fade-in observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el => observer.observe(el));
+
+  // Sticky bar — shows when hero scrolls out of view
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      document.getElementById('sticky-bar').classList.toggle('show', !e.isIntersecting);
+    });
+  }, { threshold: 0 });
+  heroObserver.observe(document.getElementById('hero'));
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const icon   = btn.querySelector('.faq-icon');
+    const isOpen = answer.style.display !== 'none';
+    // Close all
+    document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+    document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = '');
+    // Toggle clicked
+    if (!isOpen) {
+      answer.style.display = 'block';
+      icon.style.transform  = 'rotate(180deg)';
+    }
   }
 
-  // Scroll reveal
-  const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+  // Form submission
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('success-modal').style.display = 'flex';
+    // Optimistically decrement slots
+    ['hero-slots','cta-slots','sticky-slots'].forEach(id => {
+      const el = document.getElementById(id);
+      const n  = parseInt(el.textContent, 10);
+      if (n > 0) el.textContent = n - 1;
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObs.observe(el));
+  }
 
-  // Parallax hero video
-  const heroVidEl = document.querySelector('.hero-video-wrap video');
-  window.addEventListener('scroll', () => {
-    if (heroVidEl && window.scrollY < window.innerHeight * 1.2) {
-      heroVidEl.style.transform = 'translateY(' + (window.scrollY * 0.22) + 'px)';
-    }
-  }, { passive: true });
+  function closeModal() {
+    document.getElementById('success-modal').style.display = 'none';
+  }
 
-  // 3D card tilt
-  document.querySelectorAll('.cat-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      card.style.transform = `perspective(900px) rotateY(${x * 7}deg) rotateX(${-y * 5}deg) scale3d(1.02,1.02,1.02)`;
-    });
-    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-  });
-
-  // Gallery tilt
-  document.querySelectorAll('.g-item').forEach(item => {
-    item.addEventListener('mousemove', e => {
-      const r = item.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      item.style.transform = `perspective(600px) rotateY(${x * 5}deg) rotateX(${-y * 4}deg)`;
-    });
-    item.addEventListener('mouseleave', () => { item.style.transform = ''; });
-  });
-
-  // Page transition: fade-out on link click
-  document.querySelectorAll('a[href]').forEach(link => {
-    const href = link.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http')) return;
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.body.style.transition = 'opacity 0.3s ease';
-      document.body.style.opacity = '0';
-      setTimeout(() => { window.location.href = href; }, 300);
-    });
+  document.getElementById('success-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
   });
 </script>
 </body>
