@@ -210,21 +210,11 @@
   </div>
 </div>
 
-<!-- FILTER BAR -->
-<div class="filter-bar">
-  <div class="filter-bar-inner">
-    <button class="filter-btn active" data-filter="all">Alle</button>
-    <button class="filter-btn" data-filter="food">Gerichte</button>
-    <button class="filter-btn" data-filter="drinks">Drinks</button>
-    <button class="filter-btn" data-filter="ambiance">Ambiente</button>
-    <button class="filter-btn" data-filter="video">Videos</button>
-  </div>
-</div>
 
 <!-- GALLERY -->
 <section class="gallery-section">
   <div class="gallery-inner">
-    <p class="gallery-count reveal"><strong id="visibleCount">51</strong> Aufnahmen</p>
+    <p class="gallery-count reveal"><strong>51</strong> Aufnahmen</p>
     <div class="gallery-grid" id="galleryGrid">
 
       <div class="gallery-item" data-category="ambiance">
@@ -534,27 +524,8 @@
     document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
   }
 
-  // Filter
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const items = document.querySelectorAll('.gallery-item');
-  const countEl = document.getElementById('visibleCount');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      let count = 0;
-      items.forEach(item => {
-        const show = filter === 'all' || item.dataset.category === filter;
-        item.classList.toggle('hidden', !show);
-        if (show) count++;
-      });
-      countEl.textContent = count;
-    });
-  });
-
   // Lightbox
+  const items = document.querySelectorAll('.gallery-item');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   let imgItems = [];
