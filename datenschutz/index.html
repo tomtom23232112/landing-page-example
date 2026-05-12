@@ -2,8 +2,292 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0; url=/barbeqube/datenschutzerkl%C3%A4rung/">
-  <link rel="canonical" href="/barbeqube/datenschutzerkl%C3%A4rung/">
+  <base href="/barbeqube/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutzerklärung – BarbeQube Lüneburg</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/images/image-extra-1.jpg" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="assets/images/image-extra-2.png" media="(prefers-color-scheme: dark)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0a0b0a; --dark: #151515; --brown-deep: rgb(25,14,12);
+      --gold: #dac5a7; --gold-light: #ede0cc; --white: #ffffff;
+      --ease: cubic-bezier(0.4,0,0.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-weight: 300; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: var(--black); } ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+    @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    body { animation: pageFadeIn 0.4s ease forwards; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 4vw; height: 72px; background: rgba(10,11,10,0.5); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(218,197,167,0.08); transition: background 0.5s var(--ease), border-color 0.5s; }
+    nav.scrolled { background: rgba(10,11,10,0.95); border-color: rgba(218,197,167,0.15); }
+    .nav-logo { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.15em; color: var(--white); text-decoration: none; text-transform: uppercase; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { background: var(--gold) !important; color: var(--black) !important; padding: 0.55rem 1.4rem !important; border-radius: 2px; font-weight: 600 !important; }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--black) !important; }
+    .nav-burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; background: none; border: none; }
+    .nav-burger span { width: 26px; height: 2px; background: var(--white); display: block; }
+    .nav-mobile { display: none; position: fixed; inset: 0; background: var(--black); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 500; color: var(--white); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; }
+    .nav-mobile a:hover { color: var(--gold); }
+
+    /* PAGE HEADER */
+    .page-header { padding: calc(72px + 6vw) 4vw 5vw; border-bottom: 1px solid rgba(218,197,167,0.07); }
+    .page-header-inner { max-width: 860px; margin: 0 auto; }
+    .page-header-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.36em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; display: block; }
+    .page-header-title { font-family: 'Oswald', sans-serif; font-size: clamp(2.4rem, 6vw, 5rem); font-weight: 700; text-transform: uppercase; line-height: 0.9; }
+
+    /* CONTENT */
+    .legal-content { max-width: 860px; margin: 0 auto; padding: 5vw 4vw 8vw; }
+    .legal-section { margin-bottom: 3.5rem; }
+    .legal-section h2 { font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 1.2rem; padding-bottom: 0.7rem; border-bottom: 1px solid rgba(218,197,167,0.12); }
+    .legal-section h3 { font-family: 'Oswald', sans-serif; font-size: 0.88rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.65); margin-top: 2rem; margin-bottom: 0.7rem; }
+    .legal-section p { font-size: 0.92rem; line-height: 1.9; color: rgba(255,255,255,0.52); margin-bottom: 0.9rem; }
+    .legal-section p.caps { font-size: 0.82rem; line-height: 1.8; }
+    .legal-section a { color: var(--gold); text-decoration: none; transition: opacity 0.2s; }
+    .legal-section a:hover { opacity: 0.75; }
+    .legal-divider { width: 40px; height: 1px; background: rgba(218,197,167,0.2); margin-bottom: 3.5rem; }
+
+    /* FOOTER */
+    footer { background: #060706; padding: 5vw 4vw 3vw; border-top: 1px solid rgba(218,197,167,0.07); }
+    .footer-inner { max-width: 1300px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; padding-bottom: 4rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 1.55rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { margin-top: 0.8rem; font-size: 0.83rem; color: rgba(255,255,255,0.38); line-height: 1.75; max-width: 26ch; }
+    .footer-social { margin-top: 1.8rem; display: flex; gap: 0.8rem; }
+    .footer-social a { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.14); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.72rem; font-weight: 600; transition: border-color 0.3s, color 0.3s; }
+    .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-col-title { font-family: 'Oswald', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; display: block; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .footer-links a { font-size: 0.85rem; color: rgba(255,255,255,0.48); text-decoration: none; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom { padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .footer-copy { font-size: 0.76rem; color: rgba(255,255,255,0.28); }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    .footer-legal a { font-size: 0.76rem; color: rgba(255,255,255,0.28); text-decoration: none; transition: color 0.3s; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    }
+    @media (max-width: 540px) {
+      .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
-<body></body>
+<body>
+
+<nav id="mainNav">
+  <a href="./" class="nav-logo">Barbe<span>Qube</span></a>
+  <ul class="nav-links">
+    <li><a href="./">Home</a></li>
+    <li><a href="./menu">Speisekarte</a></li>
+    <li><a href="./gallery">Galerie</a></li>
+    <li><a href="./contact">Kontakt</a></li>
+    <li><a href="./reservation" class="nav-cta">Reservieren</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="./" onclick="toggleMenu()">Home</a>
+  <a href="./menu" onclick="toggleMenu()">Speisekarte</a>
+  <a href="./gallery" onclick="toggleMenu()">Galerie</a>
+  <a href="./contact" onclick="toggleMenu()">Kontakt</a>
+  <a href="./reservation" onclick="toggleMenu()">Reservieren</a>
+</div>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <span class="page-header-label">BarbeQube · Lüneburg</span>
+    <h1 class="page-header-title">Datenschutz&shy;erklärung</h1>
+  </div>
+</div>
+
+<div class="legal-content">
+
+  <div class="legal-section">
+    <h2>Datenschutz auf einen Blick</h2>
+    <h3>Allgemeine Hinweise</h3>
+    <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.</p>
+    <h3>Datenerfassung auf dieser Website</h3>
+    <p><strong style="color:rgba(255,255,255,0.7)">Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong><br>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
+    <p><strong style="color:rgba(255,255,255,0.7)">Wie erfassen wir Ihre Daten?</strong><br>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.&nbsp;B. um Daten handeln, die Sie in ein Kontaktformular eingeben. Andere Daten werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.&nbsp;B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).</p>
+    <p><strong style="color:rgba(255,255,255,0.7)">Wofür nutzen wir Ihre Daten?</strong><br>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.</p>
+    <p><strong style="color:rgba(255,255,255,0.7)">Welche Rechte haben Sie bezüglich Ihrer Daten?</strong><br>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p>
+  </div>
+
+  <div class="legal-divider"></div>
+
+  <div class="legal-section">
+    <h2>Hosting und Content Delivery Networks</h2>
+    <h3>Externes Hosting</h3>
+    <p>Diese Website wird bei einem externen Dienstleister gehostet (Hoster). Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Der Einsatz des Hosters erfolgt zum Zwecke der Vertragserfüllung gegenüber unseren potenziellen und bestehenden Kunden (Art. 6 Abs. 1 lit. b DSGVO) und im Interesse einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots durch einen professionellen Anbieter (Art. 6 Abs. 1 lit. f DSGVO).</p>
+  </div>
+
+  <div class="legal-divider"></div>
+
+  <div class="legal-section">
+    <h2>Allgemeine Hinweise und Pflichtinformationen</h2>
+    <h3>Datenschutz</h3>
+    <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+    <h3>Hinweis zur verantwortlichen Stelle</h3>
+    <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+    <p>il Gusto Gastro GmbH<br>Barbeqube Restaurant<br>Schröderstraße 6<br>21335 Lüneburg<br>Telefon: <a href="tel:+494131400470">04131 / 400470</a><br>E-Mail: <a href="mailto:info@barbeqube.de">info@barbeqube.de</a></p>
+    <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
+    <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Dazu reicht eine formlose Mitteilung per E-Mail an uns. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
+    <h3>Widerspruchsrecht gegen die Datenerhebung in besonderen Fällen sowie gegen Direktwerbung (Art. 21 DSGVO)</h3>
+    <p class="caps">WENN DIE DATENVERARBEITUNG AUF GRUNDLAGE VON ART. 6 ABS. 1 LIT. E ODER F DSGVO ERFOLGT, HABEN SIE JEDERZEIT DAS RECHT, AUS GRÜNDEN, DIE SICH AUS IHRER BESONDEREN SITUATION ERGEBEN, GEGEN DIE VERARBEITUNG IHRER PERSONENBEZOGENEN DATEN WIDERSPRUCH EINZULEGEN; DIES GILT AUCH FÜR EIN AUF DIESE BESTIMMUNGEN GESTÜTZTES PROFILING. WENN SIE WIDERSPRUCH EINLEGEN, WERDEN WIR IHRE BETROFFENEN PERSONENBEZOGENEN DATEN NICHT MEHR VERARBEITEN, ES SEI DENN, WIR KÖNNEN ZWINGENDE SCHUTZWÜRDIGE GRÜNDE FÜR DIE VERARBEITUNG NACHWEISEN, DIE IHRE INTERESSEN, RECHTE UND FREIHEITEN ÜBERWIEGEN ODER DIE VERARBEITUNG DIENT DER GELTENDMACHUNG, AUSÜBUNG ODER VERTEIDIGUNG VON RECHTSANSPRÜCHEN (WIDERSPRUCH NACH ART. 21 ABS. 1 DSGVO).</p>
+    <p class="caps">WERDEN IHRE PERSONENBEZOGENEN DATEN VERARBEITET, UM DIREKTWERBUNG ZU BETREIBEN, SO HABEN SIE DAS RECHT, JEDERZEIT WIDERSPRUCH GEGEN DIE VERARBEITUNG SIE BETREFFENDER PERSONENBEZOGENER DATEN ZUM ZWECKE DERARTIGER WERBUNG EINZULEGEN; DIES GILT AUCH FÜR DAS PROFILING, SOWEIT ES MIT SOLCHER DIREKTWERBUNG IN VERBINDUNG STEHT. WENN SIE WIDERSPRECHEN, WERDEN IHRE PERSONENBEZOGENEN DATEN ANSCHLIESSEND NICHT MEHR ZUM ZWECKE DER DIREKTWERBUNG VERWENDET (WIDERSPRUCH NACH ART. 21 ABS. 2 DSGVO).</p>
+    <h3>Beschwerderecht bei der zuständigen Aufsichtsbehörde</h3>
+    <p>Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu.</p>
+    <h3>Recht auf Datenübertragbarkeit</h3>
+    <p>Sie haben das Recht, Daten, die wir auf Grundlage Ihrer Einwilligung oder in Erfüllung eines Vertrags automatisiert verarbeiten, an sich oder an einen Dritten in einem gängigen, maschinenlesbaren Format aushändigen zu lassen.</p>
+    <h3>SSL- bzw. TLS-Verschlüsselung</h3>
+    <p>Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://" auf „https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.</p>
+    <h3>Auskunft, Löschung und Berichtigung</h3>
+    <p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten.</p>
+    <h3>Recht auf Einschränkung der Verarbeitung</h3>
+    <p>Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen. Hierzu können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p>
+    <h3>Widerspruch gegen Werbe-E-Mails</h3>
+    <p>Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-E-Mails, vor.</p>
+  </div>
+
+  <div class="legal-divider"></div>
+
+  <div class="legal-section">
+    <h2>Datenerfassung auf dieser Website</h2>
+    <h3>Cookies</h3>
+    <p>Unsere Internetseiten verwenden so genannte „Cookies". Cookies sind kleine Textdateien und richten auf Ihrem Endgerät keinen Schaden an. Sie werden entweder vorübergehend für die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät gespeichert. Session-Cookies werden nach Ende Ihres Besuchs automatisch gelöscht. Permanente Cookies bleiben auf Ihrem Endgerät gespeichert bis Sie diese selbst löschen oder eine automatische Lösung durch Ihren Webbrowser erfolgt.</p>
+    <p>Technisch notwendige Cookies werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert. Andere Cookies werden nur mit Ihrer Einwilligung auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO gespeichert. Die Einwilligung ist jederzeit für die Zukunft widerrufbar.</p>
+    <h3>Server-Log-Dateien</h3>
+    <p>Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind: Browsertyp und Browserversion, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage, IP-Adresse. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.</p>
+    <h3>Kontaktformular</h3>
+    <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+    <h3>Anfrage per E-Mail, Telefon oder Telefax</h3>
+    <p>Wenn Sie uns per E-Mail, Telefon oder Telefax kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+  </div>
+
+  <div class="legal-divider"></div>
+
+  <div class="legal-section">
+    <h2>Soziale Medien</h2>
+    <h3>Instagram Plugin</h3>
+    <p>Auf dieser Website sind Funktionen des Dienstes Instagram eingebunden. Diese Funktionen werden angeboten durch die Instagram Inc., 1601 Willow Road, Menlo Park, CA 94025, USA. Wenn Sie in Ihrem Instagram-Account eingeloggt sind, können Sie durch Anklicken des Instagram-Buttons die Inhalte dieser Website mit Ihrem Instagram-Profil verlinken.</p>
+    <p>Weitere Informationen: <a href="https://instagram.com/about/legal/privacy/" target="_blank" rel="noopener">https://instagram.com/about/legal/privacy/</a></p>
+  </div>
+
+  <div class="legal-divider"></div>
+
+  <div class="legal-section">
+    <h2>Analyse-Tools und Werbung</h2>
+    <h3>Framer Analytics</h3>
+    <p>Diese Website nutzt das Framer-Analyse-Tool. Anbieter ist Framer B.V., Singel 258, 1016 AB Amsterdam, Niederlande. Framer verwendet Cookies, die auf Ihrem Computer gespeichert werden und eine Analyse der Nutzung der Website ermöglichen. Ihre IP-Adresse wird nach der Verarbeitung und vor der Speicherung anonymisiert.</p>
+    <p>Weitere Informationen: <a href="https://www.framer.com/legal/terms-of-service/" target="_blank" rel="noopener">https://www.framer.com/legal/terms-of-service/</a></p>
+  </div>
+
+  <div class="legal-divider"></div>
+
+  <div class="legal-section">
+    <h2>Plugins und Tools</h2>
+    <h3>Google Web Fonts</h3>
+    <p>Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Web Fonts, die von Google bereitgestellt werden. Die Google Fonts sind lokal installiert. Eine Verbindung zu Servern von Google findet dabei nicht statt.</p>
+    <p>Weitere Informationen: <a href="https://developers.google.com/fonts/faq" target="_blank" rel="noopener">https://developers.google.com/fonts/faq</a> und <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">https://policies.google.com/privacy</a></p>
+  </div>
+
+  <div class="legal-divider"></div>
+
+  <div class="legal-section">
+    <h2>Eigene Dienste</h2>
+    <h3>Umgang mit Bewerberdaten</h3>
+    <p>Wir bieten Ihnen die Möglichkeit, sich bei uns zu bewerben (z.&nbsp;B. per E-Mail, postalisch oder via Online-Bewerberformular). Im Folgenden informieren wir Sie über Umfang, Zweck und Verwendung Ihrer im Rahmen des Bewerbungsprozesses erhobenen personenbezogenen Daten.</p>
+    <p>Wenn Sie uns eine Bewerbung zukommen lassen, verarbeiten wir Ihre damit verbundenen personenbezogenen Daten (z.&nbsp;B. Kontakt- und Kommunikationsdaten, Bewerbungsunterlagen, Notizen im Rahmen von Bewerbungsgesprächen etc.), soweit dies zur Entscheidung über die Begründung eines Beschäftigungsverhältnisses erforderlich ist. Rechtsgrundlage hierfür ist § 26 BDSG-neu nach deutschem Recht, Art. 6 Abs. 1 lit. b DSGVO sowie – sofern Sie eine Einwilligung erteilt haben – Art. 6 Abs. 1 lit. a DSGVO.</p>
+    <p>Sofern wir Ihnen kein Stellenangebot machen können, behalten wir uns das Recht vor, die von Ihnen übermittelten Daten auf Grundlage unserer berechtigten Interessen (Art. 6 Abs. 1 lit. f DSGVO) bis zu 6 Monate ab der Beendigung des Bewerbungsverfahrens bei uns aufzubewahren. Anschließend werden die Daten gelöscht und die physischen Bewerbungsunterlagen vernichtet.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Barbe<span>Qube</span></div>
+        <p class="footer-tagline">Gutes Essen, gute Drinks, gute Musik. Willkommen in Lüneburg.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/barbeqube_lueneburg/" target="_blank" rel="noopener" title="Instagram">IG</a>
+          <a href="https://web.facebook.com/bbqubelueneburg" target="_blank" rel="noopener" title="Facebook">FB</a>
+          <a href="https://www.tiktok.com/@barbeqube_lueneburg" target="_blank" rel="noopener" title="TikTok">TK</a>
+        </div>
+      </div>
+      <div>
+        <span class="footer-col-title">Seiten</span>
+        <ul class="footer-links">
+          <li><a href="./">Startseite</a></li>
+          <li><a href="./menu">Speisekarte</a></li>
+          <li><a href="./gallery">Galerie</a></li>
+          <li><a href="./reservation">Reservierung</a></li>
+          <li><a href="./contact">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-col-title">Kontakt</span>
+        <ul class="footer-links">
+          <li><a href="tel:+494131400470">+49 4131 400470</a></li>
+          <li><a href="mailto:info@barbeqube.de">info@barbeqube.de</a></li>
+          <li><a href="https://maps.app.goo.gl/cpq5zuDGFfmnqids9" target="_blank" rel="noopener">Karte öffnen ↗</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-col-title">Rechtliches</span>
+        <ul class="footer-links">
+          <li><a href="./impressum">Impressum</a></li>
+          <li><a href="./datenschutzerklärung">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 BarbeQube Lüneburg. Made by <strong style="color:rgba(255,255,255,0.42)">WebArs</strong>.</p>
+      <div class="footer-legal">
+        <a href="./impressum">Impressum</a>
+        <a href="./datenschutzerklärung">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+  function toggleMenu() {
+    const m = document.getElementById('mobileMenu');
+    m.classList.toggle('open');
+    document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+  }
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http')) return;
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.body.style.transition = 'opacity 0.3s ease';
+      document.body.style.opacity = '0';
+      setTimeout(() => { window.location.href = href; }, 300);
+    });
+  });
+</script>
+</body>
 </html>

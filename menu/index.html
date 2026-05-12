@@ -60,20 +60,25 @@
     .marquee-item { font-family: 'Oswald', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); padding: 0 2rem; }
     .marquee-dot { color: rgb(59,45,43); padding: 0 0.4rem; }
 
-    /* STICKY CATEGORY NAV - hidden, replaced by side nav */
-    .cat-nav { display: none; }
+    /* STICKY CATEGORY NAV */
+    .cat-nav { position: sticky; top: 72px; z-index: 200; background: rgba(10,11,10,0.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(218,197,167,0.1); }
+    .cat-nav-inner { max-width: 1300px; margin: 0 auto; padding: 0 4vw; display: flex; overflow-x: auto; scrollbar-width: none; }
+    .cat-nav-inner::-webkit-scrollbar { display: none; }
+    .cat-btn { font-family: 'Oswald', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.38); text-decoration: none; display: inline-flex; align-items: center; padding: 0.9rem 1.2rem; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.25s, border-color 0.25s; }
+    .cat-btn:hover { color: rgba(255,255,255,0.65); }
+    .cat-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
 
     /* SIDE NAV */
-    .side-nav { position: fixed; right: 1.6rem; top: 50%; transform: translateY(-50%); z-index: 300; display: flex; flex-direction: column; gap: 0.35rem; opacity: 0; pointer-events: none; transition: opacity 0.5s var(--ease); }
+    .side-nav { position: fixed; right: 1.4rem; top: 30%; z-index: 300; display: flex; flex-direction: column; gap: 0.55rem; opacity: 0; pointer-events: none; transition: opacity 0.5s var(--ease); }
     .side-nav.visible { opacity: 1; pointer-events: auto; }
-    .side-nav-item { display: flex; align-items: center; gap: 0.65rem; cursor: pointer; text-decoration: none; justify-content: flex-end; padding: 0.2rem 0; }
-    .side-nav-label { font-family: 'Oswald', sans-serif; font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.0); white-space: nowrap; transition: color 0.25s, opacity 0.25s; }
-    .side-nav-item:hover .side-nav-label { color: rgba(255,255,255,0.6); }
-    .side-nav-item.active .side-nav-label { color: var(--gold); }
-    .side-nav-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.2); flex-shrink: 0; transition: background 0.25s, transform 0.25s; }
-    .side-nav-item:hover .side-nav-dot { background: rgba(255,255,255,0.5); transform: scale(1.4); }
-    .side-nav-item.active .side-nav-dot { background: var(--gold); transform: scale(1.6); }
-    @media (max-width: 1100px) { .side-nav { display: none; } }
+    .side-nav-item { display: flex; align-items: center; gap: 0.55rem; cursor: pointer; text-decoration: none; justify-content: flex-end; padding: 0.12rem 0; }
+    .side-nav-label { font-family: 'Oswald', sans-serif; font-size: 0.55rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0); white-space: nowrap; transition: color 0.2s; }
+    .side-nav-item:hover .side-nav-label { color: rgba(255,255,255,0.45); }
+    .side-nav-item.active .side-nav-label { color: rgba(218,197,167,0.7); }
+    .side-nav-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.15); flex-shrink: 0; transition: background 0.25s, transform 0.25s; }
+    .side-nav-item:hover .side-nav-dot { background: rgba(255,255,255,0.4); }
+    .side-nav-item.active .side-nav-dot { background: var(--gold); transform: scale(1.5); }
+    @media (max-width: 1200px) { .side-nav { display: none; } }
 
     /* SECTION */
     .menu-section { padding: 8vw 4vw; }
@@ -284,6 +289,19 @@
     <span class="marquee-item">Happy Hour</span><span class="marquee-dot">✶</span>
     <span class="marquee-item">Cocktails</span><span class="marquee-dot">✶</span>
     <span class="marquee-item">Giovanni L. Eis</span><span class="marquee-dot">✶</span>
+  </div>
+</div>
+
+<!-- HORIZONTAL CATEGORY NAV -->
+<div class="cat-nav" id="catNav">
+  <div class="cat-nav-inner">
+    <a href="#fruehstueck" class="cat-btn active" data-section="fruehstueck">Frühstück</a>
+    <a href="#burger-sec" class="cat-btn" data-section="burger-sec">Burger</a>
+    <a href="#hauptspeisen" class="cat-btn" data-section="hauptspeisen">Hauptspeisen</a>
+    <a href="#bowls" class="cat-btn" data-section="bowls">Bowls &amp; Salate</a>
+    <a href="#desserts" class="cat-btn" data-section="desserts">Desserts</a>
+    <a href="#getraenke" class="cat-btn" data-section="getraenke">Getränke</a>
+    <a href="#cocktails" class="cat-btn" data-section="cocktails">Cocktails</a>
   </div>
 </div>
 
@@ -1363,10 +1381,12 @@
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revObs.observe(el));
 
-  // Side nav
+  // Nav setup
+  const catNavEl = document.getElementById('catNav');
+  const catBtns = document.querySelectorAll('.cat-btn');
   const sideNav = document.getElementById('sideNav');
   const sideItems = document.querySelectorAll('.side-nav-item');
-  const NAV_H = 72;
+  const sections = ['fruehstueck','burger-sec','hauptspeisen','bowls','desserts','getraenke','cocktails'];
 
   // Show side nav after hero
   const heroEl = document.querySelector('.menu-hero');
@@ -1375,24 +1395,29 @@
   }, { threshold: 0 });
   if (heroEl) heroObs.observe(heroEl);
 
-  // Smooth scroll on click
+  // Smooth scroll helper
+  function scrollToSection(href) {
+    const targetId = href.startsWith('#') ? href.slice(1) : href;
+    const target = document.getElementById(targetId);
+    if (!target) return;
+    const offset = 72 + (catNavEl ? catNavEl.offsetHeight : 0) + 8;
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+  }
+
+  catBtns.forEach(btn => {
+    btn.addEventListener('click', e => { e.preventDefault(); scrollToSection(btn.getAttribute('href')); });
+  });
   sideItems.forEach(item => {
-    item.addEventListener('click', e => {
-      e.preventDefault();
-      const targetId = item.getAttribute('href').slice(1);
-      const target = document.getElementById(targetId);
-      if (target) {
-        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - NAV_H - 24, behavior: 'smooth' });
-      }
-    });
+    item.addEventListener('click', e => { e.preventDefault(); scrollToSection(item.getAttribute('href')); });
   });
 
-  // Highlight active section
-  const sections = ['fruehstueck','burger-sec','hauptspeisen','bowls','desserts','getraenke','cocktails'];
+  // Highlight active section in both navs
   const secObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        sideItems.forEach(item => item.classList.toggle('active', item.dataset.section === e.target.id));
+        const id = e.target.id;
+        catBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.section === id));
+        sideItems.forEach(item => item.classList.toggle('active', item.dataset.section === id));
       }
     });
   }, { threshold: 0.15, rootMargin: '-80px 0px -45% 0px' });
