@@ -60,13 +60,20 @@
     .marquee-item { font-family: 'Oswald', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); padding: 0 2rem; }
     .marquee-dot { color: rgb(59,45,43); padding: 0 0.4rem; }
 
-    /* STICKY CATEGORY NAV */
-    .cat-nav { position: sticky; top: 72px; z-index: 200; background: rgba(15,12,10,0.98); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-top: 1px solid rgba(218,197,167,0.18); border-bottom: 1px solid rgba(218,197,167,0.18); box-shadow: 0 6px 32px rgba(0,0,0,0.6); }
-    .cat-nav-inner { max-width: 1300px; margin: 0 auto; padding: 0 4vw; display: flex; overflow-x: auto; scrollbar-width: none; justify-content: center; }
-    .cat-nav-inner::-webkit-scrollbar { display: none; }
-    .cat-btn { font-family: 'Oswald', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); text-decoration: none; display: inline-flex; align-items: center; padding: 1.3rem 1.6rem; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.25s, border-color 0.25s, background 0.25s; }
-    .cat-btn:hover { color: var(--gold); background: rgba(218,197,167,0.05); }
-    .cat-btn.active { color: var(--gold); border-bottom-color: var(--gold); background: rgba(218,197,167,0.06); }
+    /* STICKY CATEGORY NAV - hidden, replaced by side nav */
+    .cat-nav { display: none; }
+
+    /* SIDE NAV */
+    .side-nav { position: fixed; right: 1.6rem; top: 50%; transform: translateY(-50%); z-index: 300; display: flex; flex-direction: column; gap: 0.35rem; opacity: 0; pointer-events: none; transition: opacity 0.5s var(--ease); }
+    .side-nav.visible { opacity: 1; pointer-events: auto; }
+    .side-nav-item { display: flex; align-items: center; gap: 0.65rem; cursor: pointer; text-decoration: none; justify-content: flex-end; padding: 0.2rem 0; }
+    .side-nav-label { font-family: 'Oswald', sans-serif; font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.0); white-space: nowrap; transition: color 0.25s, opacity 0.25s; }
+    .side-nav-item:hover .side-nav-label { color: rgba(255,255,255,0.6); }
+    .side-nav-item.active .side-nav-label { color: var(--gold); }
+    .side-nav-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.2); flex-shrink: 0; transition: background 0.25s, transform 0.25s; }
+    .side-nav-item:hover .side-nav-dot { background: rgba(255,255,255,0.5); transform: scale(1.4); }
+    .side-nav-item.active .side-nav-dot { background: var(--gold); transform: scale(1.6); }
+    @media (max-width: 1100px) { .side-nav { display: none; } }
 
     /* SECTION */
     .menu-section { padding: 8vw 4vw; }
@@ -226,7 +233,7 @@
     <li><a href="./contact">Kontakt</a></li>
     <li><a href="./reservation" class="nav-cta">Reservieren</a></li>
   </ul>
-  <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+  <button class="nav-burger" id="navBurger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -280,18 +287,30 @@
   </div>
 </div>
 
-<!-- STICKY CATEGORY NAV -->
-<div class="cat-nav" id="catNav">
-  <div class="cat-nav-inner">
-    <a href="#fruehstueck" class="cat-btn active" data-section="fruehstueck">Frühstück</a>
-    <a href="#burger" class="cat-btn" data-section="burger">Burger</a>
-    <a href="#hauptspeisen" class="cat-btn" data-section="hauptspeisen">Hauptspeisen</a>
-    <a href="#bowls" class="cat-btn" data-section="bowls">Bowls &amp; Salate</a>
-    <a href="#desserts" class="cat-btn" data-section="desserts">Desserts</a>
-    <a href="#getraenke" class="cat-btn" data-section="getraenke">Getränke</a>
-    <a href="#cocktails" class="cat-btn" data-section="cocktails">Cocktails</a>
-  </div>
-</div>
+<!-- SIDE NAV -->
+<nav class="side-nav" id="sideNav" aria-label="Menü-Abschnitte">
+  <a href="#fruehstueck" class="side-nav-item active" data-section="fruehstueck">
+    <span class="side-nav-label">Frühstück</span><span class="side-nav-dot"></span>
+  </a>
+  <a href="#burger-sec" class="side-nav-item" data-section="burger-sec">
+    <span class="side-nav-label">Burger</span><span class="side-nav-dot"></span>
+  </a>
+  <a href="#hauptspeisen" class="side-nav-item" data-section="hauptspeisen">
+    <span class="side-nav-label">Hauptspeisen</span><span class="side-nav-dot"></span>
+  </a>
+  <a href="#bowls" class="side-nav-item" data-section="bowls">
+    <span class="side-nav-label">Bowls &amp; Salate</span><span class="side-nav-dot"></span>
+  </a>
+  <a href="#desserts" class="side-nav-item" data-section="desserts">
+    <span class="side-nav-label">Desserts</span><span class="side-nav-dot"></span>
+  </a>
+  <a href="#getraenke" class="side-nav-item" data-section="getraenke">
+    <span class="side-nav-label">Getränke</span><span class="side-nav-dot"></span>
+  </a>
+  <a href="#cocktails" class="side-nav-item" data-section="cocktails">
+    <span class="side-nav-label">Cocktails</span><span class="side-nav-dot"></span>
+  </a>
+</nav>
 
 
 <!-- FRÜHSTÜCK -->
@@ -546,7 +565,7 @@
 
 
 <!-- SMASH BURGER HIGHLIGHT -->
-<div class="highlight-band sec-brown" id="burger">
+<div class="highlight-band sec-brown" id="burger-sec">
   <div class="highlight-band-inner">
     <div class="highlight-img reveal-left">
       <div class="highlight-img-main">
@@ -1315,7 +1334,7 @@
         <span class="footer-col-title">Rechtliches</span>
         <ul class="footer-links">
           <li><a href="./impressum">Impressum</a></li>
-          <li><a href="./datenschutzerklärung">Datenschutz</a></li>
+          <li><a href="./datenschutz">Datenschutz</a></li>
         </ul>
       </div>
     </div>
@@ -1323,7 +1342,7 @@
       <p class="footer-copy">© 2025 BarbeQube Lüneburg. Made by <strong style="color:rgba(255,255,255,0.42)">WebArs</strong>.</p>
       <div class="footer-legal">
         <a href="./impressum">Impressum</a>
-        <a href="./datenschutzerklärung">Datenschutz</a>
+        <a href="./datenschutz">Datenschutz</a>
       </div>
     </div>
   </div>
@@ -1344,28 +1363,40 @@
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revObs.observe(el));
 
-  const catBtns = document.querySelectorAll('.cat-btn');
-  const catNavEl = document.getElementById('catNav');
+  // Side nav
+  const sideNav = document.getElementById('sideNav');
+  const sideItems = document.querySelectorAll('.side-nav-item');
+  const NAV_H = 72;
 
-  catBtns.forEach(btn => {
-    btn.addEventListener('click', e => {
+  // Show side nav after hero
+  const heroEl = document.querySelector('.menu-hero');
+  const heroObs = new IntersectionObserver(entries => {
+    sideNav.classList.toggle('visible', !entries[0].isIntersecting);
+  }, { threshold: 0 });
+  if (heroEl) heroObs.observe(heroEl);
+
+  // Smooth scroll on click
+  sideItems.forEach(item => {
+    item.addEventListener('click', e => {
       e.preventDefault();
-      const target = document.querySelector(btn.getAttribute('href'));
+      const targetId = item.getAttribute('href').slice(1);
+      const target = document.getElementById(targetId);
       if (target) {
-        const offset = 72 + catNavEl.offsetHeight + 8;
-        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - NAV_H - 24, behavior: 'smooth' });
       }
     });
   });
 
+  // Highlight active section
+  const sections = ['fruehstueck','burger-sec','hauptspeisen','bowls','desserts','getraenke','cocktails'];
   const secObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        catBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.section === e.target.id));
+        sideItems.forEach(item => item.classList.toggle('active', item.dataset.section === e.target.id));
       }
     });
-  }, { threshold: 0.18, rootMargin: '-80px 0px -40% 0px' });
-  ['fruehstueck','burger','hauptspeisen','bowls','desserts','getraenke','cocktails'].forEach(id => {
+  }, { threshold: 0.15, rootMargin: '-80px 0px -45% 0px' });
+  sections.forEach(id => {
     const el = document.getElementById(id);
     if (el) secObs.observe(el);
   });
