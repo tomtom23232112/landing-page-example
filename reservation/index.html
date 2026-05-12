@@ -1,139 +1,388 @@
 <!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <base href="/barbeqube/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservieren – BarbeQube Lüneburg</title>
+  <meta name="description" content="Tisch reservieren im BarbeQube Lüneburg – einfach online, schnell und unkompliziert.">
+  <link rel="canonical" href="https://monk69ozu.github.io/barbeqube/reservation/">
+  <link rel="icon" href="assets/images/image-extra-1.jpg" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="assets/images/image-extra-2.png" media="(prefers-color-scheme: dark)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0a0b0a; --dark: #151515; --brown-deep: rgb(25,14,12);
+      --brown: rgb(59,45,43); --gold: #dac5a7; --gold-light: #ede0cc;
+      --white: #ffffff; --ease: cubic-bezier(0.4,0,0.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-weight: 300; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: var(--black); } ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+    @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    body { animation: pageFadeIn 0.4s ease forwards; }
 
-<html lang="en"><head>
-<base href="/barbeqube/"/>
-<link href="styles.css" rel="stylesheet"/><script>(function(){var f=window.fetch;window.fetch=function(u,o){if(typeof u==='string'&&u.includes('.framercms')){return f('/assets/cms/'+u.split('/').pop(),o);}return f(u,o);};})();</script>
-<meta charset="utf-8"/>
-<!-- Start of headStart -->
-<!-- End of headStart -->
-<meta content="width=device-width" name="viewport"/>
-<meta content="Framer 4f3879e" name="generator"/>
-<title>Barbeqube – Tisch reservieren</title>
-<meta content="Das beste Restaurant in Lüneburg – Hausgemachte Burger, leckeres Frühstück, zarte Steaks, italienische Pinsa, gesunde Bowls, täglich Happy Hour, neu: Smash Burger &amp; Giovanni L. Eis." name="description"/>
-<meta content="https://framerusercontent.com/sites/elglijYguCaZC2sw7RsoE/searchIndex-IYWIheCaeC5H.json" name="framer-search-index"/>
-<meta content="https://framerusercontent.com/sites/elglijYguCaZC2sw7RsoE/searchIndex-9TAwcgDwPJ2m.json" name="framer-search-index-fallback"/>
-<link href="assets/images/image-extra-1.jpg" media="(prefers-color-scheme: light)" rel="icon"/>
-<link href="assets/images/image-extra-2.png" media="(prefers-color-scheme: dark)" rel="icon"/>
-<link href="assets/images/image-extra-3.png" rel="apple-touch-icon"/>
-<!-- Open Graph / Facebook -->
-<meta content="website" property="og:type"/>
-<meta content="Barbeqube – Tisch reservieren" property="og:title"/>
-<meta content="Das beste Restaurant in Lüneburg – Hausgemachte Burger, leckeres Frühstück, zarte Steaks, italienische Pinsa, gesunde Bowls, täglich Happy Hour, neu: Smash Burger &amp; Giovanni L. Eis." property="og:description"/>
-<meta content="assets/images/image-extra-4.png" property="og:image"/>
-<!-- Twitter -->
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="Barbeqube – Tisch reservieren" name="twitter:title"/>
-<meta content="Das beste Restaurant in Lüneburg – Hausgemachte Burger, leckeres Frühstück, zarte Steaks, italienische Pinsa, gesunde Bowls, täglich Happy Hour, neu: Smash Burger &amp; Giovanni L. Eis." name="twitter:description"/>
-<meta content="assets/images/image-extra-4.png" name="twitter:image"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<meta content="max-image-preview:large" name="robots"/><link href="https://monk69ozu.github.io/barbeqube/reservation" rel="canonical"/><meta content="https://monk69ozu.github.io/barbeqube/reservation" property="og:url"/><!-- Start of headEnd -->
-<!-- End of headEnd -->
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
-<style id="custom-nav-styles">
-  :root { --black:#0a0b0a; --dark:#151515; --gold:#dac5a7; --gold-light:#ede0cc; --white:#ffffff; --ease:cubic-bezier(0.4,0,0.2,1); }
-  /* Hide Framer built-in nav */
-  .framer-5dsdT { display: none !important; }
-  /* Custom Nav */
-  /* Page fade-in transition */
-  @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
-  body { animation: pageFadeIn 0.45s ease forwards; }
-  #customNav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 4vw; height: 72px;
-    background: rgba(10,11,10,0.45);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(218,197,167,0.08);
-    transition: background 0.5s var(--ease), border-color 0.5s;
-    font-family: 'Inter', sans-serif;
-  }
-  #customNav.scrolled { background: rgba(10,11,10,0.93); border-color: rgba(218,197,167,0.15); }
-  .cn-logo { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.15em; color: #ffffff; text-decoration: none; text-transform: uppercase; }
-  .cn-logo span { color: var(--gold); }
-  .cn-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; margin: 0; padding: 0; }
-  .cn-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; }
-  .cn-links a:hover { color: var(--gold); }
-  .cn-cta { background: var(--gold) !important; color: var(--black) !important; padding: 0.55rem 1.4rem !important; border-radius: 2px; font-weight: 600 !important; }
-  .cn-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); color: var(--black) !important; }
-  .cn-burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; background: none; border: none; }
-  .cn-burger span { width: 26px; height: 2px; background: #ffffff; display: block; transition: 0.3s; }
-  .cn-mobile { display: none; position: fixed; inset: 0; background: var(--black); z-index: 9998; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
-  .cn-mobile.open { display: flex; }
-  .cn-mobile a { font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 500; color: #ffffff; text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; }
-  .cn-mobile a:hover { color: var(--gold); }
-  @media (max-width: 768px) { .cn-links { display: none; } .cn-burger { display: flex; } }
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 4vw; height: 72px; background: rgba(10,11,10,0.5); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(218,197,167,0.08); transition: background 0.5s var(--ease), border-color 0.5s; }
+    nav.scrolled { background: rgba(10,11,10,0.95); border-color: rgba(218,197,167,0.15); }
+    .nav-logo { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.15em; color: var(--white); text-decoration: none; text-transform: uppercase; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-cta { background: var(--gold) !important; color: var(--black) !important; padding: 0.55rem 1.4rem !important; border-radius: 2px; font-weight: 600 !important; }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--black) !important; }
+    .nav-burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; background: none; border: none; }
+    .nav-burger span { width: 26px; height: 2px; background: var(--white); display: block; }
+    .nav-mobile { display: none; position: fixed; inset: 0; background: var(--black); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 500; color: var(--white); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; }
+    .nav-mobile a:hover { color: var(--gold); }
 
-  /* Match homepage color scheme */
-  html, body, #main { background-color: #0a0b0a !important; color: #ffffff; }
-  /* Remove any Framer badge */
-  #__framer-badge-container { display: none !important; }
+    /* PAGE LAYOUT: split full-height */
+    .reservation-layout { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; padding-top: 72px; }
 
-  /* Hide Framer nav wrapper too */
-  [class*="framer-5dsdT"] { display: none !important; }
-</style>
+    /* LEFT VISUAL PANEL */
+    .res-visual { position: sticky; top: 72px; height: calc(100vh - 72px); overflow: hidden; }
+    .res-visual-bg { position: absolute; inset: 0; }
+    .res-visual-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35); }
+    .res-visual-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,11,10,0.6) 0%, rgba(25,14,12,0.4) 100%); }
+    .res-visual-content { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 4rem 3.5rem; }
+    .res-visual-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.36em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; display: block; }
+    .res-visual-title { font-family: 'Oswald', sans-serif; font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 700; text-transform: uppercase; line-height: 0.92; margin-bottom: 1.5rem; }
+    .res-visual-title span { color: var(--gold); display: block; }
+    .res-visual-divider { width: 42px; height: 1px; background: var(--gold); margin-bottom: 1.8rem; }
+    .res-visual-info { display: flex; flex-direction: column; gap: 0.9rem; }
+    .res-info-item { display: flex; align-items: center; gap: 0.9rem; font-size: 0.83rem; color: rgba(255,255,255,0.55); }
+    .res-info-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+    /* RIGHT FORM PANEL */
+    .res-form-panel { padding: 5rem 5vw 5rem; overflow-y: auto; }
+    .res-form-inner { max-width: 560px; margin: 0 auto; }
+
+    .form-heading { font-family: 'Oswald', sans-serif; font-size: 1.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+    .form-subheading { font-size: 0.88rem; color: rgba(255,255,255,0.38); margin-bottom: 3rem; line-height: 1.6; }
+
+    .step-indicator { display: flex; align-items: center; gap: 0; margin-bottom: 3rem; }
+    .step { display: flex; align-items: center; gap: 0.6rem; }
+    .step-num { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 600; color: rgba(255,255,255,0.35); transition: all 0.3s; }
+    .step.active .step-num { border-color: var(--gold); color: var(--gold); background: rgba(218,197,167,0.08); }
+    .step.done .step-num { border-color: var(--gold); background: var(--gold); color: var(--black); }
+    .step-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.28); transition: color 0.3s; }
+    .step.active .step-label { color: var(--gold); }
+    .step.done .step-label { color: rgba(218,197,167,0.55); }
+    .step-line { flex: 1; height: 1px; background: rgba(255,255,255,0.1); margin: 0 0.8rem; }
+
+    .form-group { margin-bottom: 1.4rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    label { display: block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.5rem; }
+    input, textarea, select {
+      width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 3px;
+      color: var(--white); font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 300;
+      padding: 0.85rem 1rem; outline: none; transition: border-color 0.3s;
+      -webkit-appearance: none; appearance: none;
+    }
+    input:focus, textarea:focus, select:focus { border-color: rgba(218,197,167,0.45); }
+    textarea { min-height: 110px; resize: vertical; }
+    select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23dac5a7' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; cursor: pointer; }
+    select option { background: rgb(18,14,12); color: var(--white); }
+    input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.7); cursor: pointer; }
+    input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.7); cursor: pointer; }
+
+    .form-section-title { font-family: 'Oswald', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(218,197,167,0.12); display: block; }
+
+    .checkbox-group { display: flex; align-items: flex-start; gap: 0.9rem; margin-bottom: 1rem; }
+    .checkbox-group input[type="checkbox"] { width: 18px; height: 18px; min-width: 18px; min-height: 18px; margin-top: 0.15rem; padding: 0; border: 1.5px solid rgba(255,255,255,0.2); border-radius: 3px; background: rgba(255,255,255,0.04); cursor: pointer; accent-color: var(--gold); }
+    .checkbox-group label { font-size: 0.83rem; letter-spacing: 0; text-transform: none; color: rgba(255,255,255,0.42); cursor: pointer; font-weight: 300; }
+    .checkbox-group label a { color: var(--gold); text-decoration: none; }
+    .checkbox-group label a:hover { text-decoration: underline; }
+
+    .btn-submit { width: 100%; background: var(--gold); color: var(--black); font-family: 'Oswald', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; border: none; border-radius: 2px; padding: 1.15rem 2rem; cursor: pointer; transition: background 0.3s, transform 0.2s; margin-top: 0.5rem; }
+    .btn-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .form-note { margin-top: 1.2rem; font-size: 0.76rem; color: rgba(255,255,255,0.25); line-height: 1.6; text-align: center; }
+    .required-note { font-size: 0.72rem; color: rgba(255,255,255,0.25); margin-bottom: 2rem; }
+
+    .form-success { display: none; text-align: center; padding: 4rem 1rem; }
+    .form-success-check { width: 64px; height: 64px; border-radius: 50%; background: rgba(218,197,167,0.1); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem; color: var(--gold); }
+    .form-success-title { font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 700; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; }
+    .form-success-body { font-size: 0.92rem; color: rgba(255,255,255,0.45); line-height: 1.75; max-width: 38ch; margin: 0 auto; }
+    .form-success-back { display: inline-block; margin-top: 2rem; color: var(--gold); font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid rgba(218,197,167,0.3); padding-bottom: 2px; transition: border-color 0.3s; }
+    .form-success-back:hover { border-color: var(--gold); }
+
+    /* FOOTER */
+    footer { background: #060706; padding: 5vw 4vw 3vw; border-top: 1px solid rgba(218,197,167,0.07); }
+    .footer-inner { max-width: 1300px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; padding-bottom: 4rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 1.55rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { margin-top: 0.8rem; font-size: 0.83rem; color: rgba(255,255,255,0.38); line-height: 1.75; max-width: 26ch; }
+    .footer-social { margin-top: 1.8rem; display: flex; gap: 0.8rem; }
+    .footer-social a { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.14); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.72rem; font-weight: 600; transition: border-color 0.3s, color 0.3s; }
+    .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-col-title { font-family: 'Oswald', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; display: block; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .footer-links a { font-size: 0.85rem; color: rgba(255,255,255,0.48); text-decoration: none; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom { padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .footer-copy { font-size: 0.76rem; color: rgba(255,255,255,0.28); }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    .footer-legal a { font-size: 0.76rem; color: rgba(255,255,255,0.28); text-decoration: none; transition: color 0.3s; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    @media (max-width: 1024px) {
+      .reservation-layout { grid-template-columns: 1fr; }
+      .res-visual { display: none; }
+      .res-form-panel { padding: 3rem 6vw 4rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
-<shadow-host></shadow-host><body>
-<nav id="customNav">
-<a class="cn-logo" href="./">Barbe<span>Qube</span></a>
-<ul class="cn-links">
-<li><a href="./">Home</a></li>
-<li><a href="./menu">Speisekarte</a></li>
-<li><a href="./gallery">Galerie</a></li>
-<li><a href="./contact">Kontakt</a></li>
-<li><a class="cn-cta" href="./reservation">Reservieren</a></li>
-</ul>
-<button aria-label="Menü" class="cn-burger" id="cnBurger" onclick="cnToggle()">
-<span></span><span></span><span></span>
-</button>
+<body>
+
+<nav id="mainNav">
+  <a href="./" class="nav-logo">Barbe<span>Qube</span></a>
+  <ul class="nav-links">
+    <li><a href="./">Home</a></li>
+    <li><a href="./menu">Speisekarte</a></li>
+    <li><a href="./gallery">Galerie</a></li>
+    <li><a href="./contact">Kontakt</a></li>
+    <li><a href="./reservation" class="nav-cta active">Reservieren</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-<div class="cn-mobile" id="cnMobile">
-<a href="./" onclick="cnToggle()">Home</a>
-<a href="./menu" onclick="cnToggle()">Speisekarte</a>
-<a href="./gallery" onclick="cnToggle()">Galerie</a>
-<a href="./contact" onclick="cnToggle()">Kontakt</a>
-<a href="./reservation" onclick="cnToggle()">Reservieren</a>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="./" onclick="toggleMenu()">Home</a>
+  <a href="./menu" onclick="toggleMenu()">Speisekarte</a>
+  <a href="./gallery" onclick="toggleMenu()">Galerie</a>
+  <a href="./contact" onclick="toggleMenu()">Kontakt</a>
+  <a href="./reservation" onclick="toggleMenu()">Reservieren</a>
 </div>
-<!-- Start of bodyStart -->
-<!-- End of bodyStart -->
-<div data-framer-generated-page="" data-framer-hydrate-v2='{"routeId":"YCbNyRkzE","localeId":"default","breakpoints":[{"hash":"1u9ttqs","mediaQuery":"(min-width: 1400px)"},{"hash":"1yg57i0","mediaQuery":"(min-width: 810px) and (max-width: 1399px)"},{"hash":"1oxn73b","mediaQuery":"(max-width: 809px)"}]}' data-framer-page-optimized-at="2025-08-06T16:16:40.867Z" data-framer-ssr-released-at="2025-08-05T12:10:14.959Z" id="main"><!--$--><div class="framer-tW7Cd framer-LrrKv framer-TsuEI framer-MMr1C framer-1u9ttqs" data-framer-root="" style="min-height:100vh;width:auto"><main class="framer-1duk1gc" data-framer-name="Main Wrapper" style=";padding-top:72px"><div class="framer-3jxpxh" data-framer-appear-id="3jxpxh" data-framer-name="Left" style="opacity: 0.001; transform: perspective(1200px); will-change: transform;"><div class="ssr-variant hidden-1oxn73b hidden-1yg57i0"><div class="framer-20olnv"><div data-framer-background-image-wrapper="true" style="position:absolute;border-radius:inherit;top:0;right:0;bottom:0;left:0"><img alt="" decoding="async" height="722" sizes="max(max((100vw - 16px) / 2, 1px) - 24px, 1px)" src="assets/images/left-1.png" srcset="assets/images/left-2.png 512w,assets/images/left-1.png 950w" style="display:block;width:100%;height:100%;border-radius:inherit;object-position:center;object-fit:cover" width="950"/></div><div class="framer-usv1f5"><div class="framer-1xpxnld" data-framer-appear-id="1xpxnld" data-framer-component-type="RichTextContainer" style="outline: none; display: flex; flex-direction: column; justify-content: flex-start; opacity: 0.001; flex-shrink: 0; transform: perspective(1200px); will-change: transform;"><p class="framer-text framer-styles-preset-14z4ysj" data-styles-preset="ovg9D21_X">Reservierung</p></div></div></div></div></div><div class="framer-1e0twi9" data-framer-name="Right"><div class="framer-cvhjan" data-border="true" data-framer-appear-id="cvhjan" data-framer-name="Content" style="opacity: 0.001; transform: perspective(1200px); will-change: transform;"><div class="framer-1p0hkvv" data-framer-name="Content Inner"><div class="framer-cpz9a7" id="special"><div class="framer-y56ndh"><div class="framer-y0igel"><div class="framer-1hmtpj5" data-border="true" data-framer-name="Icon" style="transform:rotate(-45deg)"></div><div class="framer-j6nlvs" data-framer-name="Line"></div></div><div class="framer-1jbpn1i" data-framer-component-type="RichTextContainer" style="outline:none;display:flex;flex-direction:column;justify-content:flex-start;flex-shrink:0;transform:none"><h2 class="framer-text framer-styles-preset-1wml6uu" data-styles-preset="fVxnimdqP">Reservierung</h2></div><div class="framer-1h732ec"><div class="framer-13rt8ye" data-framer-name="Line"></div><div class="framer-idiay8" data-border="true" data-framer-name="Icon" style="transform:rotate(-45deg)"></div></div></div><div class="framer-1t9y8e3" data-framer-component-type="RichTextContainer" style="outline:none;display:flex;flex-direction:column;justify-content:flex-start;flex-shrink:0;transform:none"><p class="framer-text framer-styles-preset-fottxr" data-styles-preset="h4jVEYDkM" style="--framer-text-alignment:center;--framer-text-color:var(--token-797a2fb4-2d14-46eb-9fb6-f38c1a9a545e, rgba(245, 242, 234, 0.7))">Sichern Sie sich Ihren Platz bei BarBeQube und genießen Sie ein einzigartiges Grillerlebnis in einer besonderen Atmosphäre.</p></div></div><form class="framer-1olrzsl"><div class="framer-form-text-input framer-form-input-wrapper framer-glc84s"><input class="framer-form-input framer-form-input-empty" name="Name" placeholder="Ihr Name" required="" type="text" value=""/></div><div class="framer-wmzh2t"><div class="framer-form-text-input framer-form-input-wrapper framer-sboutu"><input class="framer-form-input framer-form-input-empty" name="Phone Number" placeholder="Telefonnummer" required="" type="tel" value=""/></div><div class="framer-form-text-input framer-form-input-wrapper framer-16o1chm"><input class="framer-form-input framer-form-input-empty" name="Email" placeholder="E-Mail" required="" type="email" value=""/></div></div><label class="framer-1611awt"><div class="framer-form-input-wrapper framer-form-select-wrapper framer-awwbtz"><select class="framer-form-input" name="Special" required=""><option disabled="" selected="" value="">Besuchszweck wählen</option><option value="Geschäftsessen">Geschäftsessen</option><option value="Locker essen gehen">Locker essen gehen</option><option value="Besonderer Anlass">Besonderer Anlass</option></select></div></label><div class="framer-2vodc2" data-framer-name="Grid"><div class="framer-form-text-input framer-form-input-wrapper framer-1cso52u"><input class="framer-form-input framer-form-input-empty" name="Guests" placeholder="Personenzahl" required="" type="number" value=""/></div><div class="framer-form-text-input framer-form-input-wrapper framer-b72q3n"><input class="framer-form-input framer-form-input-empty" name="Date" placeholder="Email" required="" type="date" value=""/></div><div class="framer-form-text-input framer-form-input-wrapper framer-5mzmgm"><input class="framer-form-input framer-form-input-empty" name="Time" placeholder="Email" required="" type="time" value=""/></div></div><div class="framer-form-text-input framer-form-input-wrapper framer-1fo6iz4"><textarea class="framer-form-input" name="Message" placeholder="Nachricht (optional)"></textarea></div><label class="framer-4zqhnk"><input class="framer-form-boolean-input framer-oub8mb" name="Newsletter" type="checkbox"/><div class="framer-pvekaz" data-framer-component-type="RichTextContainer" style="outline:none;display:flex;flex-direction:column;justify-content:flex-start;flex-shrink:0;transform:none"><p class="framer-text" style='--font-selector:RlM7TW9udHNlcnJhdC1yZWd1bGFy;--framer-font-family:"Montserrat", "Montserrat Placeholder", sans-serif;--framer-font-size:12px;--framer-letter-spacing:1px;--framer-line-height:120%;--framer-text-alignment:left;--framer-text-color:var(--token-797a2fb4-2d14-46eb-9fb6-f38c1a9a545e, rgba(216, 194, 190, 0.7));--framer-text-transform:inherit'>Ich möchte exklusive Angebote per E-Mail von BarBeQube erhalten.</p></div></label><label class="framer-t71vrm"><input class="framer-form-boolean-input framer-zp59o8" name="Newsletter" type="checkbox"/><div class="framer-18xzpws" data-framer-component-type="RichTextContainer" style="outline:none;display:flex;flex-direction:column;justify-content:flex-start;flex-shrink:0;transform:none"><p class="framer-text" style='--font-selector:RlM7TW9udHNlcnJhdC1yZWd1bGFy;--framer-font-family:"Montserrat", "Montserrat Placeholder", sans-serif;--framer-font-size:12px;--framer-letter-spacing:1px;--framer-line-height:120%;--framer-text-alignment:left;--framer-text-color:var(--token-797a2fb4-2d14-46eb-9fb6-f38c1a9a545e, rgba(216, 194, 190, 0.7));--framer-text-transform:inherit'>Ich möchte Rabatte, Treueangebote und Updates per E-Mail von DISH Digital Solutions erhalten.</p></div></label><div class="ssr-variant hidden-1oxn73b hidden-1yg57i0"><div class="framer-1bsnuna-container"><button class="framer-VVYQr framer-5r7qjq framer-v-1ixzqok" data-framer-name="Disabled" data-reset="button" style="background-color:var(--token-dca875b7-f855-43c1-bf73-97596e452266, rgb(203, 251, 69));border-bottom-left-radius:8px;border-bottom-right-radius:8px;border-top-left-radius:8px;border-top-right-radius:8px;height:100%;width:100%;opacity:0.8" type="submit"><div class="framer-3pdbz1" data-framer-component-type="RichTextContainer" style="outline: none; display: flex; flex-direction: column; justify-content: flex-start; flex-shrink: 0; --extracted-r6o4lv: var(--token-c5446a54-80de-4f79-b24b-55997bf1fe5e, rgb(10, 11, 10)); transform: none; opacity: 1;"><p class="framer-text" style='--font-selector:RlM7U2F0b3NoaS1tZWRpdW0=;--framer-font-family:"Satoshi", "Satoshi Placeholder", sans-serif;--framer-font-size:12px;--framer-font-weight:500;--framer-letter-spacing:1px;--framer-line-height:110%;--framer-text-alignment:left;--framer-text-color:var(--extracted-r6o4lv, var(--token-c5446a54-80de-4f79-b24b-55997bf1fe5e, rgb(10, 11, 10)));--framer-text-transform:uppercase'>Jetzt reservieren</p></div></button></div></div></form></div></div><div class="ssr-variant hidden-1oxn73b hidden-1yg57i0"><div class="framer-1ulkhgw-container" data-framer-appear-id="1ulkhgw" style="opacity: 0.001; transform: perspective(1200px); will-change: transform;"><div class="framer-DP5qn framer-Iz5Er framer-aZrau framer-aqkljq framer-v-aqkljq" data-border="true" data-framer-name="Desktop" style="--border-bottom-width: 1px; --border-color: var(--token-68c05b50-ca7b-4173-82aa-ed42aea1a9b4, rgb(51, 51, 48)); --border-left-width: 1px; --border-right-width: 1px; --border-style: solid; --border-top-width: 1px; border-radius: 16px; width: 100%; opacity: 1;"><div class="framer-1uul33g" style="opacity: 1;"><div class="framer-ekav86" data-framer-component-type="RichTextContainer" style="outline: none; display: flex; flex-direction: column; justify-content: flex-start; flex-shrink: 0; --extracted-r6o4lv: var(--token-797a2fb4-2d14-46eb-9fb6-f38c1a9a545e, rgba(245, 242, 234, 0.7)); transform: none; opacity: 1;"><p class="framer-text framer-styles-preset-1cqwskc" data-styles-preset="NWkCScbQS" style="--framer-text-color:var(--extracted-r6o4lv, var(--token-797a2fb4-2d14-46eb-9fb6-f38c1a9a545e, rgba(245, 242, 234, 0.7)))"><!--$--><a class="framer-text framer-styles-preset-105xi8i" data-styles-preset="EV67tfIBO" href="./impressum">Impressum</a><!--/$--></p></div><div class="framer-1mda555" data-border="true" data-framer-name="Icon" style="--border-bottom-width: 1px; --border-color: var(--token-68c05b50-ca7b-4173-82aa-ed42aea1a9b4, rgb(51, 51, 48)); --border-left-width: 1px; --border-right-width: 1px; --border-style: solid; --border-top-width: 1px; transform: rotate(-45deg); opacity: 1;"></div><div class="framer-15rotg7" data-framer-component-type="RichTextContainer" style="outline: none; display: flex; flex-direction: column; justify-content: flex-start; flex-shrink: 0; --extracted-r6o4lv: var(--token-797a2fb4-2d14-46eb-9fb6-f38c1a9a545e, rgba(245, 242, 234, 0.7)); transform: none; opacity: 1;"><p class="framer-text framer-styles-preset-1cqwskc" data-styles-preset="NWkCScbQS" style="--framer-text-color:var(--extracted-r6o4lv, var(--token-797a2fb4-2d14-46eb-9fb6-f38c1a9a545e, rgba(245, 242, 234, 0.7)))"><!--$--><a class="framer-text framer-styles-preset-105xi8i" data-styles-preset="EV67tfIBO" href="./datenschutzerklärung">Datenschutzerklärung</a><!--/$--></p></div><div class="framer-1f2ngtb" data-border="true" data-framer-name="Icon" style="--border-bottom-width: 1px; --border-color: var(--token-68c05b50-ca7b-4173-82aa-ed42aea1a9b4, rgb(51, 51, 48)); --border-left-width: 1px; --border-right-width: 1px; --border-style: solid; --border-top-width: 1px; transform: rotate(-45deg); opacity: 1;"></div></div><div class="framer-13gugzr" style="opacity: 1;"><div class="framer-19ddooq-container" style="opacity: 1;"><!--$--><a class="framer-rvhQB framer-115jsc1 framer-v-115jsc1 framer-11hr8ku" data-border="true" data-framer-name="Default" data-highlight="true" href="https://www.instagram.com/barbeqube_lueneburg/?r=nametag" rel="noopener" style="--border-bottom-width: 1px; --border-color: var(--token-68c05b50-ca7b-4173-82aa-ed42aea1a9b4, rgba(218, 197, 167, 0.15)); --border-left-width: 1px; --border-right-width: 1px; --border-style: solid; --border-top-width: 1px; background-color: rgba(0, 0, 0, 0); border-radius: 500px; height: 100%; width: 100%; opacity: 1;" tabindex="0" target="_blank"><div class="framer-yjkc4m-container" style="opacity: 1;"><div style="display:contents"><svg color="var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210))" focusable="false" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210)); color: var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210)); flex-shrink: 0;" viewbox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><g color="var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210))" weight="light"><path d="M128,82a46,46,0,1,0,46,46A46.06,46.06,0,0,0,128,82Zm0,80a34,34,0,1,1,34-34A34,34,0,0,1,128,162ZM176,26H80A54.06,54.06,0,0,0,26,80v96a54.06,54.06,0,0,0,54,54h96a54.06,54.06,0,0,0,54-54V80A54.06,54.06,0,0,0,176,26Zm42,150a42,42,0,0,1-42,42H80a42,42,0,0,1-42-42V80A42,42,0,0,1,80,38h96a42,42,0,0,1,42,42ZM190,76a10,10,0,1,1-10-10A10,10,0,0,1,190,76Z"></path></g></svg></div></div></a><!--/$--></div><div class="framer-hmczvp-container" style="opacity: 1;"><!--$--><a class="framer-rvhQB framer-115jsc1 framer-v-115jsc1 framer-11hr8ku" data-border="true" data-framer-name="Default" data-highlight="true" href="https://web.facebook.com/bbqubelueneburg" rel="noopener" style="--border-bottom-width: 1px; --border-color: var(--token-68c05b50-ca7b-4173-82aa-ed42aea1a9b4, rgba(218, 197, 167, 0.15)); --border-left-width: 1px; --border-right-width: 1px; --border-style: solid; --border-top-width: 1px; background-color: rgba(0, 0, 0, 0); border-radius: 500px; height: 100%; width: 100%; opacity: 1;" tabindex="0" target="_blank"><div class="framer-yjkc4m-container" style="opacity: 1;"><div style="display:contents"><svg color="var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210))" focusable="false" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210)); color: var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210)); flex-shrink: 0;" viewbox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><g color="var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210))" weight="light"><path d="M128,26A102,102,0,1,0,230,128,102.12,102.12,0,0,0,128,26Zm6,191.8V150h26a6,6,0,0,0,0-12H134V112a18,18,0,0,1,18-18h16a6,6,0,0,0,0-12H152a30,30,0,0,0-30,30v26H96a6,6,0,0,0,0,12h26v67.8a90,90,0,1,1,12,0Z"></path></g></svg></div></div></a><!--/$--></div><div class="framer-wrgkxz-container" style="opacity: 1;"><!--$--><a class="framer-rvhQB framer-115jsc1 framer-v-115jsc1 framer-11hr8ku" data-border="true" data-framer-name="Default" data-highlight="true" href="mailto:info@barbeqube.de" rel="noopener" style="--border-bottom-width: 1px; --border-color: var(--token-68c05b50-ca7b-4173-82aa-ed42aea1a9b4, rgba(218, 197, 167, 0.15)); --border-left-width: 1px; --border-right-width: 1px; --border-style: solid; --border-top-width: 1px; background-color: rgba(0, 0, 0, 0); border-radius: 500px; height: 100%; width: 100%; opacity: 1;" tabindex="0" target="_blank"><div class="framer-yjkc4m-container" style="opacity: 1;"><div style="display:contents"><svg color="var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210))" focusable="false" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210)); color: var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210)); flex-shrink: 0;" viewbox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><g color="var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210))" weight="light"><path d="M224,50H32a6,6,0,0,0-6,6V192a14,14,0,0,0,14,14H216a14,14,0,0,0,14-14V56A6,6,0,0,0,224,50Zm-96,85.86L47.42,62H208.58ZM101.67,128,38,186.36V69.64Zm8.88,8.14L124,148.42a6,6,0,0,0,8.1,0l13.4-12.28L208.58,194H47.43ZM154.33,128,218,69.64V186.36Z"></path></g></svg></div></div></a><!--/$--></div><div class="framer-1pltgkt-container" style="opacity: 1;"><!--$--><a class="framer-rvhQB framer-115jsc1 framer-v-115jsc1 framer-11hr8ku" data-border="true" data-framer-name="Default" data-highlight="true" href="tel:+494131400470" rel="noopener" style="--border-bottom-width: 1px; --border-color: var(--token-68c05b50-ca7b-4173-82aa-ed42aea1a9b4, rgba(218, 197, 167, 0.15)); --border-left-width: 1px; --border-right-width: 1px; --border-style: solid; --border-top-width: 1px; background-color: rgba(0, 0, 0, 0); border-radius: 500px; height: 100%; width: 100%; opacity: 1;" tabindex="0" target="_blank"><div class="framer-yjkc4m-container" style="opacity: 1;"><div style="display:contents"><svg color="var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210))" focusable="false" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210)); color: var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210)); flex-shrink: 0;" viewbox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><g color="var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210))" weight="light"><path d="M221.59,160.3l-47.24-21.17a14,14,0,0,0-13.28,1.22,4.81,4.81,0,0,0-.56.42l-24.69,21a1.88,1.88,0,0,1-1.68.06c-15.87-7.66-32.31-24-40-39.65a1.91,1.91,0,0,1,0-1.68l21.07-25a6.13,6.13,0,0,0,.42-.58,14,14,0,0,0,1.12-13.27L95.73,34.49a14,14,0,0,0-14.56-8.38A54.24,54.24,0,0,0,34,80c0,78.3,63.7,142,142,142a54.25,54.25,0,0,0,53.89-47.17A14,14,0,0,0,221.59,160.3ZM176,210C104.32,210,46,151.68,46,80A42.23,42.23,0,0,1,82.67,38h.23a2,2,0,0,1,1.84,1.31l21.1,47.11a2,2,0,0,1,0,1.67L84.73,113.15a4.73,4.73,0,0,0-.43.57,14,14,0,0,0-.91,13.73c8.87,18.16,27.17,36.32,45.53,45.19a14,14,0,0,0,13.77-1c.19-.13.38-.27.56-.42l24.68-21a1.92,1.92,0,0,1,1.6-.1l47.25,21.17a2,2,0,0,1,1.21,2A42.24,42.24,0,0,1,176,210Z"></path></g></svg></div></div></a><!--/$--></div><div class="framer-au7mt3-container" style="opacity: 1;"><!--$--><a class="framer-rvhQB framer-115jsc1 framer-v-115jsc1 framer-11hr8ku" data-border="true" data-framer-name="Default" data-highlight="true" href="https://maps.app.goo.gl/cpq5zuDGFfmnqids9" rel="noopener" style="--border-bottom-width: 1px; --border-color: var(--token-68c05b50-ca7b-4173-82aa-ed42aea1a9b4, rgba(218, 197, 167, 0.15)); --border-left-width: 1px; --border-right-width: 1px; --border-style: solid; --border-top-width: 1px; background-color: rgba(0, 0, 0, 0); border-radius: 500px; height: 100%; width: 100%; opacity: 1;" tabindex="0" target="_blank"><div class="framer-yjkc4m-container" style="opacity: 1;"><div style="display:contents"><svg color="var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210))" focusable="false" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210)); color: var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210)); flex-shrink: 0;" viewbox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><g color="var(--token-c5c4fdcb-9482-48bb-aedf-353188472aae, rgb(239, 231, 210))" weight="light"><path d="M128,66a38,38,0,1,0,38,38A38,38,0,0,0,128,66Zm0,64a26,26,0,1,1,26-26A26,26,0,0,1,128,130Zm0-112a86.1,86.1,0,0,0-86,86c0,30.91,14.34,63.74,41.47,94.94a252.32,252.32,0,0,0,41.09,38,6,6,0,0,0,6.88,0,252.32,252.32,0,0,0,41.09-38c27.13-31.2,41.47-64,41.47-94.94A86.1,86.1,0,0,0,128,18Zm0,206.51C113,212.93,54,163.62,54,104a74,74,0,0,1,148,0C202,163.62,143,212.93,128,224.51Z"></path></g></svg></div></div></a><!--/$--></div></div><div class="framer-z01vi0" data-framer-name="WebArs" style="opacity: 1;"><div class="framer-1h6mxdm" data-framer-name="WhatsApp Image 2025-01-29 at 22.27.37_9d4a2ad1 1" style="opacity: 1;"><div data-framer-background-image-wrapper="true" style="position:absolute;border-radius:inherit;top:0;right:0;bottom:0;left:0"><img alt="" decoding="async" height="160" src="assets/images/whatsapp-image-2025-01-29-at-22-27-37-9d4a2ad1-1-23.png" style="display:block;width:100%;height:100%;border-radius:inherit;object-position:center;object-fit:cover" width="160"/></div></div><div class="framer-lw4m80" data-framer-component-type="RichTextContainer" style="outline: none; display: flex; flex-direction: column; justify-content: flex-start; flex-shrink: 0; transform: none; opacity: 1;"><p class="framer-text framer-styles-preset-1cqwskc" data-styles-preset="NWkCScbQS"><!--$--><a class="framer-text framer-styles-preset-105xi8i" data-styles-preset="EV67tfIBO" href="./">Made by WebArs</a><!--/$--></p></div></div></div></div></div></div></main><div class="framer-y5onvz-container"><div class="framer-B37TV framer-5tsxk7 framer-v-5tsxk7" data-framer-name="Desktop" style="height:100%;width:100%;opacity:0.08"><div data-framer-background-image-wrapper="true" style="position:absolute;border-radius:inherit;top:0;right:0;bottom:0;left:0"><img alt="" decoding="async" height="1100" sizes="100vw" src="assets/images/desktop-31.jpg" srcset="assets/images/desktop-32.jpg 512w,assets/images/desktop-33.jpg 1024w,assets/images/desktop-31.jpg 1920w" style="display:block;width:100%;height:100%;border-radius:inherit;object-position:center;object-fit:cover" width="1920"/></div></div></div></div><div id="overlay"></div><!--/$--></div><script>(()=>{function u(){function n(t,e,i){let r=document.createElement("a");r.href=t,r.target=i,r.rel=e,document.body.appendChild(r),r.click(),r.remove()}function o(t){if(this.dataset.hydrated){this.removeEventListener("click",o);return}t.preventDefault(),t.stopPropagation();let e=this.getAttribute("href");if(!e)return;if(/Mac|iPod|iPhone|iPad/u.test(navigator.userAgent)?t.metaKey:t.ctrlKey)return n(e,"","_blank");let r=this.getAttribute("rel")??"",c=this.getAttribute("target")??"";n(e,r,c)}function a(t){if(this.dataset.hydrated){this.removeEventListener("auxclick",o);return}t.preventDefault(),t.stopPropagation();let e=this.getAttribute("href");e&&n(e,"","_blank")}function s(t){if(this.dataset.hydrated){this.removeEventListener("keydown",s);return}if(t.key!=="Enter")return;t.preventDefault(),t.stopPropagation();let e=this.getAttribute("href");if(!e)return;let i=this.getAttribute("rel")??"",r=this.getAttribute("target")??"";n(e,i,r)}document.querySelectorAll("[data-nested-link]").forEach(t=>{t instanceof HTMLElement&&(t.addEventListener("click",o),t.addEventListener("auxclick",a),t.addEventListener("keydown",s))})}return u})()()</script><script>(()=>{function i(){for(let e of document.querySelectorAll("[data-framer-original-sizes]")){let t=e.getAttribute("data-framer-original-sizes");t===""?e.removeAttribute("sizes"):e.setAttribute("sizes",t),e.removeAttribute("data-framer-original-sizes")}}function a(){window.__framer_onRewriteBreakpoints=i}return a})()()</script>
-<script>!function(){function c(t,r){let e=r.indexOf("#"),n=e===-1?r:r.substring(0,e),o=e===-1?"":r.substring(e),a=n.indexOf("?");if(a===-1)return n+t+o;let d=new URLSearchParams(t),h=n.substring(a+1),s=new URLSearchParams(h);for(let[i,m]of d)s.has(i)||s.append(i,m);return n.substring(0,a+1)+s.toString()+o}var l='div#main a[href^="#"],div#main a[href^="/"],div#main a[href^="."]',u="div#main a[data-framer-preserve-params]",f,g=(f=document.currentScript)==null?void 0:f.hasAttribute("data-preserve-internal-params");if(window.location.search&&!/bot|-google|google-|yandex|ia_archiver|crawl|spider/iu.test(navigator.userAgent)){let t=document.querySelectorAll(g?`${l},${u}`:u);for(let r of t){let e=c(window.location.search,r.href);r.setAttribute("href",e)}}
-}()</script>
-<script>var animator=(()=>{var k=(e,t,r)=>r>t?t:r<e?e:r;var F=()=>{};function W(e){let t;return()=>(t===void 0&&(t=e()),t)}var j=e=>e;var w=e=>e*1e3,v=e=>e/1e3;function X(e,t){return t?e*(1e3/t):0}var Y=e=>Array.isArray(e)&&typeof e[0]=="number";var q={value:null,addProjectionMetrics:null};var Z={layout:0,mainThread:0,waapi:0};var G=(e,t,r=10)=>{let o="",s=Math.max(Math.round(t/r),2);for(let n=0;n<s;n++)o+=e(n/(s-1))+", ";return`linear(${o.substring(0,o.length-2)})`};function $(e){let t=0,r=50,o=e.next(t);for(;!o.done&&t<2e4;)t+=r,o=e.next(t);return t>=2e4?1/0:t}function pe(e,t=100,r){let o=r({...e,keyframes:[0,t]}),s=Math.min($(o),2e4);return{type:"keyframes",ease:n=>o.next(s*n).value/t,duration:v(s)}}var Ee=5;function me(e,t,r){let o=Math.max(t-Ee,0);return X(r-e(o),t-o)}var l={stiffness:100,damping:10,mass:1,velocity:0,duration:800,bounce:.3,visualDuration:.3,restSpeed:{granular:.01,default:2},restDelta:{granular:.005,default:.5},minDuration:.01,maxDuration:10,minDamping:.05,maxDamping:1};var H=.001;function fe({duration:e=l.duration,bounce:t=l.bounce,velocity:r=l.velocity,mass:o=l.mass}){let s,n;F(e<=w(l.maxDuration),"Spring duration must be 10 seconds or less");let i=1-t;i=k(l.minDamping,l.maxDamping,i),e=k(l.minDuration,l.maxDuration,v(e)),i<1?(s=m=>{let p=m*i,c=p*e,u=p-r,d=L(m,i),g=Math.exp(-c);return H-u/d*g},n=m=>{let c=m*i*e,u=c*r+r,d=Math.pow(i,2)*Math.pow(m,2)*e,g=Math.exp(-c),y=L(Math.pow(m,2),i);return(-s(m)+H>0?-1:1)*((u-d)*g)/y}):(s=m=>{let p=Math.exp(-m*e),c=(m-r)*e+1;return-H+p*c},n=m=>{let p=Math.exp(-m*e),c=(r-m)*(e*e);return p*c});let f=5/e,a=Ce(s,n,f);if(e=w(e),isNaN(a))return{stiffness:l.stiffness,damping:l.damping,duration:e};{let m=Math.pow(a,2)*o;return{stiffness:m,damping:i*2*Math.sqrt(o*m),duration:e}}}var Pe=12;function Ce(e,t,r){let o=r;for(let s=1;s<Pe;s++)o=o-e(o)/t(o);return o}function L(e,t){return e*Math.sqrt(1-t*t)}var Ie=["duration","bounce"],Ke=["stiffness","damping","mass"];function ce(e,t){return t.some(r=>e[r]!==void 0)}function Be(e){let t={velocity:l.velocity,stiffness:l.stiffness,damping:l.damping,mass:l.mass,isResolvedFromDuration:!1,...e};if(!ce(e,Ke)&&ce(e,Ie))if(e.visualDuration){let r=e.visualDuration,o=2*Math.PI/(r*1.2),s=o*o,n=2*k(.05,1,1-(e.bounce||0))*Math.sqrt(s);t={...t,mass:l.mass,stiffness:s,damping:n}}else{let r=fe(e);t={...t,...r,mass:l.mass},t.isResolvedFromDuration=!0}return t}function D(e=l.visualDuration,t=l.bounce){let r=typeof e!="object"?{visualDuration:e,keyframes:[0,1],bounce:t}:e,{restSpeed:o,restDelta:s}=r,n=r.keyframes[0],i=r.keyframes[r.keyframes.length-1],f={done:!1,value:n},{stiffness:a,damping:m,mass:p,duration:c,velocity:u,isResolvedFromDuration:d}=Be({...r,velocity:-v(r.velocity||0)}),g=u||0,y=m/(2*Math.sqrt(a*p)),h=i-n,T=v(Math.sqrt(a/p)),B=Math.abs(h)<5;o||(o=B?l.restSpeed.granular:l.restSpeed.default),s||(s=B?l.restDelta.granular:l.restDelta.default);let S;if(y<1){let x=L(T,y);S=A=>{let M=Math.exp(-y*T*A);return i-M*((g+y*T*h)/x*Math.sin(x*A)+h*Math.cos(x*A))}}else if(y===1)S=x=>i-Math.exp(-T*x)*(h+(g+T*h)*x);else{let x=T*Math.sqrt(y*y-1);S=A=>{let M=Math.exp(-y*T*A),z=Math.min(x*A,300);return i-M*((g+y*T*h)*Math.sinh(z)+x*h*Math.cosh(z))/x}}let V={calculatedDuration:d&&c||null,next:x=>{let A=S(x);if(d)f.done=x>=c;else{let M=x===0?g:0;y<1&&(M=x===0?w(g):me(S,x,A));let z=Math.abs(M)<=o,ke=Math.abs(i-A)<=s;f.done=z&&ke}return f.value=f.done?i:A,f},toString:()=>{let x=Math.min($(V),2e4),A=G(M=>V.next(x*M).value,x,30);return x+"ms "+A},toTransition:()=>{}};return V}D.applyToOptions=e=>{let t=pe(e,100,D);return e.ease=t.ease,e.duration=w(t.duration),e.type="keyframes",e};var ue=["transformPerspective","x","y","z","translateX","translateY","translateZ","scale","scaleX","scaleY","rotate","rotateX","rotateY","rotateZ","skew","skewX","skewY"],_=new Set(ue);var le={};function de(e,t){let r=W(e);return()=>le[t]??r()}var xe=de(()=>{try{document.createElement("div").animate({opacity:0},{easing:"linear(0, 1)"})}catch{return!1}return!0},"linearEasing");var O=([e,t,r,o])=>`cubic-bezier(${e}, ${t}, ${r}, ${o})`;var Q={linear:"linear",ease:"ease",easeIn:"ease-in",easeOut:"ease-out",easeInOut:"ease-in-out",circIn:O([0,.65,.55,1]),circOut:O([.55,0,1,.45]),backIn:O([.31,.01,.66,-.59]),backOut:O([.33,1.53,.69,.99])};function J(e,t){if(e)return typeof e=="function"?xe()?G(e,t):"ease-out":Y(e)?O(e):Array.isArray(e)?e.map(r=>J(r,t)||Q.easeOut):Q[e]}function R(e,t,r,{delay:o=0,duration:s=300,repeat:n=0,repeatType:i="loop",ease:f="easeOut",times:a}={},m=void 0){let p={[t]:r};a&&(p.offset=a);let c=J(f,s);Array.isArray(c)&&(p.easing=c),q.value&&Z.waapi++;let u={delay:o,duration:s,easing:Array.isArray(c)?"linear":c,fill:"both",iterations:n+1,direction:i==="reverse"?"alternate":"normal"};m&&(u.pseudoElement=m);let d=e.animate(p,u);return q.value&&d.finished.finally(()=>{Z.waapi--}),d}var ge=e=>e.replace(/([a-z])([A-Z])/gu,"$1-$2").toLowerCase();var ee="framerAppearId",ye="data-"+ge(ee);function Ae(e){return e.props[ye]}var b=new Map,E=new Map;var P=(e,t)=>{let r=_.has(t)?"transform":t;return`${e}: ${r}`};function te(e,t,r){let o=P(e,t),s=b.get(o);if(!s)return null;let{animation:n,startTime:i}=s;function f(){window.MotionCancelOptimisedAnimation?.(e,t,r)}return n.onfinish=f,i===null||window.MotionHandoffIsComplete?.(e)?(f(),null):i}var N,C,re=new Set;function ze(){re.forEach(e=>{e.animation.play(),e.animation.startTime=e.startTime}),re.clear()}function oe(e,t,r,o,s){if(window.MotionIsMounted)return;let n=e.dataset[ee];if(!n)return;window.MotionHandoffAnimation=te;let i=P(n,t);C||(C=R(e,t,[r[0],r[0]],{duration:1e4,ease:"linear"}),b.set(i,{animation:C,startTime:null}),window.MotionHandoffAnimation=te,window.MotionHasOptimisedAnimation=(a,m)=>{if(!a)return!1;if(!m)return E.has(a);let p=P(a,m);return!!b.get(p)},window.MotionHandoffMarkAsComplete=a=>{E.has(a)&&E.set(a,!0)},window.MotionHandoffIsComplete=a=>E.get(a)===!0,window.MotionCancelOptimisedAnimation=(a,m,p,c)=>{let u=P(a,m),d=b.get(u);d&&(p&&c===void 0?p.postRender(()=>{p.postRender(()=>{d.animation.cancel()})}):d.animation.cancel(),p&&c?(re.add(d),p.render(ze)):(b.delete(u),b.size||(window.MotionCancelOptimisedAnimation=void 0)))},window.MotionCheckAppearSync=(a,m,p)=>{let c=Ae(a);if(!c)return;let u=window.MotionHasOptimisedAnimation?.(c,m),d=a.props.values?.[m];if(!u||!d)return;let g=p.on("change",y=>{d.get()!==y&&(window.MotionCancelOptimisedAnimation?.(c,m),g())});return g});let f=()=>{C.cancel();let a=R(e,t,r,o);N===void 0&&(N=performance.now()),a.startTime=N,b.set(i,{animation:a,startTime:N}),s&&s(a)};E.set(n,!1),C.ready?C.ready.then(f).catch(j):f()}var ne=["transformPerspective","x","y","z","translateX","translateY","translateZ","scale","scaleX","scaleY","rotate","rotateX","rotateY","rotateZ","skew","skewX","skewY"],Ge={x:"translateX",y:"translateY",z:"translateZ",transformPerspective:"perspective"},$e={translateX:"px",translateY:"px",translateZ:"px",x:"px",y:"px",z:"px",perspective:"px",transformPerspective:"px",rotate:"deg",rotateX:"deg",rotateY:"deg"};function he(e,t){let r=$e[e];return!r||typeof t=="string"&&t.endsWith(r)?t:`${t}${r}`}function ie(e){return ne.includes(e)}var Le=(e,t)=>ne.indexOf(e)-ne.indexOf(t);function Te({transform:e,transformKeys:t},r){let o={},s=!0,n="";t.sort(Le);for(let i of t){let f=e[i],a=!0;typeof f=="number"?a=f===(i.startsWith("scale")?1:0):a=parseFloat(f)===0,a||(s=!1,n+=`${Ge[i]||i}(${e[i]}) `),r&&(o[i]=e[i])}return n=n.trim(),r?n=r(o,n):s&&(n="none"),n}function ae(e,t){let r=new Set(Object.keys(e));for(let o in t)r.add(o);return Array.from(r)}function se(e,t){let r=t-e.length;if(r<=0)return e;let o=new Array(r).fill(e[e.length-1]);return e.concat(o)}function I(e){return e*1e3}var Me={duration:.001},K={opacity:1,scale:1,translateX:0,translateY:0,translateZ:0,x:0,y:0,z:0,rotate:0,rotateX:0,rotateY:0};function ve(e,t,r,o,s){return r.delay&&(r.delay=I(r.delay)),r.type==="spring"?Ne(e,t,r,o,s):We(e,t,r,o,s)}function Re(e,t,r){let o={},s=0,n=0;for(let i of ae(e,t)){let f=e[i]??K[i],a=t[i]??K[i];if(f===void 0||a===void 0||i!=="transformPerspective"&&f===a&&f===K[i])continue;i==="transformPerspective"&&(o[i]=[f,a]);let m=Ze(f,a,r),{duration:p,keyframes:c}=m;p===void 0||c===void 0||(p>s&&(s=p,n=c.length),o[i]=c)}return{keyframeValuesByProps:o,longestDuration:s,longestLength:n}}function Ne(e,t,r,o,s){let n={},{keyframeValuesByProps:i,longestDuration:f,longestLength:a}=Re(e,t,r);if(!a)return n;let m={ease:"linear",duration:f,delay:r.delay},p=s?Me:m,c={};for(let[d,g]of Object.entries(i))ie(d)?c[d]=se(g,a):n[d]={keyframes:se(g,a),options:d==="opacity"?m:p};let u=De(c,o);return u&&(n.transform={keyframes:u,options:p}),n}function Fe(e){let{type:t,duration:r,...o}=e;return{duration:I(r),...o}}function We(e,t,r,o,s){let n=Fe(r);if(!n)return;let i={},f=s?Me:n,a={};for(let p of ae(e,t)){let c=e[p]??K[p],u=t[p]??K[p];c===void 0||u===void 0||p!=="transformPerspective"&&c===u||(ie(p)?a[p]=[c,u]:i[p]={keyframes:[c,u],options:p==="opacity"?n:f})}let m=De(a,o);return m&&(i.transform={keyframes:m,options:f}),i}var je=["duration","bounce"],Xe=["stiffness","damping","mass"];function we(e){return Xe.some(t=>t in e)?!1:je.some(t=>t in e)}function Ye(e,t,r){return we(r)?`${e}-${t}-${r.duration}-${r.bounce}`:`${e}-${t}-${r.damping}-${r.stiffness}-${r.mass}`}function qe(e){return we(e)?{...e,duration:I(e.duration)}:e}var be=new Map,Se=10;function Ze(e,t,r){let o=Ye(e,t,r),s=be.get(o);if(s)return s;let n=[e,t],i=D({...qe(r),keyframes:n}),f={done:!1,value:n[0]},a=[],m=0;for(;!f.done&&m<I(10);)f=i.next(m),a.push(f.value),m+=Se;n=a;let p=m-Se,u={keyframes:n,duration:p,ease:"linear"};return be.set(o,u),u}function De(e,t){let r=[],o=Object.values(e)[0]?.length;if(!o)return;let s=Object.keys(e);for(let n=0;n<o;n++){let i={};for(let[a,m]of Object.entries(e)){let p=m[n];p!==void 0&&(i[a]=he(a,p))}let f=Te({transform:i,transformKeys:s},t);r.push(f)}return r}function Ue(e,t){if(!t)for(let r in e){let o=e[r];return o?.legacy===!0?o:void 0}}function Oe(e,t,r,o,s,n){for(let[i,f]of Object.entries(e)){let a=n?f[n]:void 0;if(a===null||!a&&f.default===null)continue;let m=a??f.default??Ue(f,n);if(!m)continue;let{initial:p,animate:c,transformTemplate:u}=m;if(!p||!c)continue;let{transition:d,...g}=c,y=ve(p,g,d,He(u,o),s);if(!y)continue;let h={},T={};for(let[S,V]of Object.entries(y))h[S]=V.keyframes,T[S]=V.options;let B=n?`:not(.hidden-${n}) `:"";t(`${B}[${r}="${i}"]`,h,T)}}function He(e,t){if(!(!e||!t))return(r,o)=>e.replace(t,o)}function Ve(e){return e?e.find(r=>r.mediaQuery?window.matchMedia(r.mediaQuery).matches===!0:!1)?.hash:void 0}var Lr={animateAppearEffects:Oe,getActiveVariantHash:Ve,spring:D,startOptimizedAppearAnimation:oe};return Lr})()</script>
-<script id="__framer__appearAnimationsContent" type="framer/appear">{"3jxpxh":{"default":{"initial":{"opacity":0.001,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"x":0,"y":0},"animate":{"opacity":1,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"transition":{"delay":0,"duration":0.5,"ease":[0.5,0,0.88,0.77],"type":"tween"},"x":0,"y":0}}},"1xpxnld":{"default":{"initial":{"opacity":0.001,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"x":0,"y":0},"animate":{"opacity":1,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"transition":{"delay":0.5,"duration":1,"ease":[0.5,1,0.89,1],"type":"tween"},"x":0,"y":0}},"1oxn73b":{"initial":{"opacity":0.001,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"x":0,"y":0},"animate":{"opacity":1,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"transition":{"delay":0.5,"duration":1,"ease":[0.5,1,0.89,1],"type":"tween"},"x":0,"y":0}},"1yg57i0":{"initial":{"opacity":0.001,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"x":0,"y":0},"animate":{"opacity":1,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"transition":{"delay":0.5,"duration":1,"ease":[0.5,1,0.89,1],"type":"tween"},"x":0,"y":0}}},"cvhjan":{"default":{"initial":{"opacity":0.001,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"x":0,"y":0},"animate":{"opacity":1,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"transition":{"delay":0,"duration":0.5,"ease":[0.5,0,0.88,0.77],"type":"tween"},"x":0,"y":0}}},"1ulkhgw":{"default":{"initial":{"opacity":0.001,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"x":0,"y":0},"animate":{"opacity":1,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"transition":{"delay":0,"duration":0.5,"ease":[0.5,0,0.88,0.77],"type":"tween"},"x":0,"y":0}},"1oxn73b":{"initial":{"opacity":0.001,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"x":0,"y":0},"animate":{"opacity":1,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"transition":{"delay":0,"duration":0.5,"ease":[0.5,0,0.88,0.77],"type":"tween"},"x":0,"y":0}},"1yg57i0":{"initial":{"opacity":0.001,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"x":0,"y":0},"animate":{"opacity":1,"rotate":0,"rotateX":0,"rotateY":0,"scale":1,"skewX":0,"skewY":0,"transformPerspective":1200,"transition":{"delay":0,"duration":0.5,"ease":[0.5,0,0.88,0.77],"type":"tween"},"x":0,"y":0}}}}</script>
-<script id="__framer__breakpoints" type="framer/appear">[{"hash":"1u9ttqs","mediaQuery":"(min-width: 1400px)"},{"hash":"1yg57i0","mediaQuery":"(min-width: 810px) and (max-width: 1399px)"},{"hash":"1oxn73b","mediaQuery":"(max-width: 809px)"}]</script><script data-framer-appear-animation="no-preference">(()=>{function c(i,o,m){if(window.__framer_disable_appear_effects_optimization__||typeof animator>"u")return;let e={detail:{bg:document.hidden}};requestAnimationFrame(()=>{let a="framer-appear-start";performance.mark(a,e),animator.animateAppearEffects(JSON.parse(window.__framer__appearAnimationsContent.text),(s,p,d)=>{let t=document.querySelector(s);if(t)for(let[r,f]of Object.entries(p))animator.startOptimizedAppearAnimation(t,r,f,d[r])},i,o,m&&window.matchMedia("(prefers-reduced-motion:reduce)").matches===!0,animator.getActiveVariantHash(JSON.parse(window.__framer__breakpoints.text)));let n="framer-appear-end";performance.mark(n,e),performance.measure("framer-appear",{start:a,end:n,detail:e.detail})})}return c})()("data-framer-appear-id","__Appear_Animation_Transform__",false)</script>
-<link fetchpriority="low" href="assets/js/react.Ct453gcT.mjs" rel="modulepreload"/><link fetchpriority="low" href="assets/js/rolldown-runtime.C0PKcy_i.mjs" rel="modulepreload"/><link fetchpriority="low" href="assets/js/framer.D3ouQxse.mjs" rel="modulepreload"/><link fetchpriority="low" href="assets/js/motion.ZSVFutWQ.mjs" rel="modulepreload"/><link fetchpriority="low" href="assets/js/Kwp4WyEhAgJ9IF8pDo7Mrg1TM9Buhq4uNma2o_lAlZk.DjR2M0f4.mjs" rel="modulepreload"/><link fetchpriority="low" href="assets/js/YQHzx1Vn8.Du8R8jkO.mjs" rel="modulepreload"/><link fetchpriority="low" href="assets/js/shared-lib.Btc85Z6y.mjs" rel="modulepreload"/><link fetchpriority="low" href="assets/js/h4jVEYDkM.RlwO2zbX.mjs" rel="modulepreload"/><link fetchpriority="low" href="assets/js/YCbNyRkzE.C7hHm9D5.mjs" rel="modulepreload"/><link fetchpriority="low" href="assets/js/script_main.B-Djv-qQ.mjs" rel="modulepreload"/><script async="" data-framer-bundle="main" fetchpriority="low" src="assets/js/script_main.B-Djv-qQ.mjs" type="module"></script><div aria-hidden="true" id="svg-templates" style="position: absolute; overflow: hidden; bottom: 0; left: 0; width: 0; height: 0; z-index: 0; contain: strict">
+
+<div class="reservation-layout">
+
+  <!-- LEFT VISUAL -->
+  <div class="res-visual">
+    <div class="res-visual-bg">
+      <img src="assets/images/left-1.png" alt="BarbeQube Reservierung" loading="eager">
+    </div>
+    <div class="res-visual-overlay"></div>
+    <div class="res-visual-content">
+      <span class="res-visual-label">BarbeQube · Lüneburg</span>
+      <h2 class="res-visual-title">Reserviere<span>deinen Tisch.</span></h2>
+      <div class="res-visual-divider"></div>
+      <div class="res-visual-info">
+        <div class="res-info-item"><div class="res-info-dot"></div><span>Frühstück Mo–Fr 09:00 – 12:00 Uhr</span></div>
+        <div class="res-info-item"><div class="res-info-dot"></div><span>Samstag Buffet 08:30 – 12:30 Uhr</span></div>
+        <div class="res-info-item"><div class="res-info-dot"></div><span>Sonntag Buffet 10:00 – 13:30 Uhr</span></div>
+        <div class="res-info-item"><div class="res-info-dot"></div><span>+49 4131 400470</span></div>
+        <div class="res-info-item"><div class="res-info-dot"></div><span>info@barbeqube.de</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT FORM -->
+  <div class="res-form-panel">
+    <div class="res-form-inner">
+
+      <div id="formContent">
+        <h1 class="form-heading">Tisch reservieren</h1>
+        <p class="form-subheading">Sichere dir deinen Platz – wir freuen uns auf deinen Besuch.</p>
+        <p class="required-note">* Pflichtfelder</p>
+
+        <form id="reservationForm" novalidate>
+
+          <span class="form-section-title">Persönliche Angaben</span>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">Vorname *</label>
+              <input type="text" id="firstName" name="firstName" required autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Nachname *</label>
+              <input type="text" id="lastName" name="lastName" required autocomplete="family-name">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Telefon *</label>
+              <input type="tel" id="phone" name="phone" required autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label for="email">E-Mail *</label>
+              <input type="email" id="email" name="email" required autocomplete="email">
+            </div>
+          </div>
+
+          <span class="form-section-title" style="margin-top:0.8rem;">Reservierungsdetails</span>
+          <div class="form-group">
+            <label for="purpose">Besuchszweck</label>
+            <select id="purpose" name="purpose">
+              <option value="">Bitte auswählen</option>
+              <option value="fruehstueck">Frühstück</option>
+              <option value="mittagessen">Mittagessen</option>
+              <option value="abendessen">Abendessen</option>
+              <option value="geburtstag">Geburtstag</option>
+              <option value="geschaeft">Geschäftsessen</option>
+              <option value="event">Veranstaltung</option>
+              <option value="other">Sonstiges</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="guests">Anzahl Personen *</label>
+              <select id="guests" name="guests" required>
+                <option value="">Bitte wählen</option>
+                <option value="1">1 Person</option>
+                <option value="2">2 Personen</option>
+                <option value="3">3 Personen</option>
+                <option value="4">4 Personen</option>
+                <option value="5">5 Personen</option>
+                <option value="6">6 Personen</option>
+                <option value="7">7 Personen</option>
+                <option value="8">8 Personen</option>
+                <option value="9+">9+ Personen</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="date">Datum *</label>
+              <input type="date" id="date" name="date" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="time">Uhrzeit *</label>
+            <input type="time" id="time" name="time" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Besondere Wünsche / Anmerkungen</label>
+            <textarea id="message" name="message" placeholder="Allergien, besondere Anlässe, Sitzplatzwünsche …"></textarea>
+          </div>
+
+          <span class="form-section-title" style="margin-top:0.8rem;">Newsletter</span>
+          <div class="checkbox-group">
+            <input type="checkbox" id="newsletter1" name="newsletter1">
+            <label for="newsletter1">Ich möchte den BarbeQube Newsletter erhalten und über Aktionen, Events und Neuigkeiten informiert werden.</label>
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="newsletter2" name="newsletter2">
+            <label for="newsletter2">Ich bin einverstanden, dass meine Daten für Marketingzwecke verwendet werden. Weitere Informationen in der <a href="./datenschutzerklärung">Datenschutzerklärung</a>.</label>
+          </div>
+
+          <button type="submit" class="btn-submit">Jetzt reservieren</button>
+          <p class="form-note">Wir bestätigen Ihre Reservierung so schnell wie möglich per E-Mail oder Telefon.</p>
+
+        </form>
+      </div>
+
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-check">✓</div>
+        <div class="form-success-title">Reservierung eingegangen!</div>
+        <p class="form-success-body">Vielen Dank! Wir haben Ihre Anfrage erhalten und melden uns in Kürze zur Bestätigung.</p>
+        <a href="./" class="form-success-back">← Zurück zur Startseite</a>
+      </div>
+
+    </div>
+  </div>
+
 </div>
-<!-- Start of bodyEnd -->
-<!-- End of bodyEnd -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Barbe<span>Qube</span></div>
+        <p class="footer-tagline">Gutes Essen, gute Drinks, gute Musik. Willkommen in Lüneburg.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/barbeqube_lueneburg/" target="_blank" rel="noopener" title="Instagram">IG</a>
+          <a href="https://web.facebook.com/bbqubelueneburg" target="_blank" rel="noopener" title="Facebook">FB</a>
+          <a href="https://www.tiktok.com/@barbeqube_lueneburg" target="_blank" rel="noopener" title="TikTok">TK</a>
+        </div>
+      </div>
+      <div>
+        <span class="footer-col-title">Seiten</span>
+        <ul class="footer-links">
+          <li><a href="./">Startseite</a></li>
+          <li><a href="./menu">Speisekarte</a></li>
+          <li><a href="./gallery">Galerie</a></li>
+          <li><a href="./reservation">Reservierung</a></li>
+          <li><a href="./contact">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-col-title">Kontakt</span>
+        <ul class="footer-links">
+          <li><a href="tel:+494131400470">+49 4131 400470</a></li>
+          <li><a href="mailto:info@barbeqube.de">info@barbeqube.de</a></li>
+          <li><a href="https://maps.app.goo.gl/cpq5zuDGFfmnqids9" target="_blank" rel="noopener">Karte öffnen ↗</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-col-title">Rechtliches</span>
+        <ul class="footer-links">
+          <li><a href="./impressum">Impressum</a></li>
+          <li><a href="./datenschutzerklärung">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 BarbeQube Lüneburg. Made by <strong style="color:rgba(255,255,255,0.42)">WebArs</strong>.</p>
+      <div class="footer-legal">
+        <a href="./impressum">Impressum</a>
+        <a href="./datenschutzerklärung">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <script>
-// Hide Framer built-in nav after React hydration without removing DOM nodes
-(function() {
-  function hideFramerNav() {
-    document.querySelectorAll('.framer-5dsdT').forEach(function(el) {
-      el.style.setProperty('display', 'none', 'important');
-      el.style.setProperty('visibility', 'hidden', 'important');
-    });
-    var badge = document.getElementById('__framer-badge-container');
-    if (badge) { badge.style.setProperty('display', 'none', 'important'); }
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+
+  function toggleMenu() {
+    const m = document.getElementById('mobileMenu');
+    m.classList.toggle('open');
+    document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
   }
-  hideFramerNav();
-  var obs = new MutationObserver(function() { hideFramerNav(); });
-  obs.observe(document.documentElement, { childList: true, subtree: true });
-})();
-</script>
-<script>
-// Page transition: fade-out on link click
-document.querySelectorAll('a[href]').forEach(function(link) {
-  var href = link.getAttribute('href');
-  if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http')) return;
-  link.addEventListener('click', function(e) {
+
+  // Set min date to today
+  const dateInput = document.getElementById('date');
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+    dateInput.value = today;
+  }
+
+  // Form submission
+  document.getElementById('reservationForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    document.body.style.transition = 'opacity 0.3s ease';
-    document.body.style.opacity = '0';
-    setTimeout(function(){ window.location.href = href; }, 300);
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    document.querySelector('.res-form-panel').scrollTo({ top: 0, behavior: 'smooth' });
   });
-});
+
+  // Page transition
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http')) return;
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.body.style.transition = 'opacity 0.3s ease';
+      document.body.style.opacity = '0';
+      setTimeout(() => { window.location.href = href; }, 300);
+    });
+  });
 </script>
-</body></html>
+</body>
+</html>
