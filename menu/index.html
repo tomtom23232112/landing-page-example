@@ -113,19 +113,57 @@
       top: 50%;
       transform: translateY(-50%);
       font-family: 'Oswald', sans-serif;
-      font-size: 0.6rem;
+      font-size: 0.5rem;
       font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: rgba(218,197,167,0.35);
       white-space: nowrap;
+      pointer-events: none;
+      transition: font-size 0.2s ease, color 0.2s ease;
+    }
+    .side-nav-item:hover .side-nav-label { font-size: 0.65rem; color: rgba(218,197,167,0.75); }
+    .side-nav-item.active .side-nav-label { font-size: 0.65rem; color: var(--gold); }
+    @media (max-width: 1100px) { .side-nav { display: none; } }
+
+    /* MOBILE BOTTOM NAV */
+    .mob-nav {
+      display: none;
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 300;
+      background: rgba(10,11,10,0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(218,197,167,0.12);
+      border-radius: 40px;
+      padding: 0 4px;
+      overflow: hidden;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.4s ease;
+      max-width: calc(100vw - 32px);
     }
-    .side-nav-item:hover .side-nav-label,
-    .side-nav-item.active .side-nav-label { opacity: 1; }
-    @media (max-width: 1100px) { .side-nav { display: none; } }
+    .mob-nav.visible { opacity: 1; pointer-events: auto; }
+    .mob-nav-inner { display: flex; overflow-x: auto; scrollbar-width: none; }
+    .mob-nav-inner::-webkit-scrollbar { display: none; }
+    .mob-nav-btn {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      padding: 0.6rem 0.9rem;
+      white-space: nowrap;
+      transition: color 0.2s;
+      flex-shrink: 0;
+    }
+    .mob-nav-btn.active { color: var(--gold); }
+    @media (max-width: 1100px) { .mob-nav { display: block; } }
 
     /* SECTION */
     .menu-section { padding: 8vw 4vw; }
@@ -339,7 +377,6 @@
   </div>
 </div>
 
-<!-- SIDE NAV -->
 <!-- HORIZONTAL CATEGORY NAV -->
 <div class="cat-nav" id="catNav">
   <div class="cat-nav-inner">
@@ -376,6 +413,19 @@
   <a href="#cocktails" class="side-nav-item" data-section="cocktails">
     <span class="side-nav-label">Cocktails</span><span class="side-nav-dot"></span>
   </a>
+</nav>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mob-nav" id="mobNav" aria-label="Menü-Abschnitte mobil">
+  <div class="mob-nav-inner">
+    <a href="#fruehstueck" class="mob-nav-btn active" data-section="fruehstueck">Frühstück</a>
+    <a href="#burger-sec" class="mob-nav-btn" data-section="burger-sec">Burger</a>
+    <a href="#hauptspeisen" class="mob-nav-btn" data-section="hauptspeisen">Hauptspeisen</a>
+    <a href="#bowls" class="mob-nav-btn" data-section="bowls">Bowls</a>
+    <a href="#desserts" class="mob-nav-btn" data-section="desserts">Desserts</a>
+    <a href="#getraenke" class="mob-nav-btn" data-section="getraenke">Getränke</a>
+    <a href="#cocktails" class="mob-nav-btn" data-section="cocktails">Cocktails</a>
+  </div>
 </nav>
 
 
@@ -1434,12 +1484,16 @@
   const catBtns = document.querySelectorAll('.cat-btn');
   const sideNav = document.getElementById('sideNav');
   const sideItems = document.querySelectorAll('.side-nav-item');
+  const mobNav = document.getElementById('mobNav');
+  const mobBtns = document.querySelectorAll('.mob-nav-btn');
   const sections = ['fruehstueck','burger-sec','hauptspeisen','bowls','desserts','getraenke','cocktails'];
 
-  // Show side nav after hero
+  // Show side/mob nav after hero
   const heroEl = document.querySelector('.menu-hero');
   const heroObs = new IntersectionObserver(entries => {
-    sideNav.classList.toggle('visible', !entries[0].isIntersecting);
+    const past = !entries[0].isIntersecting;
+    sideNav.classList.toggle('visible', past);
+    if (mobNav) mobNav.classList.toggle('visible', past);
   }, { threshold: 0 });
   if (heroEl) heroObs.observe(heroEl);
 
@@ -1458,14 +1512,21 @@
   sideItems.forEach(item => {
     item.addEventListener('click', e => { e.preventDefault(); scrollToSection(item.getAttribute('href')); });
   });
+  mobBtns.forEach(btn => {
+    btn.addEventListener('click', e => { e.preventDefault(); scrollToSection(btn.getAttribute('href')); });
+  });
 
-  // Highlight active section in both navs
+  // Highlight active section in all navs
   const secObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         const id = e.target.id;
         catBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.section === id));
         sideItems.forEach(item => item.classList.toggle('active', item.dataset.section === id));
+        mobBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.section === id));
+        // Auto-scroll active mob btn into view
+        const activeBtn = mobNav && mobNav.querySelector('.mob-nav-btn.active');
+        if (activeBtn) activeBtn.scrollIntoView({ inline: 'center', behavior: 'smooth', block: 'nearest' });
       }
     });
   }, { threshold: 0.15, rootMargin: '-80px 0px -45% 0px' });
