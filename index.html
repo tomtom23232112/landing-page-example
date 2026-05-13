@@ -1,1041 +1,807 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>$0 Down Website Build — Delivered in 48 Hours | PageDrop</title>
-  <meta name="description" content="We build your professional lead-generating website for $250 flat. $0 upfront. 48-hour delivery. Pay only if you love it." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            headline: ['Oswald', 'sans-serif'],
-            body: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            navy:   { DEFAULT: '#0D1F3C', dark: '#081529', light: '#1A3560' },
-            orange: { DEFAULT: '#F47500', dark: '#D46500', light: '#FF8C1A' },
-            steel:  '#4A5568',
-            rust:   '#C0392B',
-          },
-          boxShadow: {
-            'solid-sm':  '3px 3px 0 #0D1F3C',
-            'solid':     '4px 4px 0 #0D1F3C',
-            'solid-lg':  '6px 6px 0 #0D1F3C',
-            'solid-orange': '4px 4px 0 #D46500',
-          },
-        },
-      },
-    };
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$250 Website — Pay After You Love It | Everadam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent: #2563EB;
+      --bg-dk: #0A0A0B; --bg-dk2: #111114;
+      --bg-lt: #F5F4EF; --bg-lt2: #EDECEA;
+      --txt-dk: #F2F0EC; --txt-dk2: #7A7A8A;
+      --txt-lt: #1A1A1E; --txt-lt2: #5A5A66;
+      --brd-dk: rgba(255,255,255,0.07); --brd-lt: rgba(0,0,0,0.08);
+      --fh: 'Barlow Condensed', sans-serif; --fb: 'DM Sans', sans-serif;
+    }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #F8F9FA;
-      color: #0D1F3C;
-      margin: 0;
-      padding-bottom: 84px; /* space for sticky bar */
+    body { font-family: var(--fb); background: var(--bg-dk); color: var(--txt-dk); overflow-x: hidden; }
+
+    /* KINETIC BANNER */
+    .kinetic-bar { background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--brd-dk); padding: 10px 48px; display: flex; align-items: center; justify-content: center; gap: 11px; flex-wrap: wrap; }
+    .k-dot { width: 9px; height: 9px; border-radius: 50%; background: #22C55E; flex-shrink: 0; animation: kdot 2s ease-in-out infinite; }
+    .kinetic-bar-text { font-size: 13px; color: var(--txt-dk2); }
+    .kinetic-bar-text strong { color: var(--txt-dk); font-weight: 600; }
+    .kinetic-bar-link { font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 0.05em; cursor: pointer; text-decoration: none; }
+    @keyframes kdot { 0%,100%{opacity:1;transform:scale(1);box-shadow:0 0 0 0 rgba(34,197,94,.5)} 60%{opacity:.9;transform:scale(1.25);box-shadow:0 0 0 6px rgba(34,197,94,0)} }
+
+    /* NAV */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; background: rgba(10,10,11,.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--brd-dk); padding: 14px 48px; display: flex; align-items: center; justify-content: space-between; transform: translateY(-110%); transition: transform .35s cubic-bezier(.4,0,.2,1); }
+    .nav.show { transform: translateY(0); }
+    .nav-logo { font-family: var(--fh); font-weight: 900; font-size: 22px; letter-spacing: .02em; color: var(--txt-dk); text-decoration: none; }
+
+    /* BUTTONS */
+    .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--fb); font-weight: 600; border: none; cursor: pointer; transition: filter .18s, transform .18s; letter-spacing: .01em; line-height: 1; text-decoration: none; }
+    .btn-primary { background: var(--accent); color: #fff; padding: 20px 44px; font-size: 17px; }
+    .btn-primary:hover { filter: brightness(.88); transform: translateY(-2px); }
+    .btn-sm { background: var(--accent); color: #fff; padding: 11px 24px; font-size: 14px; }
+    .btn-sm:hover { filter: brightness(.88); }
+    .btn-inv { background: #fff; color: var(--accent); padding: 20px 44px; font-size: 17px; }
+    .btn-inv:hover { filter: brightness(.96); transform: translateY(-2px); }
+
+    /* HERO */
+    .hero { background: radial-gradient(ellipse 70% 60% at 30% 70%, color-mix(in srgb, var(--accent) 9%, transparent) 0%, transparent 65%), var(--bg-dk); min-height: 100vh; padding: 130px 48px 100px; display: flex; align-items: center; position: relative; overflow: hidden; }
+    .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; }
+    .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; }
+    .hero-hl { font-family: var(--fh); font-weight: 900; font-size: clamp(52px,7vw,96px); line-height: .9; letter-spacing: -.01em; text-transform: uppercase; color: var(--txt-dk); margin-bottom: 0; }
+    .hero-hl .ac { color: var(--accent); }
+    .hero-bottom { display: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: start; margin-top: 48px; }
+    .hero-sub { font-size: 18px; line-height: 1.7; color: var(--txt-dk2); max-width: 540px; margin-bottom: 44px; }
+    .hero-sub strong { color: var(--txt-dk); font-weight: 600; }
+    .hero-trust { font-size: 12px; color: var(--txt-dk2); letter-spacing: .06em; margin-top: 16px; }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--brd-dk); border: 1px solid var(--brd-dk); align-self: center; }
+    .hero-stat { background: var(--bg-dk2); padding: 28px 26px; text-align: center; transition: background .2s; min-width: 118px; }
+    .hero-stat:hover { background: rgba(255,255,255,.04); }
+    .hero-stat-n { font-family: var(--fh); font-weight: 900; font-size: 46px; color: var(--accent); line-height: 1; margin-bottom: 7px; }
+    .hero-stat-l { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--txt-dk2); }
+
+    /* BADGE */
+    .badge-ring { position: absolute; bottom: 48px; right: 48px; display: flex; align-items: center; justify-content: center; width: 152px; height: 152px; border-radius: 50%; border: 2px dashed color-mix(in srgb, var(--accent) 40%, transparent); }
+    .badge-core { width: 130px; height: 130px; border-radius: 50%; background: var(--accent); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transform: rotate(15deg); }
+    .badge-main { font-family: var(--fh); font-weight: 900; font-size: 30px; color: #fff; line-height: 1; }
+    .badge-sub { font-size: 9px; font-weight: 700; color: rgba(255,255,255,.88); letter-spacing: .08em; text-transform: uppercase; line-height: 1.4; margin-top: 3px; }
+
+    /* VSL */
+    .vsl-wrap { max-width: 820px; margin: 0 auto; }
+    .vsl-embed { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border: 1px solid var(--brd-dk); overflow: hidden; }
+    .vsl-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+
+    /* TICKER */
+    .ticker { background: var(--bg-dk2); border-top: 1px solid var(--brd-dk); border-bottom: 1px solid var(--brd-dk); padding: 15px 0; overflow: hidden; }
+    .ticker-track { display: flex; animation: ticker-anim 36s linear infinite; white-space: nowrap; }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-item { font-family: var(--fh); font-size: 15px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--txt-dk2); padding: 0 36px; flex-shrink: 0; }
+    .ticker-dot { color: var(--accent); margin: 0 4px; }
+    @keyframes ticker-anim { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* SECTIONS */
+    .sec { padding: 104px 48px; }
+    .sec-inner { max-width: 1100px; margin: 0 auto; }
+    .sec-dk { background: var(--bg-dk); } .sec-dk2 { background: var(--bg-dk2); }
+    .sec-lt { background: var(--bg-lt); color: var(--txt-lt); } .sec-accent { background: var(--accent); }
+    .sec-label { font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 22px; display: block; }
+    .sec-dk .sec-label,.sec-dk2 .sec-label { color: var(--accent); }
+    .sec-lt .sec-label { color: var(--accent); } .sec-accent .sec-label { color: rgba(255,255,255,.65); }
+    .sec-hl { font-family: var(--fh); font-weight: 900; font-size: clamp(44px,5.5vw,78px); line-height: .93; letter-spacing: -.01em; text-transform: uppercase; margin-bottom: 56px; }
+    .sec-dk .sec-hl,.sec-dk2 .sec-hl { color: var(--txt-dk); } .sec-lt .sec-hl { color: var(--txt-lt); } .sec-accent .sec-hl { color: #fff; }
+
+    /* PAIN */
+    .pain-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--brd-dk); }
+    .pain-card { background: var(--bg-dk2); padding: 44px 38px; position: relative; }
+    .pain-card::before { content:''; position: absolute; top:0; left:0; width:3px; height:0; background: var(--accent); transition: height .5s ease; }
+    .pain-card:hover::before { height: 100%; }
+    .pain-num { font-family: var(--fh); font-size: 72px; font-weight: 900; color: rgba(255,255,255,.05); line-height: 1; margin-bottom: 20px; }
+    .pain-title { font-family: var(--fh); font-size: 27px; font-weight: 800; color: var(--txt-dk); margin-bottom: 14px; text-transform: uppercase; line-height: 1.1; }
+    .pain-body { font-size: 15px; line-height: 1.68; color: var(--txt-dk2); }
+
+    /* COMPARE */
+    .cmp { border: 1px solid var(--brd-dk); overflow: hidden; }
+    .cmp-heads { display: grid; grid-template-columns: 1fr 1fr; }
+    .cmp-head { padding: 22px 32px; font-family: var(--fh); font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: .03em; }
+    .cmp-head.bad { background: rgba(255,255,255,.025); color: var(--txt-dk2); }
+    .cmp-head.good { background: var(--accent); color: #fff; }
+    .cmp-row { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--brd-dk); transition: background .15s; }
+    .cmp-row:hover { background: rgba(255,255,255,.02); }
+    .cmp-cell { padding: 15px 32px; font-size: 15px; line-height: 1.5; display: flex; align-items: center; gap: 13px; }
+    .cmp-cell + .cmp-cell { border-left: 1px solid var(--brd-dk); }
+    .cmp-cell.bad { color: var(--txt-dk2); } .cmp-cell.good { color: var(--txt-dk); font-weight: 500; }
+    .cmp-x { color: #EF4444; font-weight: 700; font-size: 15px; flex-shrink: 0; }
+    .cmp-chk { color: var(--accent); font-weight: 700; font-size: 15px; flex-shrink: 0; }
+
+    /* STEPS */
+    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--brd-dk); margin-bottom: 60px; }
+    .step { background: var(--bg-dk); padding: 44px 36px; }
+    .step-n { font-family: var(--fh); font-size: 88px; font-weight: 900; color: var(--accent); opacity: .22; line-height: 1; margin-bottom: 22px; }
+    .step-title { font-family: var(--fh); font-size: 27px; font-weight: 800; text-transform: uppercase; color: var(--txt-dk); margin-bottom: 14px; line-height: 1.1; }
+    .step-body { font-size: 15px; line-height: 1.68; color: var(--txt-dk2); }
+    .step-pill { display: inline-block; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 5px 12px; margin-top: 20px; }
+
+    /* TESTIMONIALS */
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .testi-card { background: var(--bg-dk); border: 1px solid var(--brd-dk); padding: 32px; display: flex; flex-direction: column; transition: border-color .25s; }
+    .testi-card:hover { border-color: var(--accent); }
+    .testi-stars { color: var(--accent); font-size: 17px; letter-spacing: 3px; margin-bottom: 20px; }
+    .testi-quote { font-size: 15px; line-height: 1.78; color: var(--txt-dk); font-style: italic; flex: 1; margin-bottom: 24px; }
+    .testi-author { display: flex; align-items: center; gap: 14px; padding-top: 20px; border-top: 1px solid var(--brd-dk); }
+    .testi-avi { width: 42px; height: 42px; border-radius: 50%; background: var(--bg-dk2); border: 1.5px solid var(--accent); display: flex; align-items: center; justify-content: center; font-family: var(--fh); font-weight: 900; font-size: 17px; color: var(--accent); flex-shrink: 0; }
+    .testi-name { font-size: 14px; font-weight: 600; color: var(--txt-dk); line-height: 1.3; }
+    .testi-role { font-size: 12px; color: var(--txt-dk2); margin-top: 2px; }
+
+    /* CATCH */
+    .catch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .catch-quote { background: var(--bg-lt2); padding: 40px; border-left: 4px solid var(--accent); }
+    .catch-quote p { font-size: 17px; line-height: 1.8; color: var(--txt-lt); }
+    .catch-quote strong { color: var(--txt-lt); font-weight: 600; }
+    .catch-pts { display: flex; flex-direction: column; gap: 28px; }
+    .catch-pt { display: flex; gap: 18px; align-items: flex-start; }
+    .catch-icon { width: 34px; height: 34px; border: 1.5px solid var(--brd-lt); display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--bg-lt2); }
+    .catch-pt-title { font-size: 15px; font-weight: 600; color: var(--txt-lt); margin-bottom: 4px; }
+    .catch-pt-body { font-size: 14px; line-height: 1.65; color: var(--txt-lt2); }
+
+    /* BENEFITS */
+    .ben-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .ben-item { padding: 26px 30px; border-bottom: 1px solid var(--brd-dk); border-right: 1px solid var(--brd-dk); display: flex; gap: 18px; align-items: flex-start; transition: background .2s; }
+    .ben-item:hover { background: rgba(255,255,255,.02); }
+    .ben-item:nth-child(2n) { border-right: none; }
+    .ben-check { width: 22px; height: 22px; background: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .ben-title { font-size: 15px; font-weight: 600; color: var(--txt-dk); margin-bottom: 3px; }
+    .ben-desc { font-size: 13px; line-height: 1.55; color: var(--txt-dk2); }
+
+    /* SCARCITY */
+    .scar-inner { display: flex; gap: 64px; align-items: center; }
+    .scar-count { font-family: var(--fh); font-size: clamp(120px,18vw,220px); font-weight: 900; line-height: 1; color: rgba(255,255,255,.18); flex-shrink: 0; }
+    .scar-hl { font-family: var(--fh); font-weight: 900; font-size: clamp(40px,5.5vw,72px); text-transform: uppercase; color: #fff; line-height: .93; margin-bottom: 20px; }
+    .scar-body { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,.75); margin-bottom: 36px; max-width: 480px; }
+    .scar-warn { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,0,0,.2); border: 1px solid rgba(255,255,255,.2); padding: 6px 14px; margin-bottom: 20px; font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.8); }
+
+    /* FINAL CTA + FOOTER */
+    .final-hl { font-family: var(--fh); font-weight: 900; font-size: clamp(52px,8vw,110px); text-transform: uppercase; line-height: .91; margin-bottom: 32px; }
+    .final-sub { font-size: 18px; line-height: 1.72; color: var(--txt-dk2); max-width: 540px; margin: 0 auto 44px; }
+    .footer { background: var(--bg-dk); border-top: 1px solid var(--brd-dk); padding: 36px 48px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .footer-logo { font-family: var(--fh); font-size: 20px; font-weight: 900; color: var(--txt-dk); }
+    .footer-legal { font-size: 13px; color: var(--txt-dk2); }
+    .footer-cta-btn { background: var(--accent); color: #fff; font-family: var(--fb); font-weight: 600; font-size: 14px; padding: 12px 26px; border: none; cursor: pointer; transition: filter .18s; white-space: nowrap; }
+    .footer-cta-btn:hover { filter: brightness(.88); }
+
+    /* MOBILE STICKY BAR */
+    .mob-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 800; background: rgba(10,10,11,.96); backdrop-filter: blur(16px); border-top: 1px solid var(--brd-dk); padding: 14px 20px 20px; }
+    .mob-bar .btn-primary { width: 100%; justify-content: center; padding: 17px; font-size: 16px; }
+    .mob-bar-trust { text-align: center; font-size: 11px; color: var(--txt-dk2); margin-top: 7px; letter-spacing: .04em; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.vis { opacity: 1; transform: none; }
+
+    /* TIMED POPUP */
+    .tpop-ov { position: fixed; inset: 0; z-index: 9998; background: rgba(10,10,11,.78); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; padding: 20px; animation: fadeIn .3s ease; }
+    .tpop-ov.hidden { display: none; }
+    .tpop-box { background: var(--bg-dk2); border: 1px solid var(--accent); max-width: 460px; width: 100%; padding: 48px; position: relative; animation: slideUp .35s cubic-bezier(.4,0,.2,1); }
+    .tpop-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 18px; cursor: pointer; color: var(--txt-dk2); padding: 4px 6px; transition: color .15s; line-height: 1; }
+    .tpop-close:hover { color: var(--txt-dk); }
+    .tpop-tag { font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .tpop-hl { font-family: var(--fh); font-size: 44px; font-weight: 900; text-transform: uppercase; color: var(--txt-dk); line-height: .93; margin-bottom: 16px; }
+    .tpop-rule { width: 48px; height: 2px; background: var(--accent); margin-bottom: 24px; }
+    .tpop-body { font-size: 16px; line-height: 1.72; color: var(--txt-dk2); margin-bottom: 32px; }
+    .tpop-body strong { color: var(--txt-dk); font-weight: 600; }
+    .tpop-trust { font-size: 12px; color: var(--txt-dk2); margin-top: 12px; text-align: center; letter-spacing: .04em; }
+
+    /* EXIT INTENT MODAL */
+    .exit-ov { position: fixed; inset: 0; z-index: 9997; background: rgba(10,10,11,.88); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; padding: 20px; animation: fadeIn .22s ease; }
+    .exit-ov.hidden { display: none; }
+    .exit-box { background: var(--bg-dk2); border: 1.5px solid var(--accent); max-width: 480px; width: 100%; padding: 48px; position: relative; animation: slideUp .28s cubic-bezier(.4,0,.2,1); }
+    .exit-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 18px; cursor: pointer; color: var(--txt-dk2); padding: 4px 6px; transition: color .15s; line-height: 1; }
+    .exit-close:hover { color: var(--txt-dk); }
+    .exit-tag { font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    .exit-hl { font-family: var(--fh); font-size: 44px; font-weight: 900; text-transform: uppercase; color: var(--txt-dk); line-height: .93; margin-bottom: 14px; }
+    .exit-sub { font-size: 15px; line-height: 1.72; color: var(--txt-dk2); margin-bottom: 28px; }
+    .exit-sub strong { color: var(--txt-dk); font-weight: 600; }
+    .exit-input { width: 100%; padding: 14px 16px; border: 1.5px solid rgba(255,255,255,.12); font-family: var(--fb); font-size: 15px; color: var(--txt-dk); margin-bottom: 12px; outline: none; transition: border-color .18s; background: rgba(255,255,255,.04); }
+    .exit-input:focus { border-color: var(--accent); }
+    .exit-input::placeholder { color: var(--txt-dk2); }
+    .exit-submit { width: 100%; padding: 16px; font-family: var(--fb); font-size: 16px; font-weight: 600; border: none; cursor: pointer; background: var(--accent); color: #fff; transition: filter .18s; }
+    .exit-submit:hover:not(:disabled) { filter: brightness(.88); }
+    .exit-submit:disabled { opacity: .45; cursor: default; }
+    .exit-trust { font-size: 11px; color: var(--txt-dk2); text-align: center; margin-top: 10px; letter-spacing: .04em; }
+    .exit-confirmed { text-align: center; padding: 20px 0; }
+
+    /* MODAL (Micro-Commitment Funnel) */
+    .m-overlay { position: fixed; inset: 0; z-index: 9999; background: rgba(10,10,11,.82); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; padding: 20px; animation: fadeIn .22s ease; }
+    .m-overlay.hidden { display: none; }
+    .m-box { background: #fff; color: var(--txt-lt); max-width: 500px; width: 100%; padding: 48px; position: relative; max-height: 90vh; overflow-y: auto; animation: slideUp .28s cubic-bezier(.4,0,.2,1); }
+    .m-close { position: absolute; top: 18px; right: 18px; background: none; border: none; font-size: 18px; cursor: pointer; color: #B0B0BC; line-height: 1; padding: 4px 6px; transition: color .15s; }
+    .m-close:hover { color: var(--txt-lt); }
+    .m-prog { display: flex; gap: 5px; margin-bottom: 36px; }
+    .m-dot { height: 3px; flex: 1; background: #E4E4EC; border-radius: 2px; transition: background .3s; }
+    .m-dot.on { background: var(--accent); }
+    .m-tag { font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .m-hl { font-family: var(--fh); font-size: 40px; font-weight: 900; text-transform: uppercase; color: var(--txt-lt); line-height: .95; margin-bottom: 10px; }
+    .m-sub { font-size: 15px; color: var(--txt-lt2); line-height: 1.6; margin-bottom: 28px; }
+    .m-pill { width: 100%; padding: 14px 20px; border: 1.5px solid #E4E4EC; font-family: var(--fb); font-size: 15px; font-weight: 500; cursor: pointer; background: #fff; color: var(--txt-lt); transition: all .15s; text-align: left; margin-bottom: 10px; display: block; }
+    .m-pill:hover { border-color: var(--accent); background: #F5F4EF; }
+    .m-pill.on { border-color: var(--accent); background: var(--accent); color: #fff; }
+    .m-label { display: block; font-size: 12px; font-weight: 600; letter-spacing: .05em; color: var(--txt-lt2); margin-bottom: 7px; text-transform: uppercase; }
+    .m-input { width: 100%; padding: 14px 16px; border: 1.5px solid #E4E4EC; font-family: var(--fb); font-size: 15px; color: var(--txt-lt); margin-bottom: 14px; outline: none; transition: border-color .18s; background: #FAFAF8; }
+    .m-input:focus { border-color: var(--accent); background: #fff; }
+    .m-input::placeholder { color: #B0B0BC; }
+    .m-btn { width: 100%; padding: 16px; font-family: var(--fb); font-size: 15px; font-weight: 600; border: none; cursor: pointer; transition: filter .18s; background: var(--accent); color: #fff; }
+    .m-btn:hover:not(:disabled) { filter: brightness(.88); }
+    .m-btn:disabled { opacity: .45; cursor: default; }
+    .m-confirm-icon { width: 64px; height: 64px; background: var(--accent); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
+    .m-confirm-hl { font-family: var(--fh); font-size: 44px; font-weight: 900; text-transform: uppercase; color: var(--txt-lt); text-align: center; line-height: .95; margin-bottom: 14px; }
+    .m-confirm-sub { font-size: 16px; color: var(--txt-lt2); text-align: center; line-height: 1.7; }
+    .m-confirm-sub strong { color: var(--txt-lt); font-weight: 600; }
+    .m-step { display: none; }
+    .m-step.active { display: block; }
+
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes slideUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+
+    @media (max-width: 820px) {
+      .kinetic-bar { padding: 10px 20px; }
+      .hero { padding: 100px 24px 100px; }
+      .hero-bottom { grid-template-columns: 1fr; }
+      .hero-stats { display: none; }
+      .badge-ring { display: none; }
+      .sec { padding: 72px 24px; }
+      .nav { padding: 14px 24px; }
+      .footer { padding: 32px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .footer-cta-btn { width: 100%; text-align: center; }
+      .pain-grid, .steps, .catch-grid { grid-template-columns: 1fr; }
+      .pain-grid, .steps { gap: 1px; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .cmp-head, .cmp-cell { padding: 14px 18px; font-size: 13px; }
+      .ben-grid { grid-template-columns: 1fr; }
+      .ben-item { border-right: none !important; }
+      .scar-inner { flex-direction: column; gap: 8px; text-align: center; }
+      .scar-count { font-size: 80px; }
+      .scar-body { margin: 0 auto 32px; }
+      .m-box { padding: 32px 24px; }
+      .mob-bar { display: block; }
     }
-    h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; letter-spacing: 0.01em; }
-
-    /* ── Scroll animations ── */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-left  { opacity: 0; transform: translateX(-24px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal-left.visible  { opacity: 1; transform: none; }
-    .reveal-right { opacity: 0; transform: translateX(24px);  transition: opacity .6s ease, transform .6s ease; }
-    .reveal-right.visible { opacity: 1; transform: none; }
-    .d1 { transition-delay:.05s } .d2 { transition-delay:.12s } .d3 { transition-delay:.19s }
-    .d4 { transition-delay:.26s } .d5 { transition-delay:.33s } .d6 { transition-delay:.40s }
-
-    /* ── Orange CTA button ── */
-    .btn-cta {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      background: #F47500;
-      color: #fff;
-      border: 3px solid #0D1F3C;
-      box-shadow: 5px 5px 0 #0D1F3C;
-      border-radius: 4px;
-      padding: 1rem 2rem;
-      cursor: pointer;
-      display: inline-block;
-      text-decoration: none;
-      line-height: 1.2;
-      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .btn-cta:hover  { background:#D46500; transform:translate(2px,2px); box-shadow:3px 3px 0 #0D1F3C; }
-    .btn-cta:active { transform:translate(5px,5px); box-shadow:0 0 0 #0D1F3C; }
-
-    /* ── Navy secondary button ── */
-    .btn-navy {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      background: #0D1F3C;
-      color: #fff;
-      border: 3px solid #0D1F3C;
-      box-shadow: 4px 4px 0 #4A5568;
-      border-radius: 4px;
-      padding: .75rem 1.5rem;
-      cursor: pointer;
-      display: inline-block;
-      text-decoration: none;
-      transition: transform .12s ease, box-shadow .12s ease;
-    }
-    .btn-navy:hover  { transform:translate(2px,2px); box-shadow:2px 2px 0 #4A5568; }
-    .btn-navy:active { transform:translate(4px,4px); box-shadow:0 0 0 #4A5568; }
-
-    /* ── Section card (solid border) ── */
-    .card {
-      background: #fff;
-      border: 2px solid #CBD5E0;
-      border-radius: 4px;
-      box-shadow: 4px 4px 0 #CBD5E0;
-    }
-    .card-navy {
-      background: #0D1F3C;
-      border: 2px solid #081529;
-      border-radius: 4px;
-      box-shadow: 4px 4px 0 #081529;
-    }
-
-    /* ── Image placeholder ── */
-    .img-placeholder {
-      background: #CBD5E0;
-      border: 2px solid #A0AEC0;
-      border-radius: 4px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #718096;
-      font-family: 'Oswald', sans-serif;
-      font-size: .875rem;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      gap: .5rem;
-    }
-
-    /* ── Divider ── */
-    .divider { border: none; border-top: 3px solid #E2E8F0; }
-
-    /* ── Blinking dot ── */
-    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.2;} }
-    .blink { animation: blink 1.2s step-end infinite; }
-
-    /* ── Sticky bar ── */
-    #sticky-bar {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
-      background: #0D1F3C;
-      border-top: 3px solid #F47500;
-      padding: .875rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      transform: translateY(100%);
-      transition: transform .35s cubic-bezier(.16,1,.3,1);
-    }
-    #sticky-bar.show { transform: translateY(0); }
-
-    /* ── Comparison table ── */
-    .comp-row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 2px solid #E2E8F0; }
-    .comp-row:last-child { border-bottom: none; }
-    .comp-cell { padding: .875rem 1rem; font-size: .9rem; }
-    .comp-them  { background: #FFF5F5; border-right: 2px solid #E2E8F0; color: #C0392B; }
-    .comp-us    { background: #F0FFF4; color: #1A6B3C; font-weight: 600; }
-
-    /* ── VSL placeholder ── */
-    .vsl-wrap {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: #E2E8F0;
-      border: 3px solid #0D1F3C;
-      box-shadow: 6px 6px 0 #0D1F3C;
-      border-radius: 4px;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    .vsl-inner {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 1rem;
-      background: linear-gradient(160deg,#1A3560 0%,#0D1F3C 100%);
-    }
-    .play-ring {
-      width: 80px; height: 80px; border-radius: 50%;
-      border: 4px solid #F47500;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(244,117,0,.15);
-      transition: background .2s, transform .2s;
-    }
-    .vsl-wrap:hover .play-ring { background:rgba(244,117,0,.35); transform:scale(1.08); }
-
-    /* ── FAQ ── */
-    .faq-answer { display: none; }
-    .faq-open .faq-answer { display: block; }
-    .faq-chevron { transition: transform .2s ease; }
-    .faq-open .faq-chevron { transform: rotate(180deg); }
-
-    /* ── Testimonial stars ── */
-    .star { color: #F47500; font-size: 1.1rem; }
-
-    /* ── Step number ── */
-    .step-num {
-      font-family: 'Oswald', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #F47500;
-      line-height: 1;
-      min-width: 3rem;
-    }
-
-    /* Modal */
-    #modal-overlay { display:none; position:fixed; inset:0; z-index:200; background:rgba(13,31,60,.7); align-items:center; justify-content:center; padding:1rem; }
-    #modal-overlay.open { display:flex; }
   </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════════════
-     TOP NAV BAR
-══════════════════════════════════════════════════════ -->
-<header style="background:#0D1F3C;border-bottom:3px solid #F47500;position:sticky;top:0;z-index:90;">
-  <div style="max-width:1100px;margin:0 auto;padding:.75rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;">
-    <!-- Logo -->
-    <div style="display:flex;align-items:center;gap:.625rem;flex-shrink:0;">
-      <div style="width:36px;height:36px;background:#F47500;border:2px solid #fff;border-radius:4px;display:flex;align-items:center;justify-content:center;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-      </div>
-      <span style="font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;color:#fff;letter-spacing:.04em;">PAGEDROP</span>
-    </div>
-    <!-- Nav links (desktop) -->
-    <nav style="display:none;" class="md-flex">
-      <a href="#compare" style="color:rgba(255,255,255,.75);text-decoration:none;font-size:.875rem;font-weight:600;margin:0 .75rem;letter-spacing:.04em;text-transform:uppercase;font-family:'Oswald',sans-serif;">Compare</a>
-      <a href="#how"     style="color:rgba(255,255,255,.75);text-decoration:none;font-size:.875rem;font-weight:600;margin:0 .75rem;letter-spacing:.04em;text-transform:uppercase;font-family:'Oswald',sans-serif;">How It Works</a>
-      <a href="#proof"   style="color:rgba(255,255,255,.75);text-decoration:none;font-size:.875rem;font-weight:600;margin:0 .75rem;letter-spacing:.04em;text-transform:uppercase;font-family:'Oswald',sans-serif;">Proof</a>
-    </nav>
-    <a href="#cta-form" class="btn-cta" style="font-size:1rem;padding:.6rem 1.2rem;white-space:nowrap;">Get My Free Build →</a>
-  </div>
-</header>
-<style>@media(min-width:768px){.md-flex{display:flex!important;}}</style>
-
-<!-- ══════════════════════════════════════════════════════
-     SECTION 1 — HERO
-══════════════════════════════════════════════════════ -->
-<section id="hero" style="background:#fff;border-bottom:3px solid #E2E8F0;padding:4rem 1.25rem 3.5rem;">
-  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center;">
-
-    <!-- Copy side -->
-    <div style="max-width:680px;">
-      <!-- Badge -->
-      <div class="reveal" style="display:inline-flex;align-items:center;gap:.5rem;background:#FFF3E0;border:2px solid #F47500;border-radius:4px;padding:.35rem .85rem;margin-bottom:1.25rem;">
-        <span class="blink" style="width:10px;height:10px;border-radius:50%;background:#F47500;flex-shrink:0;display:inline-block;"></span>
-        <span style="font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:600;color:#0D1F3C;letter-spacing:.08em;text-transform:uppercase;">Only 2 Spots Left This Week</span>
-      </div>
-
-      <h1 class="reveal d1" style="font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;line-height:1.05;color:#0D1F3C;margin:0 0 1.25rem;text-transform:uppercase;">
-        We Build Your<br/>
-        <span style="color:#F47500;">Lead-Generating</span><br/>
-        Website For $0&nbsp;Down.
-      </h1>
-
-      <p class="reveal d2" style="font-size:1.15rem;line-height:1.7;color:#374151;margin:0 0 1rem;max-width:580px;">
-        Stop losing jobs to the guy down the street just because his website looks better.
-        We build yours in <strong>48 hours</strong>, charge a flat <strong>$250</strong>, and you don't
-        hand over a single dollar until you see it and love it.
-      </p>
-      <p class="reveal d3" style="font-size:1rem;line-height:1.7;color:#6B7280;margin:0 0 2rem;max-width:560px;">
-        Your website shouldn't be a piece of art — it should be a
-        <em>digital work truck that runs 24/7 and sends you jobs while you sleep.</em>
-        That's exactly what we build.
-      </p>
-
-      <!-- CTA cluster -->
-      <div class="reveal d4" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-bottom:1.75rem;">
-        <a href="#cta-form" class="btn-cta" style="font-size:1.35rem;padding:1.1rem 2.2rem;">
-          Claim My $0-Down Build →
-        </a>
-        <a href="#demo" class="btn-navy" style="font-size:1rem;padding:1rem 1.5rem;">
-          ▶ Watch the 3-Min Demo
-        </a>
-      </div>
-
-      <!-- Trust strip -->
-      <div class="reveal d5" style="display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:center;">
-        <div style="display:flex;align-items:center;gap:.4rem;font-size:.875rem;color:#374151;">
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="#16A34A"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-          No contract
-        </div>
-        <div style="display:flex;align-items:center;gap:.4rem;font-size:.875rem;color:#374151;">
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="#16A34A"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-          No design meetings
-        </div>
-        <div style="display:flex;align-items:center;gap:.4rem;font-size:.875rem;color:#374151;">
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="#16A34A"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-          48-hour delivery
-        </div>
-        <div style="display:flex;align-items:center;gap:.4rem;font-size:.875rem;color:#374151;">
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="#16A34A"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-          $250 flat — guaranteed
-        </div>
-      </div>
-    </div>
-
-    <!-- Hero image placeholder -->
-    <div class="reveal d3" style="max-width:500px;width:100%;margin:0 auto;">
-      <div class="img-placeholder" style="width:100%;aspect-ratio:4/3;">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#A0AEC0" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span>Photo: Crew on a Job Site</span>
-        <span style="font-size:.75rem;font-family:'Inter',sans-serif;font-weight:400;text-transform:none;letter-spacing:0;">(Replace with your actual photo)</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════
-     SOCIAL PROOF RIBBON
-══════════════════════════════════════════════════════ -->
-<div style="background:#0D1F3C;padding:1rem 1.25rem;border-bottom:3px solid #F47500;overflow:hidden;">
-  <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 2.5rem;align-items:center;">
-    <div style="color:rgba(255,255,255,.6);font-family:'Oswald',sans-serif;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;">Trusted By:</div>
-    <div style="color:#fff;font-family:'Oswald',sans-serif;font-size:.95rem;letter-spacing:.04em;white-space:nowrap;">🔧 Roofers</div>
-    <div style="color:#fff;font-family:'Oswald',sans-serif;font-size:.95rem;letter-spacing:.04em;white-space:nowrap;">💧 Plumbers</div>
-    <div style="color:#fff;font-family:'Oswald',sans-serif;font-size:.95rem;letter-spacing:.04em;white-space:nowrap;">❄️ HVAC Techs</div>
-    <div style="color:#fff;font-family:'Oswald',sans-serif;font-size:.95rem;letter-spacing:.04em;white-space:nowrap;">⚡ Electricians</div>
-    <div style="color:#fff;font-family:'Oswald',sans-serif;font-size:.95rem;letter-spacing:.04em;white-space:nowrap;">🏗️ General Contractors</div>
-    <div style="color:#fff;font-family:'Oswald',sans-serif;font-size:.95rem;letter-spacing:.04em;white-space:nowrap;">🪟 Painters & Remodelers</div>
-  </div>
+<!-- KINETIC BANNER -->
+<div class="kinetic-bar">
+  <div class="k-dot"></div>
+  <p class="kinetic-bar-text">
+    <strong>Live Capacity:</strong> Only <strong>4 of 5</strong> Express-Build slots available this week.
+  </p>
+  <a class="kinetic-bar-link" onclick="openModal()">Secure yours →</a>
 </div>
 
-<!-- ══════════════════════════════════════════════════════
-     SECTION 2 — US VS. THEM
-══════════════════════════════════════════════════════ -->
-<section id="compare" style="background:#F8F9FA;padding:4rem 1.25rem;border-bottom:3px solid #E2E8F0;">
-  <div style="max-width:1100px;margin:0 auto;">
+<!-- STICKY NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-logo">Everadam</div>
+  <button class="btn btn-sm" onclick="openModal()">Start For $0 Down →</button>
+</nav>
 
-    <div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
-      <div style="display:inline-block;background:#FFF3E0;border:2px solid #F47500;border-radius:4px;padding:.3rem 1rem;margin-bottom:.875rem;">
-        <span style="font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:600;color:#0D1F3C;letter-spacing:.1em;text-transform:uppercase;">The Hard Truth</span>
-      </div>
-      <h2 class="reveal d1" style="font-size:clamp(2rem,5vw,3.2rem);font-weight:700;color:#0D1F3C;text-transform:uppercase;margin:0 0 .75rem;line-height:1.1;">
-        The BS Agency vs. <span style="color:#F47500;">Our System</span>
-      </h2>
-      <p class="reveal d2" style="font-size:1.05rem;color:#4A5568;max-width:600px;margin:0 auto;line-height:1.7;">
-        Web agencies built their model to milk your budget. We built ours to actually get you phone calls.
-        Here's how the two stacks up — honestly.
-      </p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Attention: US Small Business Owners &amp; Solopreneurs</p>
+      <h1 class="hero-hl">
+        We Build Your Website<br>
+        For <span class="ac">$0</span> Upfront.<br>
+        Pay <span class="ac">$250</span> Only After.
+      </h1>
     </div>
-
-    <!-- Comparison table -->
-    <div class="reveal d2" style="max-width:860px;margin:0 auto;background:#fff;border:3px solid #0D1F3C;border-radius:4px;box-shadow:6px 6px 0 #0D1F3C;overflow:hidden;">
-
-      <!-- Header row -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;background:#0D1F3C;">
-        <div style="padding:1rem;text-align:center;border-right:2px solid rgba(255,255,255,.15);">
-          <span style="font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:700;color:#F87171;letter-spacing:.04em;text-transform:uppercase;">❌ Typical Web Agency</span>
-        </div>
-        <div style="padding:1rem;text-align:center;">
-          <span style="font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:700;color:#4ADE80;letter-spacing:.04em;text-transform:uppercase;">✅ PageDrop System</span>
-        </div>
-      </div>
-
-      <div class="comp-row">
-        <div class="comp-cell comp-them">💸 <strong>$3,000–$15,000</strong> upfront — before they even start</div>
-        <div class="comp-cell comp-us">💰 <strong>$250 flat.</strong> Pay nothing until you see it and love it.</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell comp-them">🕐 <strong>4–8 weeks</strong> of back-and-forth emails and "discovery sessions"</div>
-        <div class="comp-cell comp-us">⚡ <strong>48-hour delivery.</strong> Preview your live site in two days.</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell comp-them">📄 <strong>Contracts, NDAs,</strong> revision caps, scope-creep fees</div>
-        <div class="comp-cell comp-us">🤝 <strong>No contract.</strong> One email to get started. That's it.</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell comp-them">📞 <strong>5+ meetings</strong> with a junior designer who's never swung a hammer</div>
-        <div class="comp-cell comp-us">📋 <strong>One short form.</strong> You fill it in, we handle the rest.</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell comp-them">🎨 <strong>Pretty, award-winning</strong> site that gets zero calls</div>
-        <div class="comp-cell comp-us">📞 <strong>Conversion-built</strong> site engineered to make homeowners call you today.</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell comp-them">⛓️ <strong>Monthly retainers,</strong> hosting held hostage, annual fees</div>
-        <div class="comp-cell comp-us">🔓 <strong>You own it 100%.</strong> Hosting included. No ongoing costs.</div>
-      </div>
-
-      <!-- Bottom CTA inside table -->
-      <div style="background:#F0FFF4;border-top:2px solid #E2E8F0;padding:1.25rem 1.5rem;text-align:center;">
-        <p style="margin:0 0 .875rem;font-size:.95rem;color:#374151;">
-          <strong>The math is simple:</strong> One new customer pays for this site 10x over. Why are you waiting?
+    <div class="hero-bottom">
+      <div>
+        <p class="hero-sub">
+          Tell us your business. In <strong>48 hours</strong> we'll have your entire site ready to review — professional, conversion-optimized, built to generate leads. Love it? Pay <strong>$250 flat</strong>. Don't? Walk away. You owe us <strong>nothing</strong>.
         </p>
-        <a href="#cta-form" class="btn-cta" style="font-size:1.1rem;">I Want the $0-Down Build →</a>
+        <button class="btn btn-primary" onclick="openModal()">Start My Build — $0 Down →</button>
+        <p class="hero-trust">No credit card required today &nbsp;·&nbsp; No contract &nbsp;·&nbsp; No retainer</p>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-n">$0</div><div class="hero-stat-l">Upfront Cost</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">48h</div><div class="hero-stat-l">Delivery Time</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">$250</div><div class="hero-stat-l">Total Price</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">100%</div><div class="hero-stat-l">Satisfaction</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="badge-ring">
+    <div class="badge-core">
+      <span class="badge-main">100%</span>
+      <span class="badge-sub">Satisfaction<br>Guaranteed</span>
+    </div>
+  </div>
+</section>
+
+<!-- VSL SECTION -->
+<section class="sec sec-dk" style="padding:72px 48px">
+  <div class="sec-inner">
+    <span class="sec-label">See It In Action</span>
+    <h2 class="sec-hl" style="margin-bottom:36px">Watch: The $250 System<br>Explained. (No Fluff.)</h2>
+    <div class="vsl-wrap">
+      <div class="vsl-embed">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/rXeZycAfu4w?rel=0&modestbranding=1"
+          title="The $250 System Explained"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+          loading="lazy"
+        ></iframe>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════
-     SECTION 3 — HOW IT WORKS
-══════════════════════════════════════════════════════ -->
-<section id="how" style="background:#fff;padding:4rem 1.25rem;border-bottom:3px solid #E2E8F0;">
-  <div style="max-width:1100px;margin:0 auto;">
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
 
-    <div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
-      <div style="display:inline-block;background:#FFF3E0;border:2px solid #F47500;border-radius:4px;padding:.3rem 1rem;margin-bottom:.875rem;">
-        <span style="font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:600;color:#0D1F3C;letter-spacing:.1em;text-transform:uppercase;">Simple as Loading a Truck</span>
+<!-- AGITATION -->
+<section class="sec sec-dk2">
+  <div class="sec-inner">
+    <span class="sec-label">The Problem</span>
+    <h2 class="sec-hl">The Traditional<br>Agency Model<br>Is Robbery.</h2>
+    <div class="pain-grid reveal">
+      <div class="pain-card">
+        <div class="pain-num">01</div>
+        <div class="pain-title">$3,000–$15,000 Quotes</div>
+        <p class="pain-body">Before they've written a single word. Before a wireframe exists. Before they know one thing about your business or your customers.</p>
       </div>
-      <h2 class="reveal d1" style="font-size:clamp(2rem,5vw,3.2rem);font-weight:700;color:#0D1F3C;text-transform:uppercase;margin:0 0 .75rem;line-height:1.1;">
-        3 Steps. <span style="color:#F47500;">48 Hours.</span> Done.
-      </h2>
-      <p class="reveal d2" style="font-size:1.05rem;color:#4A5568;max-width:560px;margin:0 auto;line-height:1.7;">
-        We stripped out every unnecessary step agencies use to pad their hours.
-        This is all you need to do.
-      </p>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:2.5rem;">
-
-      <!-- Step 1 -->
-      <div class="reveal d1 card" style="padding:1.75rem;">
-        <div class="step-num">01</div>
-        <h3 style="font-size:1.4rem;font-weight:700;color:#0D1F3C;text-transform:uppercase;margin:.5rem 0 .75rem;">Fill Out the Form</h3>
-        <p style="font-size:.95rem;color:#4A5568;line-height:1.7;margin:0 0 1rem;">
-          Takes 5 minutes. Tell us your trade, your service area, what makes you different from the next guy, and paste in any photos you've got.
-        </p>
-        <p style="font-size:.875rem;color:#F47500;font-weight:700;margin:0;">→ No phone calls. No Zoom meetings.</p>
+      <div class="pain-card">
+        <div class="pain-num">02</div>
+        <div class="pain-title">"6–12 Weeks." (It's Always More.)</div>
+        <p class="pain-body">Timelines that stretch into months of back-and-forth. You're stuck waiting while your competitors are closing deals.</p>
       </div>
-
-      <!-- Step 2 -->
-      <div class="reveal d2 card" style="padding:1.75rem;">
-        <div class="step-num">02</div>
-        <h3 style="font-size:1.4rem;font-weight:700;color:#0D1F3C;text-transform:uppercase;margin:.5rem 0 .75rem;">We Build It in 48 Hours</h3>
-        <p style="font-size:.95rem;color:#4A5568;line-height:1.7;margin:0 0 1rem;">
-          Our team builds your conversion-optimized, mobile-ready site using battle-tested layouts that have been proven to generate calls in the trades.
-        </p>
-        <p style="font-size:.875rem;color:#F47500;font-weight:700;margin:0;">→ You get a private link to review it.</p>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="reveal d3 card" style="padding:1.75rem;">
-        <div class="step-num">03</div>
-        <h3 style="font-size:1.4rem;font-weight:700;color:#0D1F3C;text-transform:uppercase;margin:.5rem 0 .75rem;">Love It or Walk Away</h3>
-        <p style="font-size:.95rem;color:#4A5568;line-height:1.7;margin:0 0 1rem;">
-          Review it. If it's not exactly what you needed, you walk away owing us nothing. Zero. If you love it — pay $250 and we go live on your domain same day.
-        </p>
-        <p style="font-size:.875rem;color:#16A34A;font-weight:700;margin:0;">→ $0 risk. $250 flat. Yours forever.</p>
-      </div>
-
-    </div>
-
-    <!-- Image placeholder strip -->
-    <div class="reveal d4" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
-      <div class="img-placeholder" style="height:140px;">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0AEC0" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        <span>Your Work Trucks</span>
-      </div>
-      <div class="img-placeholder" style="height:140px;">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0AEC0" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <span>Your Crew</span>
-      </div>
-      <div class="img-placeholder" style="height:140px;">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0AEC0" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span>Before / After Job Photos</span>
+      <div class="pain-card">
+        <div class="pain-num">03</div>
+        <div class="pain-title">Retainers, Scope Creep &amp; Hidden Fees</div>
+        <p class="pain-body">Monthly "maintenance" charges. Revision fees. Hosting markups. Every change request costs money. It never, ever ends.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════
-     SECTION 4 — THE CATCH EXPLAINED
-══════════════════════════════════════════════════════ -->
-<section style="background:#0D1F3C;padding:4rem 1.25rem;border-bottom:3px solid #F47500;">
-  <div style="max-width:1100px;margin:0 auto;">
-
-    <div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
-      <div style="display:inline-block;background:rgba(244,117,0,.15);border:2px solid #F47500;border-radius:4px;padding:.3rem 1rem;margin-bottom:.875rem;">
-        <span style="font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:600;color:#F47500;letter-spacing:.1em;text-transform:uppercase;">No Catch. Just Common Sense.</span>
+<!-- COMPARE MATRIX -->
+<section class="sec sec-dk">
+  <div class="sec-inner">
+    <span class="sec-label">Us vs. Them</span>
+    <h2 class="sec-hl">The Only<br>Comparison<br>That Matters.</h2>
+    <div class="cmp reveal">
+      <div class="cmp-heads">
+        <div class="cmp-head bad">Traditional Agency</div>
+        <div class="cmp-head good">Everadam $250 System</div>
       </div>
-      <h2 class="reveal d1" style="font-size:clamp(2rem,5vw,3.2rem);font-weight:700;color:#fff;text-transform:uppercase;margin:0 0 .75rem;line-height:1.1;">
-        "Why the Heck Is<br/><span style="color:#F47500;">It Only $250?"</span>
-      </h2>
-      <p class="reveal d2" style="font-size:1.05rem;color:rgba(255,255,255,.7);max-width:620px;margin:0 auto;line-height:1.7;">
-        Fair question. Here's the straight answer — no spin, no fine print.
-      </p>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem;margin-bottom:2.5rem;">
-
-      <div class="reveal d1" style="background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.12);border-radius:4px;padding:1.75rem;border-left:4px solid #F47500;">
-        <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;color:#F47500;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.75rem;">01 — We Don't Reinvent the Wheel</div>
-        <p style="font-size:.95rem;color:rgba(255,255,255,.75);line-height:1.7;margin:0;">
-          Agencies charge you for "custom design" that's secretly a template anyway. We use the same battle-tested layouts — proven across hundreds of contractor sites to generate calls. We optimize them for your business. No wasted hours. No wasted dollars.
-        </p>
-      </div>
-
-      <div class="reveal d2" style="background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.12);border-radius:4px;padding:1.75rem;border-left:4px solid #F47500;">
-        <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;color:#F47500;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.75rem;">02 — No Overhead. No Nonsense.</div>
-        <p style="font-size:.95rem;color:rgba(255,255,255,.75);line-height:1.7;margin:0;">
-          We don't have a downtown loft office, a ping-pong table, or an "account manager" whose only job is to CC you on emails. Just the people who actually build the site. Lean operation = savings passed straight to you.
-        </p>
-      </div>
-
-      <div class="reveal d3" style="background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.12);border-radius:4px;padding:1.75rem;border-left:4px solid #F47500;">
-        <div style="font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;color:#F47500;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.75rem;">03 — Volume Is Our Model</div>
-        <p style="font-size:.95rem;color:rgba(255,255,255,.75);line-height:1.7;margin:0;">
-          We build a high volume of contractor sites. The process is dialed in. What takes an agency a month takes us two days. That efficiency funds the price. Simple business math — the same way you bid a job better after doing it 50 times.
-        </p>
-      </div>
-
-    </div>
-
-    <!-- Disclaimer box -->
-    <div class="reveal d4" style="background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.15);border-radius:4px;padding:1.5rem 2rem;max-width:700px;margin:0 auto;text-align:center;">
-      <p style="margin:0;font-size:1rem;color:rgba(255,255,255,.7);line-height:1.7;">
-        <strong style="color:#fff;">One thing to be straight about:</strong> this is a single-page website built for one purpose — generating calls and leads. It's not a 30-page custom web app. If you want a simple, rock-solid site that works harder than your competition's overpriced one,
-        this is exactly right for you.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════
-     SECTION 5 — FEATURES / WHAT'S INCLUDED
-══════════════════════════════════════════════════════ -->
-<section style="background:#F8F9FA;padding:4rem 1.25rem;border-bottom:3px solid #E2E8F0;">
-  <div style="max-width:1100px;margin:0 auto;">
-
-    <div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
-      <h2 style="font-size:clamp(1.9rem,5vw,3rem);font-weight:700;color:#0D1F3C;text-transform:uppercase;margin:0 0 .5rem;line-height:1.1;">
-        Everything Included. <span style="color:#F47500;">One Price.</span>
-      </h2>
-      <p style="font-size:1rem;color:#4A5568;max-width:540px;margin:0 auto;line-height:1.7;">No line items. No "add-ons." No surprises. This is what you get.</p>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;">
-
-      <div class="reveal d1 card" style="padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
-        <div style="width:40px;height:40px;background:#FFF3E0;border:2px solid #F47500;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F47500" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div>
-          <div style="font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:700;color:#0D1F3C;text-transform:uppercase;margin-bottom:.35rem;">100% Yours to Keep</div>
-          <p style="font-size:.875rem;color:#4A5568;line-height:1.6;margin:0;">Full code ownership. No platform lock-in. Take it anywhere, any time.</p>
-        </div>
-      </div>
-
-      <div class="reveal d2 card" style="padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
-        <div style="width:40px;height:40px;background:#FFF3E0;border:2px solid #F47500;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F47500" stroke-width="2.5"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-        </div>
-        <div>
-          <div style="font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:700;color:#0D1F3C;text-transform:uppercase;margin-bottom:.35rem;">Mobile-First Build</div>
-          <p style="font-size:.875rem;color:#4A5568;line-height:1.6;margin:0;">Over 70% of homeowners search from their phones. Your site looks and works perfectly on every screen.</p>
-        </div>
-      </div>
-
-      <div class="reveal d3 card" style="padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
-        <div style="width:40px;height:40px;background:#FFF3E0;border:2px solid #F47500;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F47500" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </div>
-        <div>
-          <div style="font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:700;color:#0D1F3C;text-transform:uppercase;margin-bottom:.35rem;">Local SEO Ready</div>
-          <p style="font-size:.875rem;color:#4A5568;line-height:1.6;margin:0;">Structured so Google can find you for searches like "roofer near me" in your area. Proper meta tags, schema, speed-optimized.</p>
-        </div>
-      </div>
-
-      <div class="reveal d4 card" style="padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
-        <div style="width:40px;height:40px;background:#FFF3E0;border:2px solid #F47500;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F47500" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12 19.79 19.79 0 01.11 3.28 2 2 0 012.09 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.09A16 16 0 0015.91 17l.45-.45a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-        </div>
-        <div>
-          <div style="font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:700;color:#0D1F3C;text-transform:uppercase;margin-bottom:.35rem;">Click-to-Call Button</div>
-          <p style="font-size:.875rem;color:#4A5568;line-height:1.6;margin:0;">Prominent tap-to-call button on every screen. Homeowners who want to call shouldn't have to dig for your number.</p>
-        </div>
-      </div>
-
-      <div class="reveal d5 card" style="padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
-        <div style="width:40px;height:40px;background:#FFF3E0;border:2px solid #F47500;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F47500" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <div>
-          <div style="font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:700;color:#0D1F3C;text-transform:uppercase;margin-bottom:.35rem;">Hosting Included</div>
-          <p style="font-size:.875rem;color:#4A5568;line-height:1.6;margin:0;">SSL certificate, fast CDN hosting, 99.9% uptime. We handle the tech. You handle the jobs.</p>
-        </div>
-      </div>
-
-      <div class="reveal d6 card" style="padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
-        <div style="width:40px;height:40px;background:#FFF3E0;border:2px solid #F47500;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F47500" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <div>
-          <div style="font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:700;color:#0D1F3C;text-transform:uppercase;margin-bottom:.35rem;">Lead Form + Analytics</div>
-          <p style="font-size:.875rem;color:#4A5568;line-height:1.6;margin:0;">Inquiry form wired to your email. Basic analytics so you can see how many people are visiting and where they're coming from.</p>
-        </div>
-      </div>
-
+      <div class="cmp-row"><div class="cmp-cell bad"><span class="cmp-x">✕</span>$3,000–$15,000 upfront</div><div class="cmp-cell good"><span class="cmp-chk">✓</span>$0 upfront — pay after approval</div></div>
+      <div class="cmp-row"><div class="cmp-cell bad"><span class="cmp-x">✕</span>6–12 weeks to deliver</div><div class="cmp-cell good"><span class="cmp-chk">✓</span>Live in 48 hours</div></div>
+      <div class="cmp-row"><div class="cmp-cell bad"><span class="cmp-x">✕</span>Endless back-and-forth revisions</div><div class="cmp-cell good"><span class="cmp-chk">✓</span>Done right the first time</div></div>
+      <div class="cmp-row"><div class="cmp-cell bad"><span class="cmp-x">✕</span>Monthly retainers &amp; hidden fees</div><div class="cmp-cell good"><span class="cmp-chk">✓</span>$250 flat. Nothing else. Ever.</div></div>
+      <div class="cmp-row"><div class="cmp-cell bad"><span class="cmp-x">✕</span>Scope creep &amp; surprise invoices</div><div class="cmp-cell good"><span class="cmp-chk">✓</span>Fixed scope. Fixed price. Fixed timeline.</div></div>
+      <div class="cmp-row"><div class="cmp-cell bad"><span class="cmp-x">✕</span>Generic, unfocused multi-page sites</div><div class="cmp-cell good"><span class="cmp-chk">✓</span>Conversion-optimized one-page site</div></div>
+      <div class="cmp-row"><div class="cmp-cell bad"><span class="cmp-x">✕</span>No money-back guarantee</div><div class="cmp-cell good"><span class="cmp-chk">✓</span>Love it or walk. $0 owed.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════
-     SECTION 6 — VSL / DEMO PLACEHOLDER
-══════════════════════════════════════════════════════ -->
-<section id="demo" style="background:#fff;padding:4rem 1.25rem;border-bottom:3px solid #E2E8F0;">
-  <div style="max-width:900px;margin:0 auto;text-align:center;">
-
-    <div class="reveal" style="margin-bottom:1.75rem;">
-      <div style="display:inline-block;background:#FFF3E0;border:2px solid #F47500;border-radius:4px;padding:.3rem 1rem;margin-bottom:.875rem;">
-        <span style="font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:600;color:#0D1F3C;letter-spacing:.1em;text-transform:uppercase;">See It Before You Commit</span>
+<!-- HOW IT WORKS -->
+<section class="sec sec-dk2">
+  <div class="sec-inner">
+    <span class="sec-label">The Process</span>
+    <h2 class="sec-hl">How It Works.</h2>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-n">1</div>
+        <div class="step-title">Tell Us Your Business</div>
+        <p class="step-body">Fill out a short brief — your business, your goals, who you're trying to reach. Takes 5 minutes. Costs $0.</p>
       </div>
-      <h2 class="reveal d1" style="font-size:clamp(1.9rem,5vw,3rem);font-weight:700;color:#0D1F3C;text-transform:uppercase;margin:0 0 .75rem;line-height:1.1;">
-        Watch How Fast We<br/><span style="color:#F47500;">Deploy Your Site.</span>
-      </h2>
-      <p class="reveal d2" style="font-size:1.05rem;color:#4A5568;max-width:520px;margin:0 auto;line-height:1.7;">
-        This 3-minute screen recording shows a real contractor site going from intake form to live — start to finish. No cuts. No tricks.
-      </p>
-    </div>
-
-    <!-- VSL 16:9 placeholder -->
-    <div class="reveal d2 vsl-wrap" onclick="alert('Video coming soon — grab your spot below and we\'ll send you the full demo link.')">
-      <div class="vsl-inner">
-        <!-- Fake progress bar at top -->
-        <div style="position:absolute;top:0;left:0;right:0;height:4px;background:rgba(255,255,255,.1);">
-          <div style="height:100%;width:35%;background:#F47500;"></div>
-        </div>
-        <!-- Fake browser chrome -->
-        <div style="width:100%;max-width:440px;padding:0 1.5rem;pointer-events:none;margin-bottom:.5rem;">
-          <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px 6px 0 0;padding:.5rem .75rem;display:flex;align-items:center;gap:.5rem;">
-            <div style="display:flex;gap:.3rem;"><div style="width:8px;height:8px;border-radius:50%;background:rgba(255,80,80,.7);"></div><div style="width:8px;height:8px;border-radius:50%;background:rgba(255,190,60,.7);"></div><div style="width:8px;height:8px;border-radius:50%;background:rgba(80,200,80,.7);"></div></div>
-            <div style="flex:1;background:rgba(255,255,255,.08);border-radius:3px;padding:.2rem .5rem;font-size:.7rem;color:rgba(255,255,255,.45);font-family:'Inter',sans-serif;">acmeHVAC-memphis.com</div>
-          </div>
-          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-top:none;border-radius:0 0 6px 6px;padding:1rem;">
-            <div style="height:10px;background:rgba(255,255,255,.1);border-radius:2px;width:55%;margin-bottom:.6rem;"></div>
-            <div style="height:20px;background:rgba(244,117,0,.3);border-radius:2px;width:90%;margin-bottom:.4rem;"></div>
-            <div style="height:20px;background:rgba(244,117,0,.2);border-radius:2px;width:70%;margin-bottom:.75rem;"></div>
-            <div style="height:8px;background:rgba(255,255,255,.08);border-radius:2px;width:100%;margin-bottom:.3rem;"></div>
-            <div style="height:8px;background:rgba(255,255,255,.08);border-radius:2px;width:80%;margin-bottom:.75rem;"></div>
-            <div style="height:36px;background:rgba(244,117,0,.5);border-radius:3px;width:140px;"></div>
-          </div>
-        </div>
-        <!-- Play button -->
-        <div class="play-ring">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="#F47500" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <div style="color:rgba(255,255,255,.7);font-family:'Oswald',sans-serif;font-size:.95rem;letter-spacing:.04em;text-transform:uppercase;">Play — 3 Min 18 Sec</div>
-        <!-- Corner brackets -->
-        <div style="position:absolute;top:12px;left:12px;width:20px;height:20px;border-top:3px solid rgba(244,117,0,.6);border-left:3px solid rgba(244,117,0,.6);"></div>
-        <div style="position:absolute;top:12px;right:12px;width:20px;height:20px;border-top:3px solid rgba(244,117,0,.6);border-right:3px solid rgba(244,117,0,.6);"></div>
-        <div style="position:absolute;bottom:12px;left:12px;width:20px;height:20px;border-bottom:3px solid rgba(244,117,0,.6);border-left:3px solid rgba(244,117,0,.6);"></div>
-        <div style="position:absolute;bottom:12px;right:12px;width:20px;height:20px;border-bottom:3px solid rgba(244,117,0,.6);border-right:3px solid rgba(244,117,0,.6);"></div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <div class="step-title">We Build The Whole Thing</div>
+        <p class="step-body">We design and develop your entire one-page site in 48 hours — layout, copy, mobile optimization, everything. You do nothing.</p>
+        <span class="step-pill">48 hrs</span>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <div class="step-title">Love It or Leave It</div>
+        <p class="step-body">We show you the finished site. Love it? Pay $250 flat and it goes live. Don't? Walk away. You owe us zero.</p>
+        <span class="step-pill">$0 Risk</span>
       </div>
     </div>
-    <p style="font-size:.875rem;color:#6B7280;margin-top:.875rem;">Click to play — opens in this window. No sign-up required.</p>
+    <div style="text-align:center">
+      <button class="btn btn-primary" onclick="openModal()">Start My Build — $0 Down →</button>
+    </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════
-     SECTION 7 — TESTIMONIALS / SOCIAL PROOF
-══════════════════════════════════════════════════════ -->
-<section id="proof" style="background:#F8F9FA;padding:4rem 1.25rem;border-bottom:3px solid #E2E8F0;">
-  <div style="max-width:1100px;margin:0 auto;">
-
-    <div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
-      <h2 style="font-size:clamp(1.9rem,5vw,3rem);font-weight:700;color:#0D1F3C;text-transform:uppercase;margin:0 0 .5rem;line-height:1.1;">
-        Contractors Who <span style="color:#F47500;">Got the Call.</span>
-      </h2>
-      <p style="font-size:1rem;color:#4A5568;max-width:500px;margin:0 auto;line-height:1.7;">
-        These guys were skeptical too. Then their phone started ringing.
-      </p>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:2.5rem;">
-
-      <!-- Testimonial 1 -->
-      <div class="reveal d1 card" style="padding:1.75rem;">
-        <div style="display:flex;gap:.2rem;margin-bottom:.875rem;">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+<!-- TESTIMONIALS -->
+<section class="sec sec-dk">
+  <div class="sec-inner">
+    <span class="sec-label">Social Proof</span>
+    <h2 class="sec-hl">Real Clients.<br>Real Results.</h2>
+    <div class="testi-grid reveal">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"I had a $6,000 agency quote sitting on my desk. I tried Everadam on a whim. 48 hours later I had a site that looked better — and actually converted. Paid $250 and never looked back."</p>
+        <div class="testi-author">
+          <div class="testi-avi">S</div>
+          <div><div class="testi-name">Sarah M.</div><div class="testi-role">Marketing Consultant, New York</div></div>
         </div>
-        <p style="font-size:.975rem;color:#374151;line-height:1.7;margin:0 0 1.25rem;font-style:italic;">
-          "I thought it was too good to be true. Sent them my info Monday morning.
-          Wednesday I had a live preview link. Looked better than my competitor's site that probably cost him $5k.
-          I paid the $250 without blinking."
-        </p>
-        <div style="display:flex;align-items:center;gap:.875rem;">
-          <div class="img-placeholder" style="width:48px;height:48px;border-radius:50%;font-size:.6rem;gap:.25rem;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0AEC0" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"The pay-after model made this a zero-brainer. I had nothing to lose. The result was genuinely impressive — my contact form now gets qualified leads every single week."</p>
+        <div class="testi-author">
+          <div class="testi-avi">J</div>
+          <div><div class="testi-name">James T.</div><div class="testi-role">Executive Coach, Austin TX</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"I've been burned by web projects before. The build-first-pay-after model is the only reason I gave this a shot. Best business decision I made this year. Full stop."</p>
+        <div class="testi-author">
+          <div class="testi-avi">D</div>
+          <div><div class="testi-name">Diana R.</div><div class="testi-role">Independent Attorney, Chicago</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CATCH -->
+<section class="sec sec-lt">
+  <div class="sec-inner">
+    <span class="sec-label">The Truth</span>
+    <h2 class="sec-hl">Wait. Is This<br>Too Good<br>To Be True?</h2>
+    <div class="catch-grid reveal">
+      <div class="catch-quote">
+        <p>Fair question. Here's the blunt answer: <strong>we built hyper-efficient internal systems and battle-tested conversion templates</strong> that eliminate the wasted hours traditional agencies bill you for. We don't reinvent the wheel on every project — and we pass those savings on to you as a $250 price tag.</p>
+      </div>
+      <div class="catch-pts">
+        <div class="catch-pt">
+          <div class="catch-icon">
+            <svg viewBox="0 0 14 14" fill="none" width="14" height="14"><path d="M3 7.5 5.8 10.2 11 4" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div>
-            <div style="font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;color:#0D1F3C;">Marcus T.</div>
-            <div style="font-size:.8rem;color:#6B7280;">Roofing Contractor — Memphis, TN</div>
+            <div class="catch-pt-title">Battle-Tested Systems</div>
+            <p class="catch-pt-body">We start from proven, high-converting frameworks — not blank canvases. Your site gets customized, not invented from scratch every time.</p>
           </div>
         </div>
-      </div>
-
-      <!-- Testimonial 2 -->
-      <div class="reveal d2 card" style="padding:1.75rem;">
-        <div style="display:flex;gap:.2rem;margin-bottom:.875rem;">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <p style="font-size:.975rem;color:#374151;line-height:1.7;margin:0 0 1.25rem;font-style:italic;">
-          "Been in HVAC for 17 years. Never had a website. Figured it wasn't worth it.
-          First week the site was live I got 3 service calls from people who found me online.
-          One of them turned into a full system replacement — $6,800 job. Best $250 I ever spent."
-        </p>
-        <div style="display:flex;align-items:center;gap:.875rem;">
-          <div class="img-placeholder" style="width:48px;height:48px;border-radius:50%;font-size:.6rem;gap:.25rem;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0AEC0" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div class="catch-pt">
+          <div class="catch-icon">
+            <svg viewBox="0 0 14 14" fill="none" width="14" height="14"><path d="M3 7.5 5.8 10.2 11 4" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div>
-            <div style="font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;color:#0D1F3C;">Derek H.</div>
-            <div style="font-size:.8rem;color:#6B7280;">HVAC Owner-Operator — Columbus, OH</div>
+            <div class="catch-pt-title">Zero Bureaucracy</div>
+            <p class="catch-pt-body">No account managers, no project managers, no inflated team. You deal directly with the people building your site.</p>
           </div>
         </div>
-      </div>
-
-      <!-- Testimonial 3 -->
-      <div class="reveal d3 card" style="padding:1.75rem;">
-        <div style="display:flex;gap:.2rem;margin-bottom:.875rem;">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <p style="font-size:.975rem;color:#374151;line-height:1.7;margin:0 0 1.25rem;font-style:italic;">
-          "My old agency wanted $4,200 for a redesign and a 6-week timeline. These guys
-          did it in 2 days for $250. Site's faster, looks cleaner, and my contact form
-          actually works now. Should have done this years ago."
-        </p>
-        <div style="display:flex;align-items:center;gap:.875rem;">
-          <div class="img-placeholder" style="width:48px;height:48px;border-radius:50%;font-size:.6rem;gap:.25rem;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A0AEC0" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div class="catch-pt">
+          <div class="catch-icon">
+            <svg viewBox="0 0 14 14" fill="none" width="14" height="14"><path d="M3 7.5 5.8 10.2 11 4" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div>
-            <div style="font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;color:#0D1F3C;">Sandra K.</div>
-            <div style="font-size:.8rem;color:#6B7280;">Licensed Plumber — Dallas, TX</div>
+            <div class="catch-pt-title">Incentives Aligned With Yours</div>
+            <p class="catch-pt-body">Because we build first and get paid after, we are financially motivated to get it right. We only win when you love it.</p>
           </div>
         </div>
       </div>
-
     </div>
+  </div>
+</section>
 
-    <!-- Stats bar -->
-    <div class="reveal d4" style="background:#0D1F3C;border:2px solid #0D1F3C;border-radius:4px;box-shadow:4px 4px 0 #CBD5E0;padding:1.5rem 2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;text-align:center;">
-      <div>
-        <div style="font-family:'Oswald',sans-serif;font-size:2.5rem;font-weight:700;color:#F47500;line-height:1;">94%</div>
-        <div style="font-size:.85rem;color:rgba(255,255,255,.65);margin-top:.25rem;">Clients approve on first review</div>
+<!-- BENEFITS -->
+<section class="sec sec-dk2">
+  <div class="sec-inner">
+    <span class="sec-label">What You Get</span>
+    <h2 class="sec-hl">Everything You<br>Need. Nothing<br>You Don't.</h2>
+    <div class="ben-grid reveal">
+      <div class="ben-item">
+        <div class="ben-check"><svg width="10" height="9" viewBox="0 0 10 9" fill="none"><path d="M1.5 4.5 4 7 8.5 2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="ben-title">Lightning-Fast Load Times</div><div class="ben-desc">Sub-2s loads, Core Web Vitals optimized.</div></div>
       </div>
-      <div style="border-left:1px solid rgba(255,255,255,.1);border-right:1px solid rgba(255,255,255,.1);">
-        <div style="font-family:'Oswald',sans-serif;font-size:2.5rem;font-weight:700;color:#F47500;line-height:1;">48h</div>
-        <div style="font-size:.85rem;color:rgba(255,255,255,.65);margin-top:.25rem;">Average delivery time</div>
+      <div class="ben-item">
+        <div class="ben-check"><svg width="10" height="9" viewBox="0 0 10 9" fill="none"><path d="M1.5 4.5 4 7 8.5 2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="ben-title">Mobile-First Design</div><div class="ben-desc">Built for the 70%+ of visitors on their phones.</div></div>
       </div>
-      <div>
-        <div style="font-family:'Oswald',sans-serif;font-size:2.5rem;font-weight:700;color:#F47500;line-height:1;">$0</div>
-        <div style="font-size:.85rem;color:rgba(255,255,255,.65);margin-top:.25rem;">Due until you love it</div>
+      <div class="ben-item">
+        <div class="ben-check"><svg width="10" height="9" viewBox="0 0 10 9" fill="none"><path d="M1.5 4.5 4 7 8.5 2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="ben-title">Lead-Generation Focused</div><div class="ben-desc">Every element drives one action: contact you.</div></div>
+      </div>
+      <div class="ben-item">
+        <div class="ben-check"><svg width="10" height="9" viewBox="0 0 10 9" fill="none"><path d="M1.5 4.5 4 7 8.5 2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="ben-title">Conversion-Optimized Copy</div><div class="ben-desc">We write the words. No filler, no fluff.</div></div>
+      </div>
+      <div class="ben-item">
+        <div class="ben-check"><svg width="10" height="9" viewBox="0 0 10 9" fill="none"><path d="M1.5 4.5 4 7 8.5 2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="ben-title">SEO-Ready Structure</div><div class="ben-desc">Clean HTML, proper headings, meta tags — built in.</div></div>
+      </div>
+      <div class="ben-item">
+        <div class="ben-check"><svg width="10" height="9" viewBox="0 0 10 9" fill="none"><path d="M1.5 4.5 4 7 8.5 2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="ben-title">Professional Domain Setup</div><div class="ben-desc">We'll help you go live on your own domain.</div></div>
+      </div>
+      <div class="ben-item">
+        <div class="ben-check"><svg width="10" height="9" viewBox="0 0 10 9" fill="none"><path d="M1.5 4.5 4 7 8.5 2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="ben-title">$250 Flat. No Monthly Fees.</div><div class="ben-desc">One price. No subscriptions. No surprises.</div></div>
+      </div>
+      <div class="ben-item">
+        <div class="ben-check"><svg width="10" height="9" viewBox="0 0 10 9" fill="none"><path d="M1.5 4.5 4 7 8.5 2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="ben-title">100% Your Ownership</div><div class="ben-desc">Your site, your code, your files. All of it.</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════
-     SECTION 8 — MAIN CTA / FORM
-══════════════════════════════════════════════════════ -->
-<section id="cta-form" style="background:#fff;padding:4rem 1.25rem;border-bottom:3px solid #E2E8F0;">
-  <div style="max-width:760px;margin:0 auto;">
-
-    <!-- Scarcity box -->
-    <div class="reveal" style="background:#FFF3E0;border:3px solid #F47500;border-radius:4px;box-shadow:5px 5px 0 #0D1F3C;padding:1rem 1.5rem;margin-bottom:2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
-      <span class="blink" style="width:14px;height:14px;border-radius:50%;background:#F47500;flex-shrink:0;display:inline-block;"></span>
+<!-- SCARCITY -->
+<section class="sec sec-accent">
+  <div class="sec-inner">
+    <div class="scar-inner">
+      <div class="scar-count">4</div>
       <div>
-        <div style="font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:700;color:#0D1F3C;text-transform:uppercase;letter-spacing:.04em;">
-          Capacity Alert: <span id="slot-count">2</span> Build Slots Available This Week
-        </div>
-        <div style="font-size:.875rem;color:#6B7280;">We cap new builds to maintain our 48-hour guarantee. Slots reset every Monday morning.</div>
-      </div>
-    </div>
-
-    <div class="reveal d1" style="text-align:center;margin-bottom:2rem;">
-      <h2 style="font-size:clamp(1.9rem,5vw,3rem);font-weight:700;color:#0D1F3C;text-transform:uppercase;margin:0 0 .75rem;line-height:1.1;">
-        Claim Your <span style="color:#F47500;">Free $0-Down Build</span>
-      </h2>
-      <p style="font-size:1.05rem;color:#4A5568;max-width:520px;margin:0 auto;line-height:1.7;">
-        Takes 5 minutes. No phone call needed. We get to work immediately.
-        You review it in 48 hours — pay nothing until you're completely satisfied.
-      </p>
-    </div>
-
-    <!-- Form -->
-    <form id="build-form" class="reveal d2 card" style="padding:2rem;" onsubmit="handleFormSubmit(event)">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
-        <div>
-          <label style="display:block;font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:600;color:#0D1F3C;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem;">Your Name *</label>
-          <input type="text" placeholder="John Acevedo" required
-            style="width:100%;padding:.85rem 1rem;border:2px solid #CBD5E0;border-radius:4px;font-family:'Inter',sans-serif;font-size:1rem;color:#0D1F3C;background:#F8F9FA;outline:none;transition:border-color .2s;"
-            onfocus="this.style.borderColor='#F47500'" onblur="this.style.borderColor='#CBD5E0'" />
-        </div>
-        <div>
-          <label style="display:block;font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:600;color:#0D1F3C;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem;">Business Name *</label>
-          <input type="text" placeholder="Acevedo Roofing LLC" required
-            style="width:100%;padding:.85rem 1rem;border:2px solid #CBD5E0;border-radius:4px;font-family:'Inter',sans-serif;font-size:1rem;color:#0D1F3C;background:#F8F9FA;outline:none;transition:border-color .2s;"
-            onfocus="this.style.borderColor='#F47500'" onblur="this.style.borderColor='#CBD5E0'" />
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
-        <div>
-          <label style="display:block;font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:600;color:#0D1F3C;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem;">Phone Number *</label>
-          <input type="tel" placeholder="(615) 555-0142" required
-            style="width:100%;padding:.85rem 1rem;border:2px solid #CBD5E0;border-radius:4px;font-family:'Inter',sans-serif;font-size:1rem;color:#0D1F3C;background:#F8F9FA;outline:none;transition:border-color .2s;"
-            onfocus="this.style.borderColor='#F47500'" onblur="this.style.borderColor='#CBD5E0'" />
-        </div>
-        <div>
-          <label style="display:block;font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:600;color:#0D1F3C;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem;">Email Address *</label>
-          <input type="email" placeholder="john@acevedoroofing.com" required
-            style="width:100%;padding:.85rem 1rem;border:2px solid #CBD5E0;border-radius:4px;font-family:'Inter',sans-serif;font-size:1rem;color:#0D1F3C;background:#F8F9FA;outline:none;transition:border-color .2s;"
-            onfocus="this.style.borderColor='#F47500'" onblur="this.style.borderColor='#CBD5E0'" />
-        </div>
-      </div>
-      <div style="margin-bottom:1rem;">
-        <label style="display:block;font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:600;color:#0D1F3C;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem;">Your Trade / Industry *</label>
-        <select required style="width:100%;padding:.85rem 1rem;border:2px solid #CBD5E0;border-radius:4px;font-family:'Inter',sans-serif;font-size:1rem;color:#0D1F3C;background:#F8F9FA;outline:none;transition:border-color .2s;appearance:auto;"
-          onfocus="this.style.borderColor='#F47500'" onblur="this.style.borderColor='#CBD5E0'">
-          <option value="">— Select your trade —</option>
-          <option>Roofing</option>
-          <option>Plumbing</option>
-          <option>HVAC</option>
-          <option>Electrical</option>
-          <option>General Contracting</option>
-          <option>Painting</option>
-          <option>Landscaping / Lawn Care</option>
-          <option>Flooring</option>
-          <option>Remodeling</option>
-          <option>Other Trade</option>
-        </select>
-      </div>
-      <div style="margin-bottom:1rem;">
-        <label style="display:block;font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:600;color:#0D1F3C;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem;">Service Area (City / Region) *</label>
-        <input type="text" placeholder="Nashville, TN and surrounding counties" required
-          style="width:100%;padding:.85rem 1rem;border:2px solid #CBD5E0;border-radius:4px;font-family:'Inter',sans-serif;font-size:1rem;color:#0D1F3C;background:#F8F9FA;outline:none;transition:border-color .2s;"
-          onfocus="this.style.borderColor='#F47500'" onblur="this.style.borderColor='#CBD5E0'" />
-      </div>
-      <div style="margin-bottom:1.5rem;">
-        <label style="display:block;font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:600;color:#0D1F3C;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem;">What Makes You Different From The Competition?</label>
-        <textarea rows="3" placeholder="e.g., Family-owned for 22 years. All employees are background-checked and certified. We clean up after every job..."
-          style="width:100%;padding:.85rem 1rem;border:2px solid #CBD5E0;border-radius:4px;font-family:'Inter',sans-serif;font-size:1rem;color:#0D1F3C;background:#F8F9FA;outline:none;transition:border-color .2s;resize:vertical;"
-          onfocus="this.style.borderColor='#F47500'" onblur="this.style.borderColor='#CBD5E0'"></textarea>
-      </div>
-      <button type="submit" class="btn-cta" style="font-size:1.3rem;padding:1.15rem;width:100%;text-align:center;display:block;">
-        🔨 Start My $0-Down Build Now →
-      </button>
-      <p style="font-size:.8rem;color:#9CA3AF;margin:.875rem 0 0;text-align:center;">
-        No credit card. No contract. No meetings. We start building within 4 business hours.
-      </p>
-    </form>
-
-    <!-- Risk reversal block -->
-    <div class="reveal d3" style="margin-top:1.5rem;background:#F0FFF4;border:2px solid #16A34A;border-radius:4px;padding:1.25rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-      <div>
-        <div style="font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:700;color:#14532D;text-transform:uppercase;margin-bottom:.3rem;">Iron-Clad Zero-Risk Guarantee</div>
-        <p style="font-size:.9rem;color:#166534;line-height:1.7;margin:0;">
-          We build it. You review it. If you don't love it — for any reason — you owe us <strong>absolutely nothing.</strong>
-          No invoice. No "kill fee." No collection calls. We take the full risk so you don't have to.
-        </p>
+        <div class="scar-warn">⚠ Notice — Limited Availability</div>
+        <h2 class="scar-hl">Spots Left<br>This Week.</h2>
+        <p class="scar-body">Because we take 100% of the financial risk on every build, we can only carry a limited number of active projects at any time. Our pipeline fills fast. When these spots are gone, you go on the waitlist.</p>
+        <button class="btn btn-inv" onclick="openModal()">Claim My Spot — $0 Down →</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════
-     FAQ
-══════════════════════════════════════════════════════ -->
-<section style="background:#F8F9FA;padding:4rem 1.25rem;border-bottom:3px solid #E2E8F0;">
-  <div style="max-width:760px;margin:0 auto;">
-    <div class="reveal" style="text-align:center;margin-bottom:2rem;">
-      <h2 style="font-size:clamp(1.9rem,5vw,3rem);font-weight:700;color:#0D1F3C;text-transform:uppercase;margin:0 0 .5rem;line-height:1.1;">
-        Straight Answers to <span style="color:#F47500;">Real Questions</span>
-      </h2>
-    </div>
-    <div class="reveal d1" id="faq-list" style="display:flex;flex-direction:column;gap:.75rem;">
-
-      <div class="faq-item card" onclick="toggleFaq(this)" style="cursor:pointer;overflow:hidden;">
-        <div style="padding:1.1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;">
-          <span style="font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:600;color:#0D1F3C;text-transform:uppercase;">What if I hate what you build?</span>
-          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4A5568" stroke-width="2.5" style="flex-shrink:0;"><path d="M6 9l6 6 6-6"/></svg>
-        </div>
-        <div class="faq-answer" style="padding:0 1.25rem 1.1rem;font-size:.95rem;color:#4A5568;line-height:1.7;border-top:2px solid #E2E8F0;">
-          You walk away. No invoice. No awkward conversation. We built it on our dime and our time. If it doesn't meet your standards, we don't deserve to get paid. Period.
-        </div>
-      </div>
-
-      <div class="faq-item card" onclick="toggleFaq(this)" style="cursor:pointer;overflow:hidden;">
-        <div style="padding:1.1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;">
-          <span style="font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:600;color:#0D1F3C;text-transform:uppercase;">Do I need a domain name or hosting?</span>
-          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4A5568" stroke-width="2.5" style="flex-shrink:0;"><path d="M6 9l6 6 6-6"/></svg>
-        </div>
-        <div class="faq-answer" style="padding:0 1.25rem 1.1rem;font-size:.95rem;color:#4A5568;line-height:1.7;border-top:2px solid #E2E8F0;">
-          Hosting is included in your $250. If you have a domain, we'll connect it. If you don't have one, we'll help you register one — typically $12–15/year, your cost. We handle the entire technical setup.
-        </div>
-      </div>
-
-      <div class="faq-item card" onclick="toggleFaq(this)" style="cursor:pointer;overflow:hidden;">
-        <div style="padding:1.1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;">
-          <span style="font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:600;color:#0D1F3C;text-transform:uppercase;">What do you need from me to get started?</span>
-          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4A5568" stroke-width="2.5" style="flex-shrink:0;"><path d="M6 9l6 6 6-6"/></svg>
-        </div>
-        <div class="faq-answer" style="padding:0 1.25rem 1.1rem;font-size:.95rem;color:#4A5568;line-height:1.7;border-top:2px solid #E2E8F0;">
-          Fill out the form above — 5 minutes. We'll send one follow-up email asking for any photos or your logo if you have them. That's it. No back-and-forth, no phone tag.
-        </div>
-      </div>
-
-      <div class="faq-item card" onclick="toggleFaq(this)" style="cursor:pointer;overflow:hidden;">
-        <div style="padding:1.1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;">
-          <span style="font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:600;color:#0D1F3C;text-transform:uppercase;">Can I make changes after I pay?</span>
-          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4A5568" stroke-width="2.5" style="flex-shrink:0;"><path d="M6 9l6 6 6-6"/></svg>
-        </div>
-        <div class="faq-answer" style="padding:0 1.25rem 1.1rem;font-size:.95rem;color:#4A5568;line-height:1.7;border-top:2px solid #E2E8F0;">
-          Text and photo swaps are always free. Major structural changes — adding sections, custom features — are billed at $75/hr and always quoted upfront, never a surprise. Most clients never need changes after launch.
-        </div>
-      </div>
-
-      <div class="faq-item card" onclick="toggleFaq(this)" style="cursor:pointer;overflow:hidden;">
-        <div style="padding:1.1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;">
-          <span style="font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:600;color:#0D1F3C;text-transform:uppercase;">Who owns the website after I pay?</span>
-          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4A5568" stroke-width="2.5" style="flex-shrink:0;"><path d="M6 9l6 6 6-6"/></svg>
-        </div>
-        <div class="faq-answer" style="padding:0 1.25rem 1.1rem;font-size:.95rem;color:#4A5568;line-height:1.7;border-top:2px solid #E2E8F0;">
-          You do. 100%. We hand you the full source code, all assets, and access to the hosting account. No licensing, no monthly fees, no leverage over you. It's yours.
-        </div>
-      </div>
-
-    </div>
+<!-- FINAL CTA -->
+<section class="sec sec-dk" style="text-align:center">
+  <div class="sec-inner">
+    <span class="sec-label" style="text-align:center">The Decision</span>
+    <h2 class="final-hl reveal">Still Reading?<br>That's Your<br><span style="color:var(--accent)">Answer.</span></h2>
+    <p class="final-sub">There is no downside. You either get a professional website for $250, or you get nothing — and you owe us nothing. Zero financial risk. Zero commitment to start. You'd be making an irrational financial mistake to say no.</p>
+    <button class="btn btn-primary" style="font-size:19px;padding:22px 52px" onclick="openModal()">Start My Build — $0 Down →</button>
+    <p class="hero-trust" style="margin-top:20px">No credit card required &nbsp;·&nbsp; No contract &nbsp;·&nbsp; No retainer</p>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════════════════ -->
-<footer style="background:#0D1F3C;padding:2rem 1.25rem;border-top:3px solid #F47500;">
-  <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
-    <div style="display:flex;align-items:center;gap:.625rem;">
-      <div style="width:30px;height:30px;background:#F47500;border:2px solid #fff;border-radius:4px;display:flex;align-items:center;justify-content:center;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-      </div>
-      <span style="font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:700;color:#fff;letter-spacing:.04em;">PAGEDROP</span>
-      <span style="font-size:.8rem;color:rgba(255,255,255,.35);margin-left:.5rem;">© 2026</span>
-    </div>
-    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
-      <a href="#" style="color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.04em;">Privacy</a>
-      <a href="#" style="color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.04em;">Terms</a>
-      <a href="mailto:hello@pagedrop.io" style="color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.04em;">Contact</a>
-    </div>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Everadam</div>
+    <p class="footer-legal">© 2026 Everadam · $0 down · $250 after approval · 100% satisfaction guaranteed</p>
+    <button class="footer-cta-btn" onclick="openModal()">Start For $0 Down →</button>
   </div>
 </footer>
 
-<!-- ══════════════════════════════════════════════════════
-     STICKY BOTTOM BAR
-══════════════════════════════════════════════════════ -->
-<div id="sticky-bar">
-  <div style="display:flex;align-items:center;gap:.75rem;min-width:0;">
-    <span class="blink" style="width:10px;height:10px;border-radius:50%;background:#F47500;flex-shrink:0;display:inline-block;"></span>
-    <div style="min-width:0;">
-      <div style="font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:700;color:#fff;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
-        Capacity: <span id="sticky-slot-count">2</span> Slots Left This Week
+<!-- MOBILE STICKY BAR -->
+<div class="mob-bar">
+  <button class="btn btn-primary" onclick="openModal()">Start My Build — $0 Down →</button>
+  <p class="mob-bar-trust">No credit card required &nbsp;·&nbsp; Pay only after you approve</p>
+</div>
+
+<!-- TIMED POPUP (25s) -->
+<div class="tpop-ov hidden" id="timedPopup">
+  <div class="tpop-box">
+    <button class="tpop-close" onclick="closeTimedPopup()">✕</button>
+    <p class="tpop-tag">One Quick Reminder</p>
+    <h3 class="tpop-hl">Still On<br>The Fence?</h3>
+    <div class="tpop-rule"></div>
+    <p class="tpop-body">Here's the math: you spend <strong>$0 today</strong>. We build your entire site. You review it. Love it? Pay <strong>$250</strong>. Don't? Walk away — you owe us <strong>nothing</strong>.<br><br>There is no scenario where clicking this button costs you money.</p>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;font-size:16px;padding:18px" onclick="closeTimedPopup(); openModal()">Start My Build — $0 Down →</button>
+    <p class="tpop-trust">No credit card required &nbsp;·&nbsp; Pay only after approval</p>
+  </div>
+</div>
+
+<!-- EXIT INTENT MODAL -->
+<div class="exit-ov hidden" id="exitModal">
+  <div class="exit-box">
+    <button class="exit-close" onclick="closeExitModal()">✕</button>
+    <div id="exitContent">
+      <p class="exit-tag">Wait — Before You Go</p>
+      <h3 class="exit-hl">Not Ready<br>To Start<br>Today?</h3>
+      <p class="exit-sub">Lock in your <strong>$0-down slot for 48 hours</strong> without committing. Enter your email to reserve your spot before we sell out. No payment. No obligation.</p>
+      <input class="exit-input" type="email" id="exitEmail" placeholder="your@email.com" oninput="validateExitEmail()">
+      <button class="exit-submit" id="exitSubmit" disabled onclick="submitExitEmail()">Hold My Slot.</button>
+      <p class="exit-trust">No spam. No commitment. Slot held for 48 hours.</p>
+    </div>
+    <div id="exitConfirmed" style="display:none" class="exit-confirmed">
+      <div class="m-confirm-icon" style="margin:0 auto 20px">
+        <svg width="28" height="22" viewBox="0 0 28 22" fill="none"><path d="M2 11 10 19 26 3" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div style="font-size:.75rem;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">$250 flat · 48-hr delivery · $0 upfront</div>
+      <div class="m-confirm-hl">Slot Held.</div>
+      <p class="m-confirm-sub" style="margin-top:10px">Reserved for <strong id="confirmedEmail"></strong> for 48 hours. We'll follow up shortly.</p>
+      <button class="m-btn" style="margin-top:28px" onclick="closeExitModal()">Close</button>
     </div>
-  </div>
-  <a href="#cta-form" class="btn-cta" style="font-size:1rem;padding:.75rem 1.4rem;flex-shrink:0;white-space:nowrap;">
-    Claim My Build →
-  </a>
-</div>
-
-<!-- ══════════════════════════════════════════════════════
-     SUCCESS MODAL
-══════════════════════════════════════════════════════ -->
-<div id="modal-overlay" onclick="closeModal(event)">
-  <div style="background:#fff;border:3px solid #0D1F3C;border-radius:4px;box-shadow:8px 8px 0 #0D1F3C;max-width:480px;width:100%;padding:2.5rem;text-align:center;">
-    <div style="width:64px;height:64px;background:#F0FFF4;border:3px solid #16A34A;border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-    <h3 style="font-family:'Oswald',sans-serif;font-size:1.8rem;font-weight:700;color:#0D1F3C;text-transform:uppercase;margin:0 0 .75rem;">You're In the Queue.</h3>
-    <p style="font-size:1rem;color:#4A5568;line-height:1.7;margin:0 0 1.5rem;">
-      We'll send a confirmation email within 2 hours. Expect your private preview link within <strong>48 hours</strong>. Keep your phone handy — we may reach out with one quick question.
-    </p>
-    <button onclick="closeModal()" class="btn-cta" style="font-size:1.1rem;padding:1rem;width:100%;display:block;text-align:center;">
-      Got It — I'll Watch My Email ✓
-    </button>
-    <p style="font-size:.8rem;color:#9CA3AF;margin:.75rem 0 0;">No payment until you review and approve.</p>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════════════
-     JAVASCRIPT
-══════════════════════════════════════════════════════ -->
+<!-- CTA MODAL (Micro-Commitment Funnel) -->
+<div class="m-overlay hidden" id="ctaModal">
+  <div class="m-box">
+    <button class="m-close" onclick="closeModal()">✕</button>
+    <div class="m-prog">
+      <div class="m-dot on" id="dot1"></div>
+      <div class="m-dot" id="dot2"></div>
+      <div class="m-dot" id="dot3"></div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="m-step active" id="mStep1">
+      <p class="m-tag">Step 1 of 3 — One Click</p>
+      <h3 class="m-hl">What's Your<br>Industry?</h3>
+      <p class="m-sub">No typing. Just one click to get started.</p>
+      <button class="m-pill" onclick="pickIndustry('consulting')">Consulting / Coaching</button>
+      <button class="m-pill" onclick="pickIndustry('services')">Professional Services</button>
+      <button class="m-pill" onclick="pickIndustry('ecom')">E-commerce / Retail</button>
+      <button class="m-pill" onclick="pickIndustry('creative')">Freelance / Creative</button>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="m-step" id="mStep2">
+      <p class="m-tag">Step 2 of 3 — One Click</p>
+      <h3 class="m-hl">Main Goal<br>For Your Site?</h3>
+      <p class="m-sub">One more click. This shapes everything we build.</p>
+      <button class="m-pill" onclick="pickGoal('leads')">Generate Leads</button>
+      <button class="m-pill" onclick="pickGoal('book')">Book Appointments</button>
+      <button class="m-pill" onclick="pickGoal('sell')">Sell Products / Services</button>
+      <button class="m-pill" onclick="pickGoal('cred')">Build Credibility</button>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="m-step" id="mStep3">
+      <p class="m-tag">Step 3 of 3 — Claim Your Spot</p>
+      <h3 class="m-hl">Last Step.<br>Claim Your<br>$0-Down Build.</h3>
+      <p class="m-sub">Your spot is being held. Enter your email to lock it in.</p>
+      <label class="m-label">Email Address *</label>
+      <input class="m-input" type="email" id="modalEmail" placeholder="you@company.com" oninput="validateModalEmail()">
+      <button class="m-btn" id="modalSubmit" disabled onclick="submitModal()">Claim My $0-Down Build →</button>
+      <p style="margin-top:10px;font-size:12px;color:var(--txt-lt2);text-align:center">No credit card. No commitment. You pay $250 only after approval.</p>
+    </div>
+
+    <!-- Confirmed -->
+    <div class="m-step" id="mConfirm">
+      <div style="text-align:center;padding:16px 0">
+        <div class="m-confirm-icon">
+          <svg width="30" height="24" viewBox="0 0 30 24" fill="none"><path d="M2 12 11 21 28 3" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="m-confirm-hl">You're In.<br>We're Building.</h3>
+        <p class="m-confirm-sub" style="margin-top:12px">
+          We'll reach out to <strong id="modalConfirmedEmail"></strong> within 24 hours.<br><br>
+          Remember — <strong>you pay nothing until you love it.</strong>
+        </p>
+        <button class="m-btn" style="margin-top:32px" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-  // ── Scroll reveal observer ──
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        revealObserver.unobserve(e.target);
-      }
+  // Ticker
+  (function() {
+    const items = ['Zero Upfront Cost','Pay After Delivery','$250 Flat Fee','100% Risk-Free','Live In 48 Hours','No Hidden Fees','No Monthly Retainers','Conversion-Optimized'];
+    const all = [...items, ...items];
+    const track = document.getElementById('tickerTrack');
+    all.forEach(t => {
+      const span = document.createElement('span');
+      span.className = 'ticker-item';
+      span.innerHTML = t + '<span class="ticker-dot"> ◆ </span>';
+      track.appendChild(span);
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  })();
 
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
-    revealObserver.observe(el);
+  // Sticky nav
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('show', window.scrollY > 80);
+  }, { passive: true });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // ── Timed Popup (25s) ──
+  (function() {
+    if (sessionStorage.getItem('ea-popup') || sessionStorage.getItem('ea-exit')) return;
+    setTimeout(() => {
+      if (!sessionStorage.getItem('ea-exit') && !sessionStorage.getItem('ea-popup')) {
+        document.getElementById('timedPopup').classList.remove('hidden');
+        sessionStorage.setItem('ea-popup', '1');
+      }
+    }, 25000);
+  })();
+
+  function closeTimedPopup() {
+    document.getElementById('timedPopup').classList.add('hidden');
+  }
+  document.getElementById('timedPopup').addEventListener('click', function(e) {
+    if (e.target === this) closeTimedPopup();
   });
 
-  // ── Sticky bar shows after hero scrolls past ──
-  const heroSection = document.getElementById('hero');
-  const stickyBar   = document.getElementById('sticky-bar');
-  const stickyObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      stickyBar.classList.toggle('show', !e.isIntersecting);
-    });
-  }, { threshold: 0 });
-  stickyObserver.observe(heroSection);
+  // ── Exit Intent ──
+  (function() {
+    let lastY = window.scrollY;
+    const show = () => {
+      if (sessionStorage.getItem('ea-exit') || sessionStorage.getItem('ea-popup')) return;
+      document.getElementById('exitModal').classList.remove('hidden');
+      sessionStorage.setItem('ea-exit', '1');
+    };
+    document.addEventListener('mouseleave', e => { if (e.clientY <= 0) show(); });
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (lastY - y > 120 && y < 400) show();
+      lastY = y;
+    }, { passive: true });
+  })();
 
-  // ── FAQ accordion ──
-  function toggleFaq(item) {
-    const isOpen = item.classList.contains('faq-open');
-    document.querySelectorAll('.faq-item.faq-open').forEach(i => i.classList.remove('faq-open'));
-    if (!isOpen) item.classList.add('faq-open');
+  function closeExitModal() {
+    document.getElementById('exitModal').classList.add('hidden');
+  }
+  document.getElementById('exitModal').addEventListener('click', function(e) {
+    if (e.target === this) closeExitModal();
+  });
+
+  function validateExitEmail() {
+    const v = document.getElementById('exitEmail').value;
+    document.getElementById('exitSubmit').disabled = !(v.includes('@') && v.includes('.'));
   }
 
-  // ── Form submission ──
-  function handleFormSubmit(e) {
-    e.preventDefault();
-    // Decrement slot counters
-    ['slot-count','sticky-slot-count'].forEach(id => {
-      const el = document.getElementById(id);
-      const n  = parseInt(el.textContent, 10);
-      if (n > 0) el.textContent = n - 1;
-    });
-    document.getElementById('modal-overlay').classList.add('open');
+  function submitExitEmail() {
+    const email = document.getElementById('exitEmail').value;
+    document.getElementById('confirmedEmail').textContent = email;
+    document.getElementById('exitContent').style.display = 'none';
+    document.getElementById('exitConfirmed').style.display = 'block';
   }
 
-  // ── Close modal ──
-  function closeModal(e) {
-    if (!e || e.target === document.getElementById('modal-overlay') || e.target.tagName === 'BUTTON') {
-      document.getElementById('modal-overlay').classList.remove('open');
-    }
+  // ── CTA Modal ──
+  let modalStep = 1;
+
+  function openModal() {
+    document.getElementById('ctaModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('ctaModal').classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('ctaModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  function setModalStep(step) {
+    modalStep = step;
+    document.querySelectorAll('.m-step').forEach(s => s.classList.remove('active'));
+    const stepMap = { 1: 'mStep1', 2: 'mStep2', 3: 'mStep3', 4: 'mConfirm' };
+    document.getElementById(stepMap[step]).classList.add('active');
+    // Update progress dots
+    [1,2,3].forEach(i => {
+      document.getElementById('dot' + i).classList.toggle('on', i <= step);
+    });
+  }
+
+  function pickIndustry(val) {
+    document.querySelectorAll('#mStep1 .m-pill').forEach(p => p.classList.remove('on'));
+    event.target.classList.add('on');
+    setTimeout(() => setModalStep(2), 320);
+  }
+
+  function pickGoal(val) {
+    document.querySelectorAll('#mStep2 .m-pill').forEach(p => p.classList.remove('on'));
+    event.target.classList.add('on');
+    setTimeout(() => setModalStep(3), 320);
+  }
+
+  function validateModalEmail() {
+    const v = document.getElementById('modalEmail').value;
+    document.getElementById('modalSubmit').disabled = !(v.includes('@') && v.includes('.'));
+  }
+
+  function submitModal() {
+    const email = document.getElementById('modalEmail').value;
+    document.getElementById('modalConfirmedEmail').textContent = email;
+    setModalStep(4);
   }
 </script>
 </body>
